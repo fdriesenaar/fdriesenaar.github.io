@@ -199,42 +199,55 @@
                 "type": "object"
             },
             "eCard": {
-                "description": "See [eCard](https://github.com/fdriesenaar/eCards#ecard)]",
+                "description": "See [eCard](https://github.com/fdriesenaar/eCards#ecard)",
                 "type": "object",
                 "properties": {
                     "ballance": {
+                        "description": "Card ballance",
                         "type": "number",
-                        "description": "Card ballance, eg 5.00"
+                        "format": "cents",
+                        "minItems": 0,
+                        "maxItems": 1
                     },
                     "cardIdCipher": {
                         "description": "Card id cipher",
-                        "type": "string"
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
                     },
                     "cardIdCipherIV": {
                         "description": "Card id cipher iv",
-                        "type": "string"
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
                     },
                     "cardIdCipherKey": {
                         "description": "Card id cipher key",
-                        "type": "string"
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
                     },
                     "cardIdCipherPin": {
                         "description": "Card id cipher pin",
-                        "type": [
-                            "null",
-                            "string"
-                        ]
+                        "type": "string",
+                        "nullable": true,
+                        "minItems": 1,
+                        "maxItems": 1
                     },
                     "cardIdSymbology": {
                         "description": "Card code symbology",
-                        "$ref": "#/components/schemas/cardIdSymbology"
+                        "$ref": "#/components/schemas/cardIdSymbology",
+                        "minItems": 1,
+                        "maxItems": 1
                     },
                     "creator_id": {
+                        "description": "Creator user id",
                         "type": "string",
-                        "description": "creator_id"
+                        "minItems": 1,
+                        "maxItems": 1
                     },
                     "currency": {
-                        "description": "ISO 4217 currency code, default EUR.",
+                        "description": "Currency code",
                         "type": "string",
                         "format": "ISO 4217 currency code",
                         "default": "EUR",
@@ -243,36 +256,50 @@
                     },
                     "dateBalanceUpdated": {
                         "description": "Date balance updated",
-                        "type": "string"
+                        "type": "string",
+                        "minItems": 0,
+                        "maxItems": 1
                     },
                     "dateCreated": {
                         "description": "dateCreated",
-                        "type": "string"
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
                     },
                     "dateDeleted": {
                         "description": "dateDeleted",
                         "type": "string",
-                        "nullable": true
+                        "nullable": true,
+                        "minItems": 0,
+                        "maxItems": 1
                     },
                     "dateIssued": {
                         "description": "Date that the card was issued.",
-                        "type": "string"
+                        "type": "string",
+                        "minItems": 0,
+                        "maxItems": 1
                     },
                     "dateModified": {
                         "description": "dateModified",
                         "type": "string",
-                        "nullable": true
+                        "nullable": true,
+                        "minItems": 1,
+                        "maxItems": 1
                     },
                     "description": {
                         "description": "eCard description",
                         "type": "string",
-                        "nullable": true
+                        "nullable": true,
+                        "minItems": 0,
+                        "maxItems": 1
                     },
                     "eCardTemplate": {
                         "allOf": [
                             {
                                 "type": "object",
-                                "nullable": true
+                                "nullable": true,
+                                "minItems": 1,
+                                "maxItems": 1
                             },
                             {
                                 "$ref": "#/components/schemas/eCardTemplate"
@@ -282,26 +309,36 @@
                     "name": {
                         "description": "name",
                         "type": "string",
-                        "nullable": true
+                        "nullable": true,
+                        "minItems": 1,
+                        "maxItems": 1
                     },
                     "notes": {
                         "description": "notes",
                         "type": "string",
-                        "nullable": true
+                        "nullable": true,
+                        "minItems": 0,
+                        "maxItems": 1
                     },
                     "sortName": {
                         "description": "Sort name",
                         "type": "string",
-                        "nullable": true
+                        "nullable": true,
+                        "minItems": 1,
+                        "maxItems": 1
                     },
                     "style": {
-                        "$ref": "#/components/schemas/style"
+                        "$ref": "#/components/schemas/style",
+                        "minItems": 0,
+                        "maxItems": 1
                     },
                     "transactions": {
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/transaction"
-                        }
+                        },
+                        "minItems": 0,
+                        "maxItems": 1
                     }
                 }
             },
