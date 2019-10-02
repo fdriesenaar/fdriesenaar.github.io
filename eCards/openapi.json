@@ -178,11 +178,6 @@
                     "$ref": "#/components/schemas/action"
                 }
             },
-            "appAuthentication": {
-                "description": "See [App Authentication](https://github.com/fdriesenaar/eCards#app-authentication)",
-                "type": "http",
-                "scheme": "Basic"
-            },
             "apiInfo": {
                 "type": "object",
                 "properties": {
@@ -194,6 +189,11 @@
                         "type": "string"
                     }
                 }
+            },
+            "appAuthentication": {
+                "description": "See [App Authentication](https://github.com/fdriesenaar/eCards#app-authentication)",
+                "type": "http",
+                "scheme": "Basic"
             },
             "cardIdSymbology": {
                 "description": "Supported card code symbol types",
@@ -386,8 +386,159 @@
                     }
                 }
             },
+            "brandName": {
+                "type": "string"
+            },
+            "cardId": {
+                "type": "string"
+            },
             "eCardTemplate": {
-                "type": "object"
+                "description": "eCard template",
+                "properties": {
+                    "brand": {
+                        "allOf": [
+                            {
+                                "minItems": 1,
+                                "maxItems": 1
+                            },
+                            {
+                                "$ref": "#/components/schemas/brandName"
+                            }
+                        ]
+                    },
+                    "cardIdSymbology": {
+                        "allOf": [
+                            {
+                                "minItems": 1,
+                                "maxItems": 1
+                            },
+                            {
+                                "$ref": "#/components/schemas/cardIdSymbology"
+                            }
+                        ]
+                    },
+                    "cardId": {
+                        "allOf": [
+                            {
+                                "minItems": 0,
+                                "maxItems": 1
+                            },
+                            {
+                                "$ref": "#/components/schemas/cardId"
+                            }
+                        ]
+                    },
+                    "creator": {
+                        "type": "object",
+                        "description": "Creator of the eCard template",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Creator name",
+                                "minItems": 1,
+                                "maxItems": 1
+                            }
+                        }
+                    },
+                    "dateCreated": {
+                        "description": "Datetimestamp of creation",
+                        "type": "string",
+                        "format": "iso 8601",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "dateDeleted": {
+                        "description": "Datetimestamp of deletion",
+                        "type": "string",
+                        "format": "iso 8601",
+                        "nullable": true,
+                        "minItems": 0,
+                        "maxItems": 1
+                    },
+                    "dateModified": {
+                        "description": "Datetimestamp of latest modification",
+                        "type": "string",
+                        "format": "iso 8601",
+                        "nullable": true,
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "keywords": {
+                        "type": "array",
+                        "items": {
+                            "title": "Keyword",
+                            "type": "string"
+                        },
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "Name to be displayed on the eCard.",
+                        "minItems": 0,
+                        "maxItems": 1
+                    },
+                    "notes": {
+                        "type": "string",
+                        "nullable": true,
+                        "minItems": 0,
+                        "maxItems": 1
+                    },
+                    "services": {
+                        "allOf": [
+                            {
+                                "minItems": 1,
+                                "maxItems": 1
+                            },
+                            {
+                                "$ref": "#/components/schemas/services"
+                            }
+                        ]
+                    },
+                    "sortName": {
+                        "type": "string",
+                        "nullable": true,
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "style": {
+                        "allOf": [
+                            {
+                                "minItems": 1,
+                                "maxItems": 1
+                            },
+                            {
+                                "$ref": "#/components/schemas/style"
+                            }
+                        ]
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "description": "eCard type",
+                            "type": "string",
+                            "enum": [
+                                "customer_membership_account",
+                                "customer_rebate_account",
+                                "customer_loyalty_program",
+                                "customer_subscription_program",
+                                "stored_value_instrument",
+                                "stored_value_instrument_open",
+                                "stored_value_instrument_closed"
+                            ]
+                        },
+                        "minItems": 0,
+                        "maxItems": 1
+                    },
+                    "url": {
+                        "description": "Webshop url",
+                        "type": "string",
+                        "format": "url",
+                        "minItems": 0,
+                        "maxItems": 1
+                    }
+                }
             },
             "geometry": {
                 "type": "object"
