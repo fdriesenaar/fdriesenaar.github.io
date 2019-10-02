@@ -195,13 +195,129 @@
                     }
                 }
             },
+            "cardIdSymbology": {
+                "type": "object"
+            },
             "eCard": {
+                "description": "See [eCard](https://github.com/fdriesenaar/eCards#ecard)]",
+                "type": "object",
+                "properties": {
+                    "ballance": {
+                        "type": "number",
+                        "description": "Card ballance, eg 5.00"
+                    },
+                    "cardIdCipher": {
+                        "description": "Card id cipher",
+                        "type": "string"
+                    },
+                    "cardIdCipherIV": {
+                        "description": "Card id cipher iv",
+                        "type": "string"
+                    },
+                    "cardIdCipherKey": {
+                        "description": "Card id cipher key",
+                        "type": "string"
+                    },
+                    "cardIdCipherPin": {
+                        "description": "Card id cipher pin",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    "cardIdSymbology": {
+                        "description": "Card code symbology",
+                        "$ref": "#/components/schemas/cardIdSymbology"
+                    },
+                    "creator_id": {
+                        "type": "string",
+                        "description": "creator_id"
+                    },
+                    "currency": {
+                        "description": "ISO 4217 currency code, default EUR.",
+                        "type": "string",
+                        "format": "ISO 4217 currency code",
+                        "default": "EUR",
+                        "minItems": 0,
+                        "maxItems": 1
+                    },
+                    "dateBalanceUpdated": {
+                        "description": "Date balance updated",
+                        "type": "string"
+                    },
+                    "dateCreated": {
+                        "description": "dateCreated",
+                        "type": "string"
+                    },
+                    "dateDeleted": {
+                        "description": "dateDeleted",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "dateIssued": {
+                        "description": "Date that the card was issued.",
+                        "type": "string"
+                    },
+                    "dateModified": {
+                        "description": "dateModified",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "description": {
+                        "description": "eCard description",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "eCardTemplate": {
+                        "allOf": [
+                            {
+                                "type": "object",
+                                "nullable": true
+                            },
+                            {
+                                "$ref": "#/components/schemas/eCardTemplate"
+                            }
+                        ]
+                    },
+                    "name": {
+                        "description": "name",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "notes": {
+                        "description": "notes",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sortName": {
+                        "description": "Sort name",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "style": {
+                        "$ref": "#/components/schemas/style"
+                    },
+                    "transactions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/transaction"
+                        }
+                    }
+                }
+            },
+            "eCardTemplate": {
                 "type": "object"
             },
             "geometry": {
                 "type": "object"
             },
             "offer": {
+                "type": "object"
+            },
+            "style": {
+                "type": "object"
+            },
+            "transaction": {
                 "type": "object"
             },
             "userId": {

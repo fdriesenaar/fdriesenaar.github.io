@@ -1,0 +1,292 @@
+---
+openapi: 3.0.0
+info:
+  title: eCards API
+  description: 'Find more info here: [eCards Service](https://github.com/fdriesenaar/eCards)'
+  externalDocs:
+    description: Find more info here
+    url: https://github.com/fdriesenaar/eCards
+  version: 1.0.0
+  license:
+    name: Copyright DigitalMe B.V. 2019 - all rights reserved
+    url: https://digital-me.nl
+servers:
+- url: https://dev2-card.testonly.digital-me.nl/ecards/v1
+  description: Development 2 server
+- url: https://card.dolden.net/ecards/v1
+  description: Acceptance server
+- url: https://card.digital-me.nl/ecards/v1
+  description: Production server
+paths:
+  "/users/{userId}/api":
+    get:
+      tags:
+      - api
+      description: See [GET Api](https://github.com/fdriesenaar/eCards#api-info).
+      operationId: api
+      responses:
+        '200':
+          "$ref": "#/components/responses/api"
+        default:
+          "$ref": "#/components/responses/default"
+    parameters:
+    - "$ref": "#/components/parameters/userId"
+  "/users/{userId}":
+    delete:
+      tags:
+      - users
+      description: See [Delete user](https://github.com/fdriesenaar/eCards#delete-user).
+      operationId: Delete user
+      responses:
+        '204':
+          "$ref": "#/components/responses/userDeleted"
+        default:
+          "$ref": "#/components/responses/default"
+    parameters:
+    - "$ref": "#/components/parameters/userId"
+  "/users/{userId}/actions":
+    post:
+      tags:
+      - actions
+      description: See [Post action](https://github.com/fdriesenaar/eCards#post-action).
+      operationId: Post action
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/actionList"
+            examples:
+              example:
+                "$ref": "#/components/examples/actionList"
+      responses:
+        '201':
+          "$ref": "#/components/responses/actionPosted"
+        default:
+          "$ref": "#/components/responses/default"
+    parameters:
+    - "$ref": "#/components/parameters/userId"
+components:
+  schemas:
+    action:
+      description: See [Action](https://github.com/fdriesenaar/eCards#action)
+      type: object
+      properties:
+        creator_id:
+          description: Creator [user id](https://github.com/fdriesenaar/eCards#user-id)
+          type: string
+          minItems: 1
+          maxItems: 1
+        dateStart:
+          description: Start datetimestamp
+          type: string
+          format: iso 8601
+          minItems: 1
+          maxItems: 1
+        dateEnd:
+          description: End datetimestamp
+          type: string
+          format: iso 8601
+          minItems: 1
+          maxItems: 1
+        eCard:
+          "$ref": "#/components/schemas/eCard"
+          minItems: 0
+          maxItems: 1
+        location:
+          "$ref": "#/components/schemas/geometry"
+          minItems: 0
+          maxItems: 1
+        offer:
+          "$ref": "#/components/schemas/offer"
+          minItems: 0
+          maxItems: 1
+        type:
+          description: Action type
+          type: string
+          enum:
+          - CreateAction
+          - InteractAction
+          - DeleteAction
+          - ViewOfferAction
+          - UpdateAction
+          minItems: 1
+          maxItems: 1
+        userAgent:
+          description: Information about the eCards client extracted from the user-agent
+            http request header
+          type: string
+          minItems: 1
+          maxItems: 1
+    actionList:
+      description: "[Action](https://github.com/fdriesenaar/eCards#action) list"
+      type: array
+      items:
+        "$ref": "#/components/schemas/action"
+    appAuthentication:
+      description: See [App Authentication](https://github.com/fdriesenaar/eCards#app-authentication)
+      type: http
+      scheme: Basic
+    apiResponse:
+      type: object
+      properties:
+        serverTime:
+          description: Server time in unix time in mili seconds.
+          type: number
+        currentVersion:
+          type: string
+    cardIdSymbology:
+      type: object
+    eCard:
+      description: See [eCard](https://github.com/fdriesenaar/eCards#ecard)]
+      type: object
+      properties:
+        ballance:
+          type: number
+          description: Card ballance, eg 5.00
+        cardIdCipher:
+          description: Card id cipher
+          type: string
+        cardIdCipherIV:
+          description: Card id cipher iv
+          type: string
+        cardIdCipherKey:
+          description: Card id cipher key
+          type: string
+        cardIdCipherPin:
+          description: Card id cipher pin
+          type:
+          - 'null'
+          - string
+        cardIdSymbology:
+          description: Card code symbology
+          "$ref": "#/components/schemas/cardIdSymbology"
+        creator_id:
+          type: string
+          description: creator_id
+        currency:
+          description: ISO 4217 currency code, default EUR.
+          type: string
+          format: ISO 4217 currency code
+          default: EUR
+          minItems: 0
+          maxItems: 1
+        dateBalanceUpdated:
+          description: Date balance updated
+          type: string
+        dateCreated:
+          description: dateCreated
+          type: string
+        dateDeleted:
+          description: dateDeleted
+          type: string
+          nullable: true
+        dateIssued:
+          description: Date that the card was issued.
+          type: string
+        dateModified:
+          description: dateModified
+          type: string
+          nullable: true
+        description:
+          description: eCard description
+          type: string
+          nullable: true
+        eCardTemplate:
+          allOf:
+          - type: object
+            nullable: true
+          - "$ref": "#/components/schemas/eCardTemplate"
+        name:
+          description: name
+          type: string
+          nullable: true
+        notes:
+          description: notes
+          type: string
+          nullable: true
+        sortName:
+          description: Sort name
+          type: string
+          nullable: true
+        style:
+          "$ref": "#/components/schemas/style"
+        transactions:
+          type: array
+          items:
+            "$ref": "#/components/schemas/transaction"
+    eCardTemplate:
+      type: object
+    geometry:
+      type: object
+    offer:
+      type: object
+    style:
+      type: object
+    transaction:
+      type: object
+    userId:
+      description: "[User Id](https://github.com/fdriesenaar/eCards#user-id)"
+      type: string
+      minItems: 1
+      maxItems: 1
+  responses:
+    actionPosted:
+      description: Action posted
+    api:
+      description: Api response
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/apiResponse"
+          examples:
+            apiGetAppAuthenticated:
+              "$ref": "#/components/examples/apiGetAppAuthenticated"
+    default:
+      description: Default response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    status:
+                      type: number
+                      enum:
+                      - 401
+                    message:
+                      type: string
+                      pattern: Authentication required!
+          examples:
+            example:
+              "$ref": "#/components/examples/authenticationRequired"
+    userDeleted:
+      description: User deleted
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        "$ref": "#/components/schemas/userId"
+  examples:
+    actionList:
+    - t: bd
+    apiGetAppAuthenticated:
+      value:
+        serverTime: 1568366519145
+        currentVersion: 1.0.67-SNAPSHOT
+    authenticationRequired:
+      value:
+        errors:
+        - status: 401
+          message: Authentication required!
+  securitySchemes:
+    appAuthentication:
+      "$ref": "#/components/schemas/appAuthentication"
+security:
+- appAuthentication: []
+
