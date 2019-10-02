@@ -28,28 +28,6 @@
         }
     ],
     "paths": {
-        "/users/{userId}/api": {
-            "get": {
-                "tags": [
-                    "api"
-                ],
-                "description": "See [GET Api](https://github.com/fdriesenaar/eCards#api-info).",
-                "operationId": "api",
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/api"
-                    },
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            },
-            "parameters": [
-                {
-                    "$ref": "#/components/parameters/userId"
-                }
-            ]
-        },
         "/users/{userId}": {
             "delete": {
                 "tags": [
@@ -72,13 +50,35 @@
                 }
             ]
         },
+        "/users/{userId}/api": {
+            "get": {
+                "tags": [
+                    "api"
+                ],
+                "description": "See [GET Api](https://github.com/fdriesenaar/eCards#api-info).",
+                "operationId": "api",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/api"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                }
+            ]
+        },
         "/users/{userId}/actions": {
             "post": {
                 "tags": [
                     "actions"
                 ],
-                "description": "See [Post action](https://github.com/fdriesenaar/eCards#post-action).",
-                "operationId": "Post action",
+                "description": "See [Post actions](https://github.com/fdriesenaar/eCards#post-actions).",
+                "operationId": "Post actions",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -94,7 +94,7 @@
                     }
                 },
                 "responses": {
-                    "201": {
+                    "204": {
                         "$ref": "#/components/responses/actionPosted"
                     },
                     "default": {
