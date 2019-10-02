@@ -183,7 +183,7 @@
                 "type": "http",
                 "scheme": "Basic"
             },
-            "apiResponse": {
+            "apiInfo": {
                 "type": "object",
                 "properties": {
                     "serverTime": {
@@ -196,8 +196,36 @@
                 }
             },
             "cardIdSymbology": {
-                "description": "Card code symbology",
-                "type": "object"
+                "description": "Supported card code symbol types",
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "title": "Card code symbol type",
+                    "enum": [
+                        "Aztec Code",
+                        "Codabar",
+                        "Code 128",
+                        "Code 39",
+                        "Code 39 mod 43",
+                        "Code 93",
+                        "DataBar Expanded",
+                        "DataBar-14",
+                        "DataMatrix",
+                        "EAN-128",
+                        "EAN-13",
+                        "EAN-8",
+                        "GS1 DataMatrix",
+                        "GS1 QR Code",
+                        "GS1-128",
+                        "GS1-13",
+                        "ITF",
+                        "ITF-14",
+                        "MaxiCode",
+                        "PDF417",
+                        "QR",
+                        "UPC-E"
+                    ]
+                }
             },
             "eCard": {
                 "description": "See [eCard](https://github.com/fdriesenaar/eCards#ecard)",
@@ -389,7 +417,7 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/apiResponse"
+                            "$ref": "#/components/schemas/apiInfo"
                         },
                         "examples": {
                             "apiGetAppAuthenticated": {
