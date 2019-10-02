@@ -135,6 +135,7 @@ components:
         currentVersion:
           type: string
     cardIdSymbology:
+      description: Card code symbology
       type: object
     eCard:
       description: See [eCard](https://github.com/fdriesenaar/eCards#ecard)
@@ -168,10 +169,10 @@ components:
           minItems: 1
           maxItems: 1
         cardIdSymbology:
-          description: Card code symbology
-          "$ref": "#/components/schemas/cardIdSymbology"
-          minItems: 1
-          maxItems: 1
+          allOf:
+          - minItems: 1
+            maxItems: 1
+          - "$ref": "#/components/schemas/cardIdSymbology"
         creator_id:
           description: Creator user id
           type: string
@@ -219,8 +220,7 @@ components:
           maxItems: 1
         eCardTemplate:
           allOf:
-          - type: object
-            nullable: true
+          - nullable: true
             minItems: 1
             maxItems: 1
           - "$ref": "#/components/schemas/eCardTemplate"
@@ -243,9 +243,10 @@ components:
           minItems: 1
           maxItems: 1
         style:
-          "$ref": "#/components/schemas/style"
-          minItems: 0
-          maxItems: 1
+          allOf:
+          - minItems: 0
+            maxItems: 1
+          - "$ref": "#/components/schemas/style"
         transactions:
           type: array
           items:

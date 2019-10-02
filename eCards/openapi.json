@@ -196,6 +196,7 @@
                 }
             },
             "cardIdSymbology": {
+                "description": "Card code symbology",
                 "type": "object"
             },
             "eCard": {
@@ -235,10 +236,15 @@
                         "maxItems": 1
                     },
                     "cardIdSymbology": {
-                        "description": "Card code symbology",
-                        "$ref": "#/components/schemas/cardIdSymbology",
-                        "minItems": 1,
-                        "maxItems": 1
+                        "allOf": [
+                            {
+                                "minItems": 1,
+                                "maxItems": 1
+                            },
+                            {
+                                "$ref": "#/components/schemas/cardIdSymbology"
+                            }
+                        ]
                     },
                     "creator_id": {
                         "description": "Creator user id",
@@ -296,7 +302,6 @@
                     "eCardTemplate": {
                         "allOf": [
                             {
-                                "type": "object",
                                 "nullable": true,
                                 "minItems": 1,
                                 "maxItems": 1
@@ -328,9 +333,15 @@
                         "maxItems": 1
                     },
                     "style": {
-                        "$ref": "#/components/schemas/style",
-                        "minItems": 0,
-                        "maxItems": 1
+                        "allOf": [
+                            {
+                                "minItems": 0,
+                                "maxItems": 1
+                            },
+                            {
+                                "$ref": "#/components/schemas/style"
+                            }
+                        ]
                     },
                     "transactions": {
                         "type": "array",
