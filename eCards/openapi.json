@@ -122,14 +122,14 @@
                         "maxItems": 1
                     },
                     "dateStart": {
-                        "description": "Start datetimestamp",
+                        "description": "Datetimestamp of action start",
                         "type": "string",
                         "format": "iso 8601",
                         "minItems": 1,
                         "maxItems": 1
                     },
                     "dateEnd": {
-                        "description": "End datetimestamp",
+                        "description": "Datetimestamp of action end",
                         "type": "string",
                         "format": "iso 8601",
                         "minItems": 1,
@@ -261,33 +261,38 @@
                         "maxItems": 1
                     },
                     "dateBalanceUpdated": {
-                        "description": "Date balance updated",
+                        "description": "Datetimestamp of latest balance update",
                         "type": "string",
+                        "format": "iso 8601",
                         "minItems": 0,
                         "maxItems": 1
                     },
                     "dateCreated": {
-                        "description": "dateCreated",
+                        "description": "Datetimestamp of creation",
                         "type": "string",
+                        "format": "iso 8601",
                         "minItems": 1,
                         "maxItems": 1
                     },
                     "dateDeleted": {
-                        "description": "dateDeleted",
+                        "description": "Datetimestamp of deletion",
                         "type": "string",
+                        "format": "iso 8601",
                         "nullable": true,
                         "minItems": 0,
                         "maxItems": 1
                     },
                     "dateIssued": {
-                        "description": "Date that the card was issued.",
+                        "description": "Datetimestamp of card issue",
                         "type": "string",
+                        "format": "iso 8601",
                         "minItems": 0,
                         "maxItems": 1
                     },
                     "dateModified": {
-                        "description": "dateModified",
+                        "description": "Datetimestamp of latest modification",
                         "type": "string",
+                        "format": "iso 8601",
                         "nullable": true,
                         "minItems": 1,
                         "maxItems": 1
