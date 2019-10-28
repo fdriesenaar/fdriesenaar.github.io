@@ -275,8 +275,8 @@ paths:
           description: See [Action Message List Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-list-endpoint)
   /{EventsEndpointPath}:
     get:
-      description: '''New request for feed''-event, see [User Action Message Event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message-event)'
-      operationId: New request for feed event
+      description: See [Request for feed event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#request-for-feed-event)
+      operationId: Request for feed event
       responses:
         '200':
           $ref: '#/components/responses/newRequestForFeedEvent'
