@@ -1,61 +1,30 @@
+<html>
+    <head>    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.17.0/swagger-ui.css">
+        <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
+        <script>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Swagger UI</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.23.11/swagger-ui.css" >
-  <style>
-    html
-    {
-      box-sizing: border-box;
-      overflow: -moz-scrollbars-vertical;
-      overflow-y: scroll;
-    }
-    *,
-    *:before,
-    *:after
-    {
-      box-sizing: inherit;
-    }
+            function render() {
+                var ui = SwaggerUIBundle({
+		    tagsSorter: "alpha",
+                    url:  "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/Server/openapi.yaml",
+                    dom_id: '#swagger-ui',
+		    deepLinking: true,
+                    presets: [
+                        SwaggerUIBundle.presets.apis,
+                        SwaggerUIBundle.SwaggerUIStandalonePreset
+                    ],
+                    plugins: [
+                      SwaggerUIBundle.plugins.DownloadUrl
+                    ]
+                });
+            }
 
-    body {
-      margin:0;
-      background: #fafafa;
-    }
-  </style>
-</head>
-<body>
+        </script>
+    </head>
 
-<div id="swagger-ui"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.23.11/swagger-ui-bundle.js"> </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.23.11/swagger-ui-standalone-preset.js"> </script>
-<script>
-window.onload = function() {
-
-  var spec = {"components": {"responses": {"feedSourceAdd": {"description": "Add feed source response"}, "actionMessageList": {"description": "Action Message list", "content": {"application/json": {"examples": {"example": {"$ref": "#/components/examples/actionMessageList"}}, "schema": {"$ref": "#/components/schemas/actionMessageList"}}}}, "default": {"$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/responses/default"}, "feedSourceSet": {"description": "Set feed source response"}, "actionMessage": {"description": "Action Message", "content": {"application/json": {"examples": {"example": {"$ref": "#/components/examples/actionMessage"}}, "schema": {"$ref": "#/components/schemas/actionMessage"}}}}}, "schemas": {"actionMessageList": {"properties": {"result": {"items": {"$ref": "#/components/schemas/actionMessage"}, "minItems": 1, "maxItems": 1, "type": "array"}}, "type": "object"}, "userActionMessageEvent": {"properties": {"extraData": {"minItems": 1, "description": "Url of the user action message", "maxItems": 1, "format": "url", "type": "string"}, "connectionUrl": {"minItems": 1, "description": "Connection url of the new connection with the Qiy Node", "maxItems": 1, "format": "url", "type": "string"}, "type": {"minItems": 1, "maxItems": 1, "type": "string", "enum": ["USER_ACTION_MESSAGE"]}}, "description": "See [User Action Message Event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message-event)", "type": "object"}, "actionMessage": {"properties": {"created": {"minItems": 1, "description": "Creation datetimestamp", "maxItems": 1, "format": "Unix time in mili seconds", "type": "number"}, "relayOptions": {"minItems": 1, "type": "object", "properties": {"$nodeIdRex": {"minItems": 1, "description": "Action endpoint address", "maxItems": 1, "format": "url", "type": "string"}}, "description": "action endpoint addresses by Qiy Node Id as property name", "maxItems": 1, "x-patternProperties": {"$nodeIdRex": {"minItems": 1, "description": "Action endpoint address", "maxItems": 1, "format": "url", "type": "string"}}}, "connection": {"minItems": 1, "description": "Connection url of the related connection", "maxItems": 1, "format": "url", "type": "string"}, "links": {"items": {"properties": {"handle": {"minItems": 1, "format": "url", "maxItems": 1, "type": "string"}, "self": {"minItems": 1, "format": "url", "maxItems": 1, "type": "string"}}, "type": "object"}, "minItems": 1, "maxItems": 1, "type": "array"}, "optionPIDs": {"minItems": 1, "type": "object", "properties": {"$pid": {"minItems": 1, "description": "Action endpoint address", "maxItems": 1, "format": "url", "type": "string"}}, "description": "Action endpoint addresses by pid as property name", "maxItems": 1, "x-patternProperties": {"$pidRex": {"minItems": 1, "description": "Action endpoint address", "maxItems": 1, "format": "url", "type": "string"}}}, "message": {"allOf": [{"$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/message"}, {"minItems": 1, "maxItems": 1, "type": "object"}]}}, "type": "object"}}, "examples": {"actionMessageList": {"value": {"result": [{"created": 1562059030644, "relayOptions": {"8f4edf58-73dd-4fee-b344-149c924f1605": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca", "wip_feed_rp": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"}, "connection": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e", "links": {"handle": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/handle/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e", "self": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4"}, "optionPIDs": {"jRMCgeCzt3zFGDZuutuNvg==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca", "kpKugxcUU7AdJJgVUVuFnA==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"}, "message": {"protocol": "http://bla.nl/events", "text": "huh?", "inbound": true, "sent": false, "payload": "eyJrZXkiOiJ3K2pMeTEzZlhJVFpkS3lISy80TWRBPT0iLCJpbnB1dCI6bnVsbH0=", "serialNr": 5, "processed": true}}]}}, "actionMessage": {"value": {"created": 1562059030644, "relayOptions": {"8f4edf58-73dd-4fee-b344-149c924f1605": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca", "wip_feed_rp": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"}, "connection": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e", "links": {"handle": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/handle/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e", "self": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4"}, "optionPIDs": {"jRMCgeCzt3zFGDZuutuNvg==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca", "kpKugxcUU7AdJJgVUVuFnA==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"}, "message": {"protocol": "http://bla.nl/events", "text": "huh?", "inbound": true, "sent": false, "payload": "eyJrZXkiOiJ3K2pMeTEzZlhJVFpkS3lISy80TWRBPT0iLCJpbnB1dCI6bnVsbH0=", "serialNr": 5, "processed": true}}}}, "x-events": {"userActionMessage": {"event": "USER_ACTION_MESSAGE", "examples": {"example": "event: USER_ACTION_MESSAGE\ndata: { \"type\": \"USER_ACTION_MESSAGE\", \"connectionUrl\": \"https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e\", \"extraData\": \"https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4\"}\n"}, "description": "See [User Action Message Event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message-event)", "data": {"examples": {"example": {"extraData": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4", "connectionUrl": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e", "type": "USER_ACTION_MESSAGE"}}, "schema": {"$ref": "#/components/schemas/userActionMessageEvent"}}}}, "securitySchemes": {"appAuthentication": {"$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/appAuthentication"}, "userAuthentication": {"$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/userAuthentication"}}}, "info": {"version": "1.1.0", "description": "To get started with [this api](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md), you need a developer key. You can get it [here](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#service-desk)", "license": {"url": "https://creativecommons.org/licenses/by-nc-nd/4.0/", "name": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License"}, "externalDocs": {"url": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md", "description": "Find more info here"}, "title": "Qiy Node API - Controller"}, "security": [{"appAuthentication": []}, {"userAuthentication": []}], "openapi": "3.0.0", "paths": {"/{ActionEndpointPath}": {"post": {"responses": {"200": {"$ref": "#/components/responses/feedSourceSet"}, "default": {"$ref": "#/components/responses/default"}}, "description": "See [Set feed source](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#set-feed-source)", "operationId": "Set feed source", "tags": ["Feed sources"]}, "put": {"responses": {"200": {"$ref": "#/components/responses/feedSourceAdd"}, "default": {"$ref": "#/components/responses/default"}}, "description": "See [Add feed source](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#add-feed-source)", "operationId": "Add feed source", "tags": ["Feed sources"]}, "servers": [{"variables": {"ActionEndpointBaseUrl": {"description": "See [Action Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-endpoint)", "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-endpoint"}}, "url": "{ActionEndpointBaseUrl}", "description": "Action Endpoint"}]}, "/{ActionMessageListEndpointPath}": {"get": {"responses": {"200": {"$ref": "#/components/responses/actionMessageList"}, "default": {"$ref": "#/components/responses/default"}}, "description": "See [List action messages](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#list-action-messages)", "operationId": "List requests for feeds", "tags": ["Requests for feed"]}, "servers": [{"variables": {"ActionMessageListEndpointBaseUrl": {"description": "See [Action Message List Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-list-endpoint)", "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-list-endpoint"}}, "url": "{ActionMessageListEndpointBaseUrl}", "description": "Action Message List Endpoint"}]}, "/{ActionMessageEndpointPath}": {"get": {"responses": {"200": {"$ref": "#/components/responses/actionMessage"}, "default": {"$ref": "#/components/responses/default"}}, "description": "See [Get action message](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#get-action-message)", "operationId": "Get request for feed details", "tags": ["Requests for feed"]}, "servers": [{"variables": {"ActionMessageEndpointBaseUrl": {"description": "See [Action Message Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-endpoint)", "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-endpoint"}}, "url": "{ActionMessageEndpointBaseUrl}", "description": "Action Message Endpoint"}]}}};
-
-  // Build a system
-  const ui = SwaggerUIBundle({
-    spec: spec,
-    dom_id: '#swagger-ui',
-    deepLinking: true,
-    presets: [
-      SwaggerUIBundle.presets.apis,
-      SwaggerUIStandalonePreset
-    ],
-    plugins: [
-      SwaggerUIBundle.plugins.DownloadUrl
-    ],
-    layout: "StandaloneLayout",
-    tagsSorter: 'alpha'
-  })
-
-  window.ui = ui
-}
-</script>
-</body>
-
+    <body onload="render()">
+        <div id="swagger-ui"></div>
+    </body>
 </html>
+
