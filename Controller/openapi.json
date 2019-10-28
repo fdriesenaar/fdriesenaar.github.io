@@ -1,0 +1,404 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Qiy Node API - Controller",
+        "description": "To get started with [this api](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md), you need a developer key. You can get it [here](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#service-desk)",
+        "externalDocs": {
+            "description": "Find more info here",
+            "url": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md"
+        },
+        "version": "1.1.0",
+        "license": {
+            "name": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International Public License",
+            "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+    },
+    "paths": {
+        "/{ActionEndpointPath}": {
+            "post": {
+                "tags": [
+                    "Feed sources"
+                ],
+                "description": "See [Set feed source](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#set-feed-source)",
+                "operationId": "Set feed source",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/feedSourceSet"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Feed sources"
+                ],
+                "description": "See [Add feed source](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#add-feed-source)",
+                "operationId": "Add feed source",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/feedSourceAdd"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "servers": [
+                {
+                    "description": "Action Endpoint",
+                    "url": "{ActionEndpointBaseUrl}",
+                    "variables": {
+                        "ActionEndpointBaseUrl": {
+                            "description": "See [Action Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-endpoint)",
+                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-endpoint"
+                        }
+                    }
+                }
+            ]
+        },
+        "/{ActionMessageEndpointPath}": {
+            "get": {
+                "tags": [
+                    "Requests for feed"
+                ],
+                "description": "See [Get action message](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#get-action-message)",
+                "operationId": "Get request for feed details",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/actionMessage"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "servers": [
+                {
+                    "description": "Action Message Endpoint",
+                    "url": "{ActionMessageEndpointBaseUrl}",
+                    "variables": {
+                        "ActionMessageEndpointBaseUrl": {
+                            "description": "See [Action Message Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-endpoint)",
+                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-endpoint"
+                        }
+                    }
+                }
+            ]
+        },
+        "/{ActionMessageListEndpointPath}": {
+            "get": {
+                "tags": [
+                    "Requests for feed"
+                ],
+                "description": "See [List action messages](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#list-action-messages)",
+                "operationId": "List requests for feeds",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/actionMessageList"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "servers": [
+                {
+                    "description": "Action Message List Endpoint",
+                    "url": "{ActionMessageListEndpointBaseUrl}",
+                    "variables": {
+                        "ActionMessageListEndpointBaseUrl": {
+                            "description": "See [Action Message List Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-list-endpoint)",
+                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-list-endpoint"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "components": {
+        "schemas": {
+            "actionMessage": {
+                "type": "object",
+                "properties": {
+                    "connection": {
+                        "description": "Connection url of the related connection",
+                        "type": "string",
+                        "format": "url",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "created": {
+                        "description": "Creation datetimestamp",
+                        "type": "number",
+                        "format": "Unix time in mili seconds",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "handle": {
+                                    "type": "string",
+                                    "format": "url",
+                                    "minItems": 1,
+                                    "maxItems": 1
+                                },
+                                "self": {
+                                    "type": "string",
+                                    "format": "url",
+                                    "minItems": 1,
+                                    "maxItems": 1
+                                }
+                            }
+                        },
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "message": {
+                        "allOf": [
+                            {
+                                "$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/message"
+                            },
+                            {
+                                "type": "object",
+                                "minItems": 1,
+                                "maxItems": 1
+                            }
+                        ]
+                    },
+                    "optionPIDs": {
+                        "description": "Action endpoint addresses by pid as property name",
+                        "type": "object",
+                        "properties": {
+                            "$pid": {
+                                "description": "Action endpoint address",
+                                "type": "string",
+                                "format": "url",
+                                "minItems": 1,
+                                "maxItems": 1
+                            }
+                        },
+                        "x-patternProperties": {
+                            "$pidRex": {
+                                "description": "Action endpoint address",
+                                "type": "string",
+                                "format": "url",
+                                "minItems": 1,
+                                "maxItems": 1
+                            }
+                        },
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "relayOptions": {
+                        "description": "action endpoint addresses by Qiy Node Id as property name",
+                        "type": "object",
+                        "properties": {
+                            "$nodeIdRex": {
+                                "description": "Action endpoint address",
+                                "type": "string",
+                                "format": "url",
+                                "minItems": 1,
+                                "maxItems": 1
+                            }
+                        },
+                        "x-patternProperties": {
+                            "$nodeIdRex": {
+                                "description": "Action endpoint address",
+                                "type": "string",
+                                "format": "url",
+                                "minItems": 1,
+                                "maxItems": 1
+                            }
+                        },
+                        "minItems": 1,
+                        "maxItems": 1
+                    }
+                }
+            },
+            "actionMessageList": {
+                "type": "object",
+                "properties": {
+                    "result": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/actionMessage"
+                        },
+                        "minItems": 1,
+                        "maxItems": 1
+                    }
+                }
+            },
+            "userActionMessageEvent": {
+                "description": "See [User Action Message Event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message-event)",
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "USER_ACTION_MESSAGE"
+                        ],
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "connectionUrl": {
+                        "description": "Connection url of the new connection with the Qiy Node",
+                        "type": "string",
+                        "format": "url",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "extraData": {
+                        "description": "Url of the user action message",
+                        "type": "string",
+                        "format": "url",
+                        "minItems": 1,
+                        "maxItems": 1
+                    }
+                }
+            }
+        },
+        "responses": {
+            "actionMessage": {
+                "description": "Action Message",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/actionMessage"
+                        },
+                        "examples": {
+                            "example": {
+                                "$ref": "#/components/examples/actionMessage"
+                            }
+                        }
+                    }
+                }
+            },
+            "actionMessageList": {
+                "description": "Action Message list",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/actionMessageList"
+                        },
+                        "examples": {
+                            "example": {
+                                "$ref": "#/components/examples/actionMessageList"
+                            }
+                        }
+                    }
+                }
+            },
+            "default": {
+                "$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/responses/default"
+            },
+            "feedSourceAdd": {
+                "description": "Add feed source response"
+            },
+            "feedSourceSet": {
+                "description": "Set feed source response"
+            }
+        },
+        "examples": {
+            "actionMessage": {
+                "value": {
+                    "connection": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e",
+                    "created": 1562059030644,
+                    "links": {
+                        "self": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4",
+                        "handle": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/handle/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
+                    },
+                    "message": {
+                        "serialNr": 5,
+                        "text": "huh?",
+                        "protocol": "http://bla.nl/events",
+                        "inbound": true,
+                        "sent": false,
+                        "payload": "eyJrZXkiOiJ3K2pMeTEzZlhJVFpkS3lISy80TWRBPT0iLCJpbnB1dCI6bnVsbH0=",
+                        "processed": true
+                    },
+                    "optionPIDs": {
+                        "jRMCgeCzt3zFGDZuutuNvg==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca",
+                        "kpKugxcUU7AdJJgVUVuFnA==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
+                    },
+                    "relayOptions": {
+                        "8f4edf58-73dd-4fee-b344-149c924f1605": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca",
+                        "wip_feed_rp": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
+                    }
+                }
+            },
+            "actionMessageList": {
+                "value": {
+                    "result": [
+                        {
+                            "connection": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e",
+                            "created": 1562059030644,
+                            "links": {
+                                "self": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4",
+                                "handle": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/handle/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
+                            },
+                            "message": {
+                                "serialNr": 5,
+                                "text": "huh?",
+                                "protocol": "http://bla.nl/events",
+                                "inbound": true,
+                                "sent": false,
+                                "payload": "eyJrZXkiOiJ3K2pMeTEzZlhJVFpkS3lISy80TWRBPT0iLCJpbnB1dCI6bnVsbH0=",
+                                "processed": true
+                            },
+                            "optionPIDs": {
+                                "jRMCgeCzt3zFGDZuutuNvg==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca",
+                                "kpKugxcUU7AdJJgVUVuFnA==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
+                            },
+                            "relayOptions": {
+                                "8f4edf58-73dd-4fee-b344-149c924f1605": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca",
+                                "wip_feed_rp": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "securitySchemes": {
+            "appAuthentication": {
+                "$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/appAuthentication"
+            },
+            "userAuthentication": {
+                "$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/userAuthentication"
+            }
+        },
+        "x-events": {
+            "userActionMessage": {
+                "description": "See [User Action Message Event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message-event)",
+                "event": "USER_ACTION_MESSAGE",
+                "data": {
+                    "schema": {
+                        "$ref": "#/components/schemas/userActionMessageEvent"
+                    },
+                    "examples": {
+                        "example": {
+                            "type": "USER_ACTION_MESSAGE",
+                            "connectionUrl": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e",
+                            "extraData": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4"
+                        }
+                    }
+                },
+                "examples": {
+                    "example": "event: USER_ACTION_MESSAGE\ndata: { \"type\": \"USER_ACTION_MESSAGE\", \"connectionUrl\": \"https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e\", \"extraData\": \"https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4\"}\n"
+                }
+            }
+        }
+    },
+    "security": [
+        {
+            "appAuthentication": []
+        },
+        {
+            "userAuthentication": []
+        }
+    ]
+}
