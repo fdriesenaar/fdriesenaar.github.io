@@ -115,6 +115,36 @@
                     }
                 }
             ]
+        },
+        "/{EventsEndpointPath}": {
+            "get": {
+                "tags": [
+                    "Requests for feed"
+                ],
+                "description": "'New request for feed'-event, see [User Action Message Event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message-event)",
+                "operationId": "New request for feed event",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/newRequestForFeedEvent"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                    
+                }
+            },
+            "servers": [
+                {
+                    "description": "Events Endpoint",
+                    "url": "{EventsEndpointBaseUrl}",
+                    "variables": {
+                        "EventsEndpointBaseUrl": {
+                            "description": "See [Events Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#events-endpoint)",
+                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#events-endpoint"
+                        }
+                    }
+                }
+            ]
         }
     },
     "components": {
@@ -236,6 +266,7 @@
             "userActionMessageEvent": {
                 "description": "See [User Action Message Event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message-event)",
                 "type": "object",
+                "format": "Server-Sent Event",
                 "properties": {
                     "type": {
                         "type": "string",
@@ -301,6 +332,19 @@
             },
             "feedSourceSet": {
                 "description": "Set feed source response"
+            },
+            "newRequestForFeedEvent": {
+                "description": "'New request for feed'-event",
+                "content": {
+                    "text/event-stream": {
+                        "schema": {
+                            "$ref": "#/components/schemas/userActionMessageEvent"
+                        },
+                        "examples": {
+                            "$ref": "#/components/examples/userActionMessageEvent"
+                        }
+                    }
+                }
             }
         },
         "examples": {
