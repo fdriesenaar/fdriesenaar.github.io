@@ -125,7 +125,7 @@
                 "operationId": "Request for feed event",
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/newRequestForFeedEvent"
+                        "$ref": "#/components/responses/requestForFeedEvent"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -330,8 +330,8 @@
             "feedSourceSet": {
                 "description": "Set feed source response"
             },
-            "newRequestForFeedEvent": {
-                "description": "'New request for feed'-event",
+            "requestForFeedEvent": {
+                "description": "Request for feed event",
                 "content": {
                     "text/event-stream": {
                         "schema": {

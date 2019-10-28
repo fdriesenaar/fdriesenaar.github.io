@@ -73,7 +73,7 @@ components:
       description: Add feed source response
     feedSourceSet:
       description: Set feed source response
-    newRequestForFeedEvent:
+    requestForFeedEvent:
       content:
         text/event-stream:
           examples:
@@ -81,7 +81,7 @@ components:
               $ref: '#/components/examples/userActionMessageEvent'
           schema:
             $ref: '#/components/schemas/userActionMessageEvent'
-      description: '''New request for feed''-event'
+      description: Request for feed event
   schemas:
     actionMessage:
       properties:
@@ -279,7 +279,7 @@ paths:
       operationId: Request for feed event
       responses:
         '200':
-          $ref: '#/components/responses/newRequestForFeedEvent'
+          $ref: '#/components/responses/requestForFeedEvent'
         default:
           $ref: '#/components/responses/default'
       tags:
