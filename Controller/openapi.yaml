@@ -77,7 +77,8 @@ components:
       content:
         text/event-stream:
           examples:
-            $ref: '#/components/examples/userActionMessageEvent'
+            example:
+              $ref: '#/components/examples/userActionMessageEvent'
           schema:
             $ref: '#/components/schemas/userActionMessageEvent'
       description: '''New request for feed''-event'

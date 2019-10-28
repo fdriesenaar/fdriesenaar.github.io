@@ -340,7 +340,9 @@
                             "$ref": "#/components/schemas/userActionMessageEvent"
                         },
                         "examples": {
-                            "$ref": "#/components/examples/userActionMessageEvent"
+                            "example": {
+                                "$ref": "#/components/examples/userActionMessageEvent"
+                            }
                         }
                     }
                 }
