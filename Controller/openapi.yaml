@@ -257,8 +257,8 @@ paths:
           description: See [Action Message Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-endpoint)
   /{ActionMessageListEndpointPath}:
     get:
-      description: See [List action messages](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#list-action-messages)
-      operationId: List requests for feeds
+      description: See [List requests for feed](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#list-requests-for-feed)
+      operationId: List requests for feed
       responses:
         '200':
           $ref: '#/components/responses/actionMessageList'
