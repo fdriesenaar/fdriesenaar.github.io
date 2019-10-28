@@ -239,7 +239,7 @@ paths:
           description: See [Action Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-endpoint)
   /{ActionMessageEndpointPath}:
     get:
-      description: See [Get action message](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#get-action-message)
+      description: See [Get request for feed details](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#get-request-for-feed-details)
       operationId: Get request for feed details
       responses:
         '200':
