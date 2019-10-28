@@ -43,7 +43,7 @@ components:
           relayOptions:
             8f4edf58-73dd-4fee-b344-149c924f1605: https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca
             wip_feed_rp: https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e
-    userActionMessage:
+    userActionMessageEvent:
       value:
         connectionUrl: https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e
         extraData: https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4
