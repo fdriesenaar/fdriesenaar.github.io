@@ -14,7 +14,7 @@
         }
     },
     "paths": {
-        "/{ActionEndpointPath}": {
+        "/{ActionUrlPath}": {
             "post": {
                 "tags": [
                     "Feed sources"
@@ -47,70 +47,12 @@
             },
             "servers": [
                 {
-                    "description": "Action Endpoint",
-                    "url": "{ActionEndpointBaseUrl}",
+                    "description": "Action Url",
+                    "url": "{ActionBaseUrl}",
                     "variables": {
-                        "ActionEndpointBaseUrl": {
-                            "description": "See [Action Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-endpoint)",
-                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-endpoint"
-                        }
-                    }
-                }
-            ]
-        },
-        "/{ActionMessageEndpointPath}": {
-            "get": {
-                "tags": [
-                    "Requests for feed"
-                ],
-                "description": "See [Get request for feed details](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#get-request-for-feed-details)",
-                "operationId": "Get request for feed details",
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/actionMessage"
-                    },
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            },
-            "servers": [
-                {
-                    "description": "Action Message Endpoint",
-                    "url": "{ActionMessageEndpointBaseUrl}",
-                    "variables": {
-                        "ActionMessageEndpointBaseUrl": {
-                            "description": "See [Action Message Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-endpoint)",
-                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-endpoint"
-                        }
-                    }
-                }
-            ]
-        },
-        "/{ActionMessageListEndpointPath}": {
-            "get": {
-                "tags": [
-                    "Requests for feed"
-                ],
-                "description": "See [List requests for feed](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#list-requests-for-feed)",
-                "operationId": "List requests for feed",
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/actionMessageList"
-                    },
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            },
-            "servers": [
-                {
-                    "description": "Action Message List Endpoint",
-                    "url": "{ActionMessageListEndpointBaseUrl}",
-                    "variables": {
-                        "ActionMessageListEndpointBaseUrl": {
-                            "description": "See [Action Message List Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-list-endpoint)",
-                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action-message-list-endpoint"
+                        "ActionBaseUrl": {
+                            "description": "See [Action](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action)",
+                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#action"
                         }
                     }
                 }
@@ -144,11 +86,69 @@
                     }
                 }
             ]
+        },
+        "/{UserActionMessagePath}": {
+            "get": {
+                "tags": [
+                    "Requests for feed"
+                ],
+                "description": "See [Get request for feed details](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#get-request-for-feed-details)",
+                "operationId": "Get request for feed details",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/userActionMessage"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "servers": [
+                {
+                    "description": "User Action Message",
+                    "url": "{UserActionMessageBaseUrl}",
+                    "variables": {
+                        "UserActionMessageBaseUrl": {
+                            "description": "See [User Action Message](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message)",
+                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message"
+                        }
+                    }
+                }
+            ]
+        },
+        "/{UserActionMessageListEndpointPath}": {
+            "get": {
+                "tags": [
+                    "Requests for feed"
+                ],
+                "description": "See [List requests for feed](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#list-requests-for-feed)",
+                "operationId": "List requests for feed",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/userActionMessageList"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "servers": [
+                {
+                    "description": "User Action Message List Endpoint",
+                    "url": "{UserActionMessageListEndpointBaseUrl}",
+                    "variables": {
+                        "UserActionMessageListEndpointBaseUrl": {
+                            "description": "See [User Action Message List Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message-list-endpoint)",
+                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message-list-endpoint"
+                        }
+                    }
+                }
+            ]
         }
     },
     "components": {
         "schemas": {
-            "actionMessage": {
+            "userActionMessage": {
                 "type": "object",
                 "properties": {
                     "connection": {
@@ -249,13 +249,13 @@
                     }
                 }
             },
-            "actionMessageList": {
+            "userActionMessageList": {
                 "type": "object",
                 "properties": {
                     "result": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/actionMessage"
+                            "$ref": "#/components/schemas/userActionMessage"
                         },
                         "minItems": 1,
                         "maxItems": 1
@@ -291,36 +291,6 @@
             }
         },
         "responses": {
-            "actionMessage": {
-                "description": "Action Message",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/actionMessage"
-                        },
-                        "examples": {
-                            "example": {
-                                "$ref": "#/components/examples/actionMessage"
-                            }
-                        }
-                    }
-                }
-            },
-            "actionMessageList": {
-                "description": "Action Message list",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/actionMessageList"
-                        },
-                        "examples": {
-                            "example": {
-                                "$ref": "#/components/examples/actionMessageList"
-                            }
-                        }
-                    }
-                }
-            },
             "default": {
                 "$ref": "../openapi.json#/components/responses/default"
             },
@@ -344,10 +314,40 @@
                         }
                     }
                 }
+            },
+            "userActionMessage": {
+                "description": "User Action Message",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/userActionMessage"
+                        },
+                        "examples": {
+                            "example": {
+                                "$ref": "#/components/examples/userActionMessage"
+                            }
+                        }
+                    }
+                }
+            },
+            "userActionMessageList": {
+                "description": "User Action Message list",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/userActionMessageList"
+                        },
+                        "examples": {
+                            "example": {
+                                "$ref": "#/components/examples/userActionMessageList"
+                            }
+                        }
+                    }
+                }
             }
         },
         "examples": {
-            "actionMessage": {
+            "userActionMessage": {
                 "value": {
                     "connection": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e",
                     "created": 1562059030644,
@@ -374,7 +374,14 @@
                     }
                 }
             },
-            "actionMessageList": {
+            "userActionMessageEvent": {
+                "value": {
+                    "type": "USER_ACTION_MESSAGE",
+                    "connectionUrl": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e",
+                    "extraData": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4"
+                }
+            },
+            "userActionMessageList": {
                 "value": {
                     "result": [
                         {
@@ -403,13 +410,6 @@
                             }
                         }
                     ]
-                }
-            },
-            "userActionMessageEvent": {
-                "value": {
-                    "type": "USER_ACTION_MESSAGE",
-                    "connectionUrl": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e",
-                    "extraData": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4"
                 }
             }
         },
