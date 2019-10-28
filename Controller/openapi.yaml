@@ -63,7 +63,7 @@ components:
             $ref: '#/components/schemas/actionMessageList'
       description: Action Message list
     default:
-      $ref: https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/responses/default
+      $ref: ../openapi.json#/components/responses/default
     feedSourceAdd:
       description: Add feed source response
     feedSourceSet:
@@ -178,9 +178,9 @@ components:
       type: object
   securitySchemes:
     appAuthentication:
-      $ref: https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/appAuthentication
+      $ref: ../openapi.json#/components/schemas/appAuthentication
     userAuthentication:
-      $ref: https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/userAuthentication
+      $ref: ../openapi.json#/components/schemas/userAuthentication
   x-events:
     userActionMessage:
       data:

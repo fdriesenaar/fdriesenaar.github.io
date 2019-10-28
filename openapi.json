@@ -57,76 +57,6 @@
                 ]
             }
         },
-        "/ActionEndpoint": {
-            "post": {
-                "tags": [
-                    "controller.feed.source.set"
-                ],
-                "description": "See [Set feed source](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#set-feed-source)",
-                "operationId": "Set feed source",
-                "x-url": "$ActionEndpointUrl",
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/feedSourceSet"
-                    },
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "controller.feed.source.add"
-                ],
-                "description": "See [Add feed source](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#add-feed-source)",
-                "operationId": "Add feed source",
-                "x-url": "$ActionEndpointUrl",
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/feedSourceAdd"
-                    },
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            }
-        },
-        "/ActionMessageEndpoint": {
-            "get": {
-                "tags": [
-                    "controller.action message.get"
-                ],
-                "description": "See [Get action message](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#get-action-message)",
-                "operationId": "Get action message",
-                "x-url": "$ActionMessageEndpointUrl",
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/actionMessage"
-                    },
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            }
-        },
-        "/ActionMessageListEndpoint": {
-            "get": {
-                "tags": [
-                    "controller.action messages.list"
-                ],
-                "description": "See [List action messages](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#list-action-messages)",
-                "operationId": "List action messages",
-                "x-url": "$ActionMessageListEndpointUrl",
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/actionMessageList"
-                    },
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            }
-        },
         "/ConnectionCreateEndpoint": {
             "post": {
                 "tags": [
@@ -646,120 +576,6 @@
     },
     "components": {
         "schemas": {
-            "actionMessage": {
-                "type": "object",
-                "properties": {
-                    "connection": {
-                        "description": "Connection url of the related connection",
-                        "type": "string",
-                        "format": "url",
-                        "minItems": 1,
-                        "maxItems": 1
-                    },
-                    "created": {
-                        "description": "Creation datetimestamp",
-                        "type": "number",
-                        "format": "Unix time in mili seconds",
-                        "minItems": 1,
-                        "maxItems": 1
-                    },
-                    "links": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "handle": {
-                                    "type": "string",
-                                    "format": "url",
-                                    "minItems": 1,
-                                    "maxItems": 1
-                                },
-                                "self": {
-                                    "type": "string",
-                                    "format": "url",
-                                    "minItems": 1,
-                                    "maxItems": 1
-                                }
-                            }
-                        },
-                        "minItems": 1,
-                        "maxItems": 1
-                    },
-                    "message": {
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/message"
-                            },
-                            {
-                                "type": "object",
-                                "minItems": 1,
-                                "maxItems": 1
-                            }
-                        ]
-                    },
-                    "optionPIDs": {
-                        "description": "Action endpoint addresses by pid as property name",
-                        "type": "object",
-                        "properties": {
-                            "$pid": {
-                                "description": "Action endpoint address",
-                                "type": "string",
-                                "format": "url",
-                                "minItems": 1,
-                                "maxItems": 1
-                            }
-                        },
-                        "x-patternProperties": {
-                            "$pidRex": {
-                                "description": "Action endpoint address",
-                                "type": "string",
-                                "format": "url",
-                                "minItems": 1,
-                                "maxItems": 1
-                            }
-                        },
-                        "minItems": 1,
-                        "maxItems": 1
-                    },
-                    "relayOptions": {
-                        "description": "action endpoint addresses by Qiy Node Id as property name",
-                        "type": "object",
-                        "properties": {
-                            "$nodeIdRex": {
-                                "description": "Action endpoint address",
-                                "type": "string",
-                                "format": "url",
-                                "minItems": 1,
-                                "maxItems": 1
-                            }
-                        },
-                        "x-patternProperties": {
-                            "$nodeIdRex": {
-                                "description": "Action endpoint address",
-                                "type": "string",
-                                "format": "url",
-                                "minItems": 1,
-                                "maxItems": 1
-                            }
-                        },
-                        "minItems": 1,
-                        "maxItems": 1
-                    }
-                }
-            },
-            "actionMessageList": {
-                "type": "object",
-                "properties": {
-                    "result": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/actionMessage"
-                        },
-                        "minItems": 1,
-                        "maxItems": 1
-                    }
-                }
-            },
             "appAuthentication": {
                 "description": "See [Qiy Node App Authentication](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#app-authentication)",
                 "type": "http",
@@ -1381,34 +1197,6 @@
                 "name": "password",
                 "in": "header"
             },
-            "userActionMessageEvent": {
-                "description": "See [User Action Message Event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-action-message-event)",
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "enum": [
-                            "USER_ACTION_MESSAGE"
-                        ],
-                        "minItems": 1,
-                        "maxItems": 1
-                    },
-                    "connectionUrl": {
-                        "description": "Connection url of the new connection with the Qiy Node",
-                        "type": "string",
-                        "format": "url",
-                        "minItems": 1,
-                        "maxItems": 1
-                    },
-                    "extraData": {
-                        "description": "Url of the user action message",
-                        "type": "string",
-                        "format": "url",
-                        "minItems": 1,
-                        "maxItems": 1
-                    }
-                }
-            },
             "userAuthentication": {
                 "description": "Also requires app authentication, see [Qiy Node User Authentication](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#user-authentication)",
                 "type": "apiKey",
@@ -1430,36 +1218,6 @@
                             },
                             "apiGetUserAuthenticated": {
                                 "$ref": "#/components/examples/apiGetUserAuthenticated"
-                            }
-                        }
-                    }
-                }
-            },
-            "actionMessage": {
-                "description": "Action Message",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/actionMessage"
-                        },
-                        "examples": {
-                            "example": {
-                                "$ref": "#/components/examples/actionMessage"
-                            }
-                        }
-                    }
-                }
-            },
-            "actionMessageList": {
-                "description": "Action Message list",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/actionMessageList"
-                        },
-                        "examples": {
-                            "example": {
-                                "$ref": "#/components/examples/actionMessageList"
                             }
                         }
                     }
@@ -1543,9 +1301,6 @@
                     }
                 }
             },
-            "dataReferenceReceivedv2Callback": {
-                "description": "Data Reference Received v2 callback response"
-            },
             "default": {
                 "description": "Default response",
                 "content": {
@@ -1580,72 +1335,6 @@
                         }
                     }
                 }
-            },
-            "feedRequestResponse": {
-                "description": "Feed request response",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/feedRequestResponse"
-                        },
-                        "examples": {
-                            "feed": {
-                                "$ref": "#/components/examples/feedRequestResponse"
-                            }
-                        }
-                    }
-                }
-            },
-            "feedAccessResponse": {
-                "description": "Feed access response",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/feedAccessResponse"
-                        },
-                        "examples": {
-                            "Feed response": {
-                                "$ref": "#/components/examples/feedAccessResponse"
-                            }
-                        }
-                    }
-                }
-            },
-            "feedList": {
-                "description": "Feed list",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/feedList"
-                        },
-                        "examples": {
-                            "example": {
-                                "$ref": "#/components/examples/feedList"
-                            }
-                        }
-                    }
-                }
-            },
-            "feedsAccessResponse": {
-                "description": "Feeds access response",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/feedsAccessResponse"
-                        },
-                        "examples": {
-                            "Feeds response": {
-                                "$ref": "#/components/examples/feedsAccessResponse"
-                            }
-                        }
-                    }
-                }
-            },
-            "feedSourceAdd": {
-                "description": "Add feed source response"
-            },
-            "feedSourceSet": {
-                "description": "Set feed source response"
             },
             "eventCallbacksResponse": {
                 "description": "Event callbacks set",
@@ -1713,85 +1402,7 @@
                 }
             }
         },
-        "parameters": {
-            "feedId": {
-                "name": "feedId",
-                "in": "path",
-                "required": true,
-                "schema": {
-                    "$ref": "#/components/schemas/feedId"
-                }
-            },
-            "protocol": {
-                "name": "protocol",
-                "in": "query",
-                "required": false,
-                "style": "form",
-                "explode": true,
-                "schema": {
-                    "$ref": "#/components/schemas/protocol"
-                }
-            }
-        },
         "examples": {
-            "actionMessage": {
-                "value": {
-                    "connection": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e",
-                    "created": 1562059030644,
-                    "links": {
-                        "self": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4",
-                        "handle": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/handle/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
-                    },
-                    "message": {
-                        "serialNr": 5,
-                        "text": "huh?",
-                        "protocol": "http://bla.nl/events",
-                        "inbound": true,
-                        "sent": false,
-                        "payload": "eyJrZXkiOiJ3K2pMeTEzZlhJVFpkS3lISy80TWRBPT0iLCJpbnB1dCI6bnVsbH0=",
-                        "processed": true
-                    },
-                    "optionPIDs": {
-                        "jRMCgeCzt3zFGDZuutuNvg==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca",
-                        "kpKugxcUU7AdJJgVUVuFnA==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
-                    },
-                    "relayOptions": {
-                        "8f4edf58-73dd-4fee-b344-149c924f1605": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca",
-                        "wip_feed_rp": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
-                    }
-                }
-            },
-            "actionMessageList": {
-                "value": {
-                    "result": [
-                        {
-                            "connection": "https://dev1-user.testonly.digital-me.nl/user/connections/user/wip_feed_ind/e33b7dcc-a1f1-4195-893d-97698f0e4d8e",
-                            "created": 1562059030644,
-                            "links": {
-                                "self": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind?amid=4",
-                                "handle": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/handle/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
-                            },
-                            "message": {
-                                "serialNr": 5,
-                                "text": "huh?",
-                                "protocol": "http://bla.nl/events",
-                                "inbound": true,
-                                "sent": false,
-                                "payload": "eyJrZXkiOiJ3K2pMeTEzZlhJVFpkS3lISy80TWRBPT0iLCJpbnB1dCI6bnVsbH0=",
-                                "processed": true
-                            },
-                            "optionPIDs": {
-                                "jRMCgeCzt3zFGDZuutuNvg==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca",
-                                "kpKugxcUU7AdJJgVUVuFnA==": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
-                            },
-                            "relayOptions": {
-                                "8f4edf58-73dd-4fee-b344-149c924f1605": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/aecbbae3-bd8a-4d94-a7f5-b8fe759dd0ca",
-                                "wip_feed_rp": "https://dev1-user.testonly.digital-me.nl/user/mbox/user/action/wip_feed_ind/4/e33b7dcc-a1f1-4195-893d-97698f0e4d8e"
-                            }
-                        }
-                    ]
-                }
-            },
             "apiGetAppAuthenticated": {
                 "value": {
                     "links": {
@@ -2004,157 +1615,6 @@
             "eventsResponseExample": {
                 "value": ":ping"
             },
-            "dataReferenceReceivedv2Callback": {
-                "value": {
-                    "type": "DATA_REFERENCE_RECEIVED2",
-                    "connectionUrl": "https://dev2-user.testonly.digital-me.nl/user/connections/user/pt_usernode_fksH_de/d3b58af4-2883-4cef-b203-41e117549906",
-                    "extraData": "BZWEKR63P2FEJZXYLGBN3XNWCBZU6FZG"
-                }
-            },
-            "dataReferenceReceivedv2Event": {
-                "value": {
-                    "type": "DATA_REFERENCE_RECEIVED2",
-                    "connectionUrl": "https://qiy-test-tool-dpyt.cloud.digital-me.nl/qiy_nodes/qiy_node_api/proxy/v1/pid1sp1connectionUrl",
-                    "extraData": {
-                        "protocol": "https://github.com/qiyfoundation/fiKks/tree/master/schema/v1",
-                        "value": "SjF1RFBNam14RmxEcW8rOVdzNkpHd1RZaFdBPQ=="
-                    }
-                }
-            },
-            "feedAccessResponse": {
-                "value": {
-                    "activities-heart": [
-                        {
-                            "customHeartRateZones": [],
-                            "dateTime": "today",
-                            "heartRateZones": [
-                                {
-                                    "caloriesOut": 138.8351,
-                                    "max": 86,
-                                    "min": 30,
-                                    "minutes": 65,
-                                    "name": "Out of Range"
-                                },
-                                {
-                                    "caloriesOut": 309.96824,
-                                    "max": 120,
-                                    "min": 86,
-                                    "minutes": 177,
-                                    "name": "Fat Burn"
-                                },
-                                {
-                                    "caloriesOut": 198.6678,
-                                    "max": 146,
-                                    "min": 120,
-                                    "minutes": 59,
-                                    "name": "Cardio"
-                                },
-                                {
-                                    "caloriesOut": 8.1326,
-                                    "max": 220,
-                                    "min": 146,
-                                    "minutes": 7,
-                                    "name": "Peak"
-                                }
-                            ],
-                            "value": "102.28"
-                        }
-                    ],
-                    "activities-heart-intraday": {
-                        "dataset": [
-                            {
-                                "time": "12:00:00",
-                                "value": 111
-                            },
-                            {
-                                "time": "12:01:00",
-                                "value": 97
-                            },
-                            {
-                                "time": "12:02:00",
-                                "value": 112
-                            },
-                            {
-                                "time": "12:03:00",
-                                "value": 114
-                            },
-                            {
-                                "time": "12:04:00",
-                                "value": 136
-                            }
-                        ],
-                        "datasetInterval": 1,
-                        "datasetType": "minute"
-                    }
-                }
-            },
-            "feedList": {
-                "value": {
-                    "QZJ5MOWNEXARVTTBWMYZAO7ISYOQQOAU": {
-                        "connection": "https://dev2-user.testonly.digital-me.nl/user/connections/user/fp_rp_dev2/43c5c576-c0d0-4fdd-8593-a57dacdb1a2f",
-                        "protocol": "https://github.com/qiyfoundation/fiKks/tree/master/schema/v1",
-                        "lastUpdated": 1565083591687,
-                        "created": 1565083591605,
-                        "status": "Created"
-                    },
-                    "CE22UFPUKSW77IA26A2OKHVKEA3RU6ES": {
-                        "connection": "https://dev2-user.testonly.digital-me.nl/user/connections/user/fp_rp_dev2/43c5c576-c0d0-4fdd-8593-a57dacdb1a2f",
-                        "protocol": "https://github.com/qiyfoundation/fiKks/tree/master/schema/v1",
-                        "lastUpdated": 1565083781626,
-                        "created": 1565083781575,
-                        "status": "Message sent"
-                    },
-                    "PYSSVYZLIDBI5YDGHA6ONFWMTON4T2U3": {
-                        "connection": "https://dev2-user.testonly.digital-me.nl/user/connections/user/fp_rp_dev2/f3f5c1d1-61c0-45fd-9faa-f7d377dd89e3",
-                        "protocol": "https://github.com/qiyfoundation/fiKks/tree/master/schema/v1",
-                        "lastUpdated": 1564985247945,
-                        "created": 1564985247891,
-                        "status": "Sending message failed"
-                    },
-                    "RIUDDVYZLIDBI5YDGHAONFWMTON4INH78": {
-                        "connection": "https://dev2-user.testonly.digital-me.nl/user/connections/user/fp_rp_dev2/f3f5c1d1-61c0-45fd-9faa-f7d377dd89e3",
-                        "protocol": "https://github.com/qiyfoundation/fiKks/tree/master/schema/v1",
-                        "lastUpdated": 1564985247945,
-                        "created": 1564985247891,
-                        "status": "Ready to resolve"
-                    }
-                }
-            },
-            "feedRequest": {
-                "value": {
-                    "protocol": "https://github.com/qiyfoundation/payment-due-list/tree/master/schema/v1",
-                    "text": "Requesting feed.",
-                    "input": "Im9wdGlvbmFsIG9wZXJhdGlvbiBib2R5IGVuY29kZWQgYXMgYSBiYXNlNjQgZW5jb2RlZCBieXRlIGFycmF5Ig=="
-                }
-            },
-            "feedRequestResponse": {
-                "value": {
-                    "protocol": "https://github.com/qiyfoundation/payment-due-list/tree/master/schema/v1",
-                    "feedId": "3J2UVSFIAH6X77HXR4MVHBVNG46GWT3M"
-                }
-            },
-            "feedsAccessRequest": {
-                "value": {
-                    "{{feed_id1}}": {
-                        "input": "<optional json member with base-64 encrypted byte array>"
-                    },
-                    "{{feed_id2}}": {
-                        "input": "<optional json member with base-64 encrypted byte array>"
-                    }
-                }
-            },
-            "feedsAccessResponse": {
-                "value": {
-                    "<feed_id1>": {
-                        "content-type": "application/xml",
-                        "output": "<base64-encoded feed_id1 access response>"
-                    },
-                    "<feed_id2>": {
-                        "content-type": "application/json",
-                        "output": "<base64-encoded feed_id2 access response>"
-                    }
-                }
-            },
             "messageList": {
                 "value": {
                     "result": [
@@ -2206,37 +1666,6 @@
                     "usePersistentId": "yes"
                 }
             },
-            "serviceCatalogue": {
-                "value": {
-                    "https://service-type-url.example": {
-                        "type": "external",
-                        "uri": "https://feed-request-endpoint-url.example",
-                        "method": "POST"
-                    }
-                }
-            },
-            "serviceEndpointFeedAccessRequest": {
-                "value": {
-                    "SjF1RFBNam14RmxEcW8rOVdzNkpHd1RZaFdBPQ==": {
-                        "input": "Im9wdGlvbmFsIG9wZXJhdGlvbiBib2R5IGVuY29kZWQgYXMgYSBiYXNlNjQgZW5jb2RlZCBieXRlIGFycmF5Ig=="
-                    }
-                }
-            },
-            "serviceEndpointFeedRequest": {
-                "value": {
-                    "connection": "https://qiy-test-tool-dpyt.cloud.digital-me.nl/qiy_nodes/qiy_node_api/proxy/v1/pid3dp1connectionUrl",
-                    "message": {
-                        "inbound": true,
-                        "protocol": "https://github.com/qiyfoundation/fiKks/tree/master/schema/v1",
-                        "sent": false,
-                        "serialNr": 6,
-                        "text": "Requesting 'test data'",
-                        "thirdPartyRef": " 4D0OqePJ1yKD41Q9qmixVnVFLWcJHFT1hhKDKG9FmeI="
-                    },
-                    "mbox": "https://qiy-test-tool-dpyt.cloud.digital-me.nl/qiy_nodes/qiy_node_api/proxy/v1/pid3dp1connectionMbox",
-                    "pid": "1IqX94/EoOcD47hCvBQ+gi=="
-                }
-            },
             "stateHandledEvent": {
                 "value": {
                     "type": "STATE_HANDLED",
@@ -2261,35 +1690,6 @@
             }
         },
         "callbacks": {
-            "dataReferenceReceivedv2": {
-                "$dataReferenceReceivedv2EndpointUrl": {
-                    "post": {
-                        "requestBody": {
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "$ref": "#/components/schemas/dataReferenceReceivedv2Callback"
-                                    },
-                                    "examples": {
-                                        "example": {
-                                            "$ref": "#/components/examples/dataReferenceReceivedv2Callback"
-                                        }
-                                    }
-                                }
-                            },
-                            "required": true
-                        },
-                        "responses": {
-                            "200": {
-                                "$ref": "#/components/responses/dataReferenceReceivedv2Callback"
-                            },
-                            "default": {
-                                "$ref": "#/components/responses/default"
-                            }
-                        }
-                    }
-                }
-            },
             "stateHandled": {
                 "$stateHandledCallbackEndpointUrl": {
                     "post": {
@@ -2313,16 +1713,6 @@
             }
         },
         "x-events": {
-            "dataReferenceReceivedv2": {
-                "description": "See [Data Reference Received-v2 Event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#data-reference-received-v2-event)",
-                "event": "DATA_REFERENCE_RECEIVED2",
-                "data": {
-                    "schema": {
-                        "$ref": "#/components/schemas/dataReferenceReceivedv2Event"
-                    },
-                    "examples": {}
-                }
-            },
             "routingFailed": {
                 "description": "See [Routing Failed Event](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#routing-failed-event)",
                 "event": "ROUTING_FAILED",

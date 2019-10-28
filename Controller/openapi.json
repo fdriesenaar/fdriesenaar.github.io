@@ -161,7 +161,7 @@
                     "message": {
                         "allOf": [
                             {
-                                "$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/message"
+                                "$ref": "../openapi.json#/components/schemas/message"
                             },
                             {
                                 "type": "object",
@@ -294,7 +294,7 @@
                 }
             },
             "default": {
-                "$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/responses/default"
+                "$ref": "../openapi.json#/components/responses/default"
             },
             "feedSourceAdd": {
                 "description": "Add feed source response"
@@ -365,10 +365,10 @@
         },
         "securitySchemes": {
             "appAuthentication": {
-                "$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/appAuthentication"
+                "$ref": "../openapi.json#/components/schemas/appAuthentication"
             },
             "userAuthentication": {
-                "$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/schemas/userAuthentication"
+                "$ref": "../openapi.json#/components/schemas/userAuthentication"
             }
         },
         "x-events": {
