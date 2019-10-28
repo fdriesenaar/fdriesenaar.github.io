@@ -269,14 +269,12 @@
                 "properties": {
                     "type": {
                         "type": "string",
-                        "enum": [
-                            "USER_ACTION_MESSAGE"
-                        ],
+                        "pattern": "USER_ACTION_MESSAGE",
                         "minItems": 1,
                         "maxItems": 1
                     },
                     "connectionUrl": {
-                        "description": "Connection url of the new connection with the Qiy Node",
+                        "description": "Connection url of the Qiy Node that triggered the event",
                         "type": "string",
                         "format": "url",
                         "minItems": 1,

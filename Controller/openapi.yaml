@@ -173,7 +173,7 @@ components:
       format: Server-Sent Event
       properties:
         connectionUrl:
-          description: Connection url of the new connection with the Qiy Node
+          description: Connection url of the Qiy Node that triggered the event
           format: url
           maxItems: 1
           minItems: 1
@@ -185,10 +185,9 @@ components:
           minItems: 1
           type: string
         type:
-          enum:
-          - USER_ACTION_MESSAGE
           maxItems: 1
           minItems: 1
+          pattern: USER_ACTION_MESSAGE
           type: string
       type: object
   securitySchemes:
