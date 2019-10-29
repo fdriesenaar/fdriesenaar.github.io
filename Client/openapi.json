@@ -17,7 +17,7 @@
         "/{ConnectionFeedsEndpointPath}": {
             "post": {
                 "tags": [
-                    "Feeds"
+                    "Requests for feeds"
                 ],
                 "description": "See [Request for feed](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#request-for-feed)",
                 "operationId": "Request for feed",
@@ -100,7 +100,7 @@
             },
             "post": {
                 "tags": [
-                    "Feeds"
+                    "Feed access requests"
                 ],
                 "description": "See [Access feeds](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#access-feeds)",
                 "operationId": "Access feeds",
@@ -149,7 +149,7 @@
         "/{FeedsEndpointPath}/{feedId}": {
             "post": {
                 "tags": [
-                    "Feeds"
+                    "Feed access requests"
                 ],
                 "description": "See [Access feed](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#access-feed)",
                 "operationId": "Request for feed callback",
@@ -200,6 +200,11 @@
         },
         "/{FeedRequestCallbackEndpointPath}": {
             "post": {
+                "tags": [
+                    "Requests for feeds"
+                ],
+                "description": "See [Client Feed Request Callback](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#client-feed-request-callback)",
+                "operationId": "Request for feed callback",
                 "requestBody": {
                     "content": {
                         "application/json": {
