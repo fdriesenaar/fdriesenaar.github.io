@@ -77,6 +77,58 @@
                 }
             ]
         },
+        "/{FeedRequestCallbackEndpointPath}": {
+            "post": {
+                "tags": [
+                    "Requests for feeds"
+                ],
+                "description": "See [Client Feed Request Callback](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#client-feed-request-callback)",
+                "operationId": "Request for feed callback",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/feedRequestCallback"
+                            },
+                            "examples": {
+                                "example": {
+                                    "$ref": "#/components/examples/feedRequestCallback"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/feedRequestCallback"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "servers": [
+                {
+                    "description": "Request for Feed callback endpoint",
+                    "url": "{FeedRequestCallbackEndpointBaseUrl}",
+                    "variables": {
+                        "FeedRequestCallbackEndpointBaseUrl": {
+                            "description": "See [Client Feed Request Callback Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#client-feed-request-callback-endpoint)",
+                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#client-feed-request-callback-endpoint"
+                        }
+                    }
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "FeedRequestCallbackEndpointPath",
+                    "in": "path",
+                    "description": "Feed Request Callback Endpoint path, for example 'qiy/request-for-feed' for the Feed Request Callback Endpoint 'https://client.example.com/qiy/request-for-feed'.",
+                    "required": true
+                }
+            ]
+        },
         "/{FeedsEndpointPath}": {
             "get": {
                 "tags": [
@@ -195,58 +247,6 @@
             "parameters": [
                 {
                     "$ref": "#/components/parameters/feedsEndpointPath"
-                }
-            ]
-        },
-        "/{FeedRequestCallbackEndpointPath}": {
-            "post": {
-                "tags": [
-                    "Requests for feeds"
-                ],
-                "description": "See [Client Feed Request Callback](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#client-feed-request-callback)",
-                "operationId": "Request for feed callback",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/feedRequestCallback"
-                            },
-                            "examples": {
-                                "example": {
-                                    "$ref": "#/components/examples/feedRequestCallback"
-                                }
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/feedRequestCallback"
-                    },
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            },
-            "servers": [
-                {
-                    "description": "Request for Feed callback endpoint",
-                    "url": "{FeedRequestCallbackEndpointBaseUrl}",
-                    "variables": {
-                        "FeedRequestCallbackEndpointBaseUrl": {
-                            "description": "See [Client Feed Request Callback Endpoint](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#client-feed-request-callback-endpoint)",
-                            "default": "https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#client-feed-request-callback-endpoint"
-                        }
-                    }
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "FeedRequestCallbackEndpointPath",
-                    "in": "path",
-                    "description": "Feed Request Callback Endpoint path, for example 'qiy/request-for-feed' for the Feed Request Callback Endpoint 'https://client.example.com/qiy/request-for-feed'.",
-                    "required": true
                 }
             ]
         }
@@ -511,9 +511,6 @@
             }
         },
         "responses": {
-            "feedRequestCallback": {
-                "description": "Request for Feed Callback response"
-            },
             "default": {
                 "$ref": "https://raw.githubusercontent.com/qiyfoundation/Qiy-Scheme/review-board/Qiy-Node/openapi.json#/components/responses/default"
             },
@@ -561,6 +558,9 @@
                         }
                     }
                 }
+            },
+            "feedRequestCallback": {
+                "description": "Request for Feed Callback response"
             },
             "feedsAccessResponse": {
                 "description": "Feeds access response",
