@@ -378,7 +378,7 @@ paths:
   /{ConnectionFeedsEndpointPath}:
     parameters:
     - description: Connection Feeds Endpoint path, for example 'user/mgd_dev2/connections/016706d0-b3c1-4104-b6de-aacdf33230c0/feeds'
-        for the Connection Feeds Endpoint 'https://dev2-user.testonly.digital-me.nl/'.
+        for the Connection Feeds Endpoint 'https://dev2-user.testonly.digital-me.nl/user/mgd_dev2/connections/016706d0-b3c1-4104-b6de-aacdf33230c0/feeds'.
       in: path
       name: ConnectionFeedsEndpointPath
       required: true
