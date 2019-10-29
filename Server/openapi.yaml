@@ -314,7 +314,7 @@ paths:
       externalDocs:
         description: Find more info here
         url: https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#server-feed-request
-      operationId: Request
+      operationId: Request for feed
       requestBody:
         content:
           application/json:
