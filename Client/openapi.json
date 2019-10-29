@@ -152,7 +152,7 @@
                     "Feed access requests"
                 ],
                 "description": "See [Access feed](https://github.com/qiyfoundation/Qiy-Scheme/blob/review-board/Qiy-Node/Qiy%20Node%20API.md#access-feed)",
-                "operationId": "Request for feed callback",
+                "operationId": "Feed access request",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/feedId"
