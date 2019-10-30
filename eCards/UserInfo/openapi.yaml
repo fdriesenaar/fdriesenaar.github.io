@@ -1,0 +1,55 @@
+components:
+  schemas:
+    key:
+      description: Key used to encrypt the User Info.
+      example: KWpreJjLJR6_Q0W8-v_oSiF95_Fyoe7O4MTo1tghELk
+      format: Base64 URL encoded
+      type: string
+    url:
+      description: User Info Url.
+      example: https://card.dolden.net/ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5
+      format: url
+      type: string
+info:
+  description: User Info API for websites
+  externalDocs:
+    description: Find more info here
+    url: https://dappre.com
+  license:
+    name: (c) Dappre BV 2019 - All rights reserved
+    url: https://dappre.com
+  title: User Info API - Website
+  version: 1.0.0
+openapi: 3.0.0
+paths:
+  /{WebsitePath}:
+    get:
+      description: Website call from eCard
+      operationId: Website call
+      responses:
+        '200':
+          description: Website page
+      tags:
+      - Website
+    parameters:
+    - description: Website path, for example 'zakelijk' for the website 'https://dappre.com/zakelijk'.
+      in: path
+      name: WebsitePath
+      required: true
+    - description: key
+      in: query
+      name: p_
+      schema:
+        $ref: '#/components/schemas/key'
+    - description: User Info Url
+      in: query
+      name: url_
+      schema:
+        $ref: '#/components/schemas/url'
+    servers:
+    - description: Website
+      url: '{WebsiteBaseUrl}'
+      variables:
+        WebsiteBaseUrl:
+          default: https://dappre.com
+          description: Website base url

@@ -1,0 +1,84 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "User Info API - Website",
+        "description": "User Info API for websites",
+        "externalDocs": {
+            "description": "Find more info here",
+            "url": "https://dappre.com"
+        },
+        "version": "1.0.0",
+        "license": {
+            "name": "(c) Dappre BV 2019 - All rights reserved",
+            "url": "https://dappre.com"
+        }
+    },
+    "paths": {
+        "/{WebsitePath}": {
+            "get": {
+                "tags": [
+                    "Website"
+                ],
+                "description": "Website call from eCard",
+                "operationId": "Website call",
+                "responses": {
+                    "200": {
+                        "description": "Website page"
+                    }
+                }
+            },
+            "servers": [
+                {
+                    "description": "Website",
+                    "url": "{WebsiteBaseUrl}",
+                    "variables": {
+                        "WebsiteBaseUrl": {
+                            "description": "Website base url",
+                            "default": "https://dappre.com"
+                        }
+                    }
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "WebsitePath",
+                    "in": "path",
+                    "description": "Website path, for example 'zakelijk' for the website 'https://dappre.com/zakelijk'.",
+                    "required": true
+                },
+                {
+                    "name": "p_",
+                    "in": "query",
+                    "description": "key",
+                    "schema": {
+                        "$ref": "#/components/schemas/key"
+                    }
+                },
+                {
+                    "name": "url_",
+                    "in": "query",
+                    "description": "User Info Url",
+                    "schema": {
+                        "$ref": "#/components/schemas/url"
+                    }
+                }
+            ]
+        }
+    },
+    "components": {
+        "schemas": {
+            "key": {
+                "description": "Key used to encrypt the User Info.",
+                "type": "string",
+                "format": "Base64 URL encoded",
+                "example": "KWpreJjLJR6_Q0W8-v_oSiF95_Fyoe7O4MTo1tghELk"
+            },
+            "url": {
+                "description": "User Info Url.",
+                "type": "string",
+                "format": "url",
+                "example": "https://card.dolden.net/ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5"
+            }
+        }
+    }
+}
