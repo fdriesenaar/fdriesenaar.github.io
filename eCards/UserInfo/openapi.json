@@ -14,7 +14,7 @@
         }
     },
     "paths": {
-        "/{WebsitePath}": {
+        "/{Website}": {
             "get": {
                 "tags": [
                     "Website"
@@ -30,24 +30,24 @@
             "servers": [
                 {
                     "description": "Website",
-                    "url": "{WebsiteBaseUrl}",
+                    "url": "{WebsiteUrl}",
                     "variables": {
                         "WebsiteBaseUrl": {
-                            "description": "Website base url",
-                            "default": "https://example.com/webshop"
+                            "description": "(base part of) Website url",
+                            "default": "https://website.example.com"
                         }
                     }
                 }
             ],
             "parameters": [
                 {
-                    "name": "WebsitePath",
+                    "name": "Website url",
                     "in": "path",
-                    "description": "Website path, for example 'webshop' for the website 'https://example.com/webshop'.",
+                    "description": "(path part of) Website url, for example 'home' for 'https://website.example.com/home'.",
                     "required": true
                 },
                 {
-                    "name": "s_",
+                    "name": "s",
                     "in": "query",
                     "description": "secret",
                     "schema": {
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "name": "url_",
+                    "name": "url",
                     "in": "query",
                     "description": "User Info Url",
                     "schema": {
@@ -83,7 +83,7 @@
                     "url": "{urlBase}",
                     "variables": {
                         "UserInfoBaseUrl": {
-                            "description": "Base part of url as passed in url_ query parameter",
+                            "description": "Base part of url as passed in url query parameter",
                             "default": "https://card.dolden.net"
                         }
                     }
@@ -93,7 +93,7 @@
                 {
                     "name": "urlPath",
                     "in": "path",
-                    "description": "Path part of url as passed in url_ query parameter",
+                    "description": "Path part of url as passed in url query parameter",
                     "required": true
                 }
             ]

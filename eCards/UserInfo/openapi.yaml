@@ -78,7 +78,7 @@ info:
   version: 1.0.0
 openapi: 3.0.0
 paths:
-  /{WebsitePath}:
+  /{Website}:
     get:
       description: Website call from eCard
       operationId: Website call
@@ -88,27 +88,27 @@ paths:
       tags:
       - Website
     parameters:
-    - description: Website path, for example 'webshop' for the website 'https://example.com/webshop'.
+    - description: (path part of) Website url, for example 'home' for 'https://website.example.com/home'.
       in: path
-      name: WebsitePath
+      name: Website url
       required: true
     - description: secret
       in: query
-      name: s_
+      name: s
       schema:
         $ref: '#/components/schemas/secret'
     - description: User Info Url
       in: query
-      name: url_
+      name: url
       schema:
         $ref: '#/components/schemas/url'
     servers:
     - description: Website
-      url: '{WebsiteBaseUrl}'
+      url: '{WebsiteUrl}'
       variables:
         WebsiteBaseUrl:
-          default: https://example.com/webshop
-          description: Website base url
+          default: https://website.example.com
+          description: (base part of) Website url
   /{urlPath}:
     get:
       description: Get encrypted User Info
@@ -119,7 +119,7 @@ paths:
       tags:
       - User Info
     parameters:
-    - description: Path part of url as passed in url_ query parameter
+    - description: Path part of url as passed in url query parameter
       in: path
       name: urlPath
       required: true
@@ -129,4 +129,4 @@ paths:
       variables:
         UserInfoBaseUrl:
           default: https://card.dolden.net
-          description: Base part of url as passed in url_ query parameter
+          description: Base part of url as passed in url query parameter
