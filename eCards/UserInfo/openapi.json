@@ -84,7 +84,7 @@
                     "variables": {
                         "UserInfoBaseUrl": {
                             "description": "User Info Endpoint base url",
-                            "default": "https://userinfo.example.com/"
+                            "default": "https://card.dolden.net"
                         }
                     }
                 }
