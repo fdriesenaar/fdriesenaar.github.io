@@ -64,7 +64,7 @@
                 }
             ]
         },
-        "/{UserInfoPath}": {
+        "/ecards/v1/pub/dataExchange/{id}": {
             "get": {
                 "tags": [
                     "User Info"
@@ -91,9 +91,9 @@
             ],
             "parameters": [
                 {
-                    "name": "UserInfoPath",
+                    "name": "id",
                     "in": "path",
-                    "description": "User Info endpoint path, for example 'ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5' for the endpoint 'https://card.dolden.net/ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5'.",
+                    "description": "data id, for example 'SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5'.",
                     "required": true
                 }
             ]
