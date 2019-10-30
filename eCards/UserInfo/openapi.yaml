@@ -22,27 +22,6 @@ info:
   version: 1.0.0
 openapi: 3.0.0
 paths:
-  /ecards/v1/pub/dataExchange/{id}:
-    get:
-      description: Get encrypted User Info
-      operationId: Get encrypted User Info
-      responses:
-        '200':
-          description: Encrypted User Info
-      tags:
-      - User Info
-    parameters:
-    - description: data id, for example 'SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5'.
-      in: path
-      name: id
-      required: true
-    servers:
-    - description: User Info Endpoint
-      url: '{UserInfoBaseUrl}'
-      variables:
-        UserInfoBaseUrl:
-          default: https://card.dolden.net
-          description: User Info Endpoint base url
   /{WebsitePath}:
     get:
       description: Website call from eCard
@@ -74,3 +53,24 @@ paths:
         WebsiteBaseUrl:
           default: https://example.com/webshop
           description: Website base url
+  /{urlPath}:
+    get:
+      description: Get encrypted User Info
+      operationId: Get encrypted User Info
+      responses:
+        '200':
+          description: Encrypted User Info, encrypted using AES128, AES192 or AES256.
+      tags:
+      - User Info
+    parameters:
+    - description: Path part of url as passed in url_ query parameter
+      in: path
+      name: urlPath
+      required: true
+    servers:
+    - description: User Info Endpoint
+      url: '{urlBase}'
+      variables:
+        UserInfoBaseUrl:
+          default: https://card.dolden.net
+          description: Base part of url as passed in url_ query parameter
