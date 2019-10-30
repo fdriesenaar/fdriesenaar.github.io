@@ -49,7 +49,7 @@
                 {
                     "name": "s",
                     "in": "query",
-                    "description": "secret",
+                    "description": "secret. Contact the Service Desk to change the parameter name.",
                     "schema": {
                         "$ref": "#/components/schemas/secret"
                     }
@@ -57,7 +57,7 @@
                 {
                     "name": "url",
                     "in": "query",
-                    "description": "User Info Url",
+                    "description": "User Info Url. Contact the Service Desk to change the parameter name.",
                     "schema": {
                         "$ref": "#/components/schemas/url"
                     }

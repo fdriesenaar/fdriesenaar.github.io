@@ -92,12 +92,13 @@ paths:
       in: path
       name: Website url
       required: true
-    - description: secret
+    - description: secret. Contact the Service Desk to change the parameter name.
       in: query
       name: s
       schema:
         $ref: '#/components/schemas/secret'
-    - description: User Info Url
+    - description: User Info Url. Contact the Service Desk to change the parameter
+        name.
       in: query
       name: url
       schema:
