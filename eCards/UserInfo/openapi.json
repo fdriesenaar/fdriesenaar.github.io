@@ -34,7 +34,7 @@
                     "variables": {
                         "WebsiteBaseUrl": {
                             "description": "Website base url",
-                            "default": "https://dappre.com"
+                            "default": "https://example.com/webshop"
                         }
                     }
                 }
@@ -43,7 +43,7 @@
                 {
                     "name": "WebsitePath",
                     "in": "path",
-                    "description": "Website path, for example 'zakelijk' for the website 'https://dappre.com/zakelijk'.",
+                    "description": "Website path, for example 'webshop' for the website 'https://example.com/webshop'.",
                     "required": true
                 },
                 {
