@@ -22,6 +22,28 @@ info:
   version: 1.0.0
 openapi: 3.0.0
 paths:
+  /{UserInfoPath}:
+    get:
+      description: Get encrypted User Info
+      operationId: Get encrypted User Info
+      responses:
+        '200':
+          description: Encrypted User Info
+      tags:
+      - User Info
+    parameters:
+    - description: User Info endpoint path, for example 'ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5'
+        for the endpoint 'https://card.dolden.net/ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5'.
+      in: path
+      name: UserInfoPath
+      required: true
+    servers:
+    - description: User Info Endpoint
+      url: '{UserInfoBaseUrl}'
+      variables:
+        UserInfoBaseUrl:
+          default: https://userinfo.example.com/
+          description: User Info Endpoint base url
   /{WebsitePath}:
     get:
       description: Website call from eCard
@@ -32,7 +54,7 @@ paths:
       tags:
       - Website
     parameters:
-    - description: Website path, for example 'zakelijk' for the website 'https://dappre.com/zakelijk'.
+    - description: Website path, for example 'webshop' for the website 'https://example.com/webshop'.
       in: path
       name: WebsitePath
       required: true
@@ -51,5 +73,5 @@ paths:
       url: '{WebsiteBaseUrl}'
       variables:
         WebsiteBaseUrl:
-          default: https://dappre.com
+          default: https://example.com/webshop
           description: Website base url

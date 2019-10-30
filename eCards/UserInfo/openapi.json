@@ -63,6 +63,40 @@
                     }
                 }
             ]
+        },
+        "/{UserInfoPath}": {
+            "get": {
+                "tags": [
+                    "User Info"
+                ],
+                "description": "Get encrypted User Info",
+                "operationId": "Get encrypted User Info",
+                "responses": {
+                    "200": {
+                        "description": "Encrypted User Info"
+                    }
+                }
+            },
+            "servers": [
+                {
+                    "description": "User Info Endpoint",
+                    "url": "{UserInfoBaseUrl}",
+                    "variables": {
+                        "UserInfoBaseUrl": {
+                            "description": "User Info Endpoint base url",
+                            "default": "https://userinfo.example.com/"
+                        }
+                    }
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "UserInfoPath",
+                    "in": "path",
+                    "description": "User Info endpoint path, for example 'ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5' for the endpoint 'https://card.dolden.net/ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5'.",
+                    "required": true
+                }
+            ]
         }
     },
     "components": {
