@@ -1,7 +1,63 @@
 components:
+  responses:
+    getUrl:
+      content:
+        application/json:
+          examples:
+            example:
+              value:
+                userInfo: PlPY81WkHVqy+FAtUKs8vQXqXTRcsChw1KaEDB22DlTc3eN1IG3mr0759oOX5dCl6weacHMIBD6OtXGGmvslCA==
+          schema:
+            $ref: '#/components/schemas/getUrlResponse'
+      description: Get url response
   schemas:
-    key:
-      description: Key used to encrypt the User Info.
+    getUrlResponse:
+      description: Get url response
+      format: encrypted using AES128, AES192 or AES256
+      properties:
+        balance:
+          description: Part of the Cardinfo scope
+          type: string
+        cardnumber:
+          description: Part of the Cardinfo scope
+          type: string
+        email:
+          description: Part of the Email scope
+          type: string
+        email_verified:
+          description: Part of the Email scope
+          type: boolean
+        family_name:
+          description: Part of the Profile scope
+          type: string
+        given_name:
+          description: Part of the Profile scope
+          type: string
+        locale:
+          description: Part of the Locale scope
+          type: string
+        middle_name:
+          description: Part of the Profile scope
+          type: string
+        name:
+          description: Part of the Profile scope
+          type: string
+        nickname:
+          description: Part of the Profile scope
+          type: string
+        picture:
+          description: Part of the Profile scope
+          type: string
+        secret:
+          description: PIN or security code of the (gift)card, part of the Secret
+            scope.
+          type: string
+        updated_at:
+          description: Part of the Profile scope
+          type: string
+      type: object
+    secret:
+      description: Secret used to encrypt the User Info.
       example: KWpreJjLJR6_Q0W8-v_oSiF95_Fyoe7O4MTo1tghELk
       format: Base64 URL encoded
       type: string
@@ -36,11 +92,11 @@ paths:
       in: path
       name: WebsitePath
       required: true
-    - description: key
+    - description: secret
       in: query
-      name: p_
+      name: s_
       schema:
-        $ref: '#/components/schemas/key'
+        $ref: '#/components/schemas/secret'
     - description: User Info Url
       in: query
       name: url_
@@ -59,7 +115,7 @@ paths:
       operationId: Get encrypted User Info
       responses:
         '200':
-          description: Encrypted User Info, encrypted using AES128, AES192 or AES256.
+          $ref: '#/components/responses/getUrl'
       tags:
       - User Info
     parameters:
