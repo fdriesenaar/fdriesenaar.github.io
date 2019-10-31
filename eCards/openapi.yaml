@@ -343,9 +343,68 @@ components:
       scheme: Basic
       type: http
     brandName:
-      type: string
+      properties:
+        name:
+          description: Brand name
+          maxItems: 1
+          minItems: 1
+          type: string
+      type: object
     cardId:
-      type: string
+      descripion: Card identifier as displayed on a physical card as text or as scannable
+        code
+      externalDocs:
+        description: 'DAP SDD #6 - cardId'
+        url: https://digital-me.atlassian.net/wiki/spaces/DAP/pages/61079553/SDD+6+-+cardId
+      properties:
+        mask:
+          description: ''
+          maxItems: 1
+          minItems: 1
+          type: string
+        postfix:
+          description: Postfix
+          maxItems: 1
+          minItems: 0
+          type: string
+        prefix:
+          description: Prefix
+          maxItems: 1
+          minItems: 0
+          type: string
+        symbology:
+          description: Symbology used to present a scannable code on the eCard
+          enum:
+          - EAN-13
+          - UPC-A
+          - EAN-8
+          - UPC-E
+          - Code 39
+          - Code 128
+          - GS1-128
+          - GS1 QR Code
+          - ITF-14
+          - GS1 DataBar
+          - PDF417
+          - Aztec Code
+          - Code 39 mod 43
+          - Code 93
+          - GS1 DataMatrix
+          - ITF
+          maxItems: 1
+          minItems: 1
+          type: string
+        validator:
+          description: ''
+          maxItems: 1
+          minItems: 1
+          type: string
+        visibility:
+          description: ''
+          maxItems: 1
+          minItems: 1
+          type: string
+      type: object
     cardIdSymbology:
       description: Supported card code symbol types
       items:

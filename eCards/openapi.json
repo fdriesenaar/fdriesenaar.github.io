@@ -195,6 +195,81 @@
                 "type": "http",
                 "scheme": "Basic"
             },
+            "brandName": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "Brand name",
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
+                    }
+                }
+            },
+            "cardId": {
+                "descripion": "Card identifier as displayed on a physical card as text or as scannable code",
+                "externalDocs": {
+                    "description": "DAP SDD #6 - cardId",
+                    "url": "https://digital-me.atlassian.net/wiki/spaces/DAP/pages/61079553/SDD+6+-+cardId"
+                },
+                "type": "object",
+                "properties": {
+                    "symbology": {
+                        "description": "Symbology used to present a scannable code on the eCard",
+                        "type": "string",
+                        "enum": [
+                            "EAN-13",
+                            "UPC-A",
+                            "EAN-8",
+                            "UPC-E",
+                            "Code 39",
+                            "Code 128",
+                            "GS1-128",
+                            "GS1 QR Code",
+                            "ITF-14",
+                            "GS1 DataBar",
+                            "PDF417",
+                            "Aztec Code",
+                            "Code 39 mod 43",
+                            "Code 93",
+                            "GS1 DataMatrix",
+                            "ITF"
+                            ],
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "prefix": {
+                        "description": "Prefix",
+                        "type": "string",
+                        "minItems": 0,
+                        "maxItems": 1
+                    },
+                    "postfix": {
+                        "description": "Postfix",
+                        "type": "string",
+                        "minItems": 0,
+                        "maxItems": 1
+                    },
+                    "visibility": {
+                        "description": "",
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "validator": {
+                        "description": "",
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "mask": {
+                        "description": "",
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
+                    }
+                }
+            },
             "cardIdSymbology": {
                 "description": "Supported card code symbol types",
                 "type": "array",
@@ -385,12 +460,6 @@
                         "maxItems": 1
                     }
                 }
-            },
-            "brandName": {
-                "type": "string"
-            },
-            "cardId": {
-                "type": "string"
             },
             "eCardTemplate": {
                 "description": "eCard template",
