@@ -261,6 +261,1554 @@ components:
           schema:
             $ref: '#/components/schemas/apiInfo'
       description: Api response
+    apiSchema:
+      content:
+        examples:
+          example:
+            $schema: http://json-schema.org/draft-04/schema#
+            components:
+              parameters:
+                Projection:
+                  allowReserved: false
+                  description: Project fields to return from request, see https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/#projection.
+                  example: '%7B%22_id%22%3A%20true%2C%20%22dateModified%22%3A%20true%7D'
+                  in: query
+                  name: projection
+                  required: false
+                UserId:
+                  in: path
+                  name: user_id
+                  required: true
+                  schema:
+                    $ref: '#/components/schemas/UserId'
+                eCardObjectId:
+                  description: eCard object id
+                  in: path
+                  name: ecard_id
+                  required: true
+                  schema:
+                    $ref: '#/components/schemas/ObjectId'
+                eCardObjectIds:
+                  description: eCard object id
+                  explode: true
+                  in: query
+                  name: _id
+                  required: false
+                  schema:
+                    $ref: '#/components/schemas/ObjectId'
+                  style: form
+                eCardTemplateId:
+                  description: eCard template object id
+                  in: path
+                  name: ecard_template_id
+                  schema:
+                    $ref: '#/components/schemas/ObjectId'
+                eCardTemplateObjectIds:
+                  description: eCard template object id
+                  explode: true
+                  in: query
+                  name: _id
+                  required: false
+                  schema:
+                    type: array
+                  style: form
+              schemas:
+                Action:
+                  additionalProperties: false
+                  id: '#Action'
+                  properties:
+                    _id:
+                      title: _id
+                      type: string
+                    creator_id:
+                      title: Action creator_id
+                      type:
+                      - string
+                      - 'null'
+                    dateEnd:
+                      title: Action dateEnd
+                      type:
+                      - string
+                    dateStart:
+                      title: Action dateStart
+                      type:
+                      - string
+                    eCard:
+                      $ref: '#/components/schemas/eCard'
+                    location:
+                      $ref: '#/components/schemas/Geometry'
+                    offer:
+                      $ref: '#/components/schemas/Offer'
+                    type:
+                      enum:
+                      - CreateAction
+                      - InteractAction
+                      - DeleteAction
+                      - ViewOfferAction
+                      - UpdateAction
+                      title: Action Type
+                      type: string
+                    userAgent:
+                      title: Action User Agent
+                      type: string
+                  required:
+                  - type
+                  - creator_id
+                  - dateStart
+                  - dateEnd
+                  title: The Action Schema
+                  type: object
+                AddressComponents:
+                  description: Address components, loosely based on address_components
+                    as defined as part of the Google Places API, see https://developers.google.com/maps/documentation/geocoding/intro#Types.
+                  properties:
+                    administrativeAreaLevel1:
+                      type: string
+                    administrativeAreaLevel2:
+                      type: string
+                    administrativeAreaLevel3:
+                      type: string
+                    administrativeAreaLevel4:
+                      type: string
+                    administrativeAreaLevel5:
+                      type: string
+                    colloquialArea:
+                      type: string
+                    countryCode2:
+                      description: 'NB: This property has no Google equivalent.'
+                      type: string
+                    countryCode3:
+                      description: 'NB: This property has no Google equivalent.'
+                      type: string
+                    countryName:
+                      type: string
+                    locality:
+                      type: string
+                    postalCode:
+                      type: string
+                    route:
+                      type: string
+                    streetAddress:
+                      type: string
+                    streetName:
+                      description: 'NB: This property has no Google equivalent.'
+                      type: string
+                    streetNumber:
+                      type: string
+                  title: Address components
+                  type: object
+                ApiResponseBody:
+                  content:
+                    application/json:
+                      schema:
+                        properties:
+                          currentVersion:
+                            type: string
+                          linkTemplates:
+                            additionalProperties: false
+                            description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/1605639/SDD+5+eCard+service+descriptor.
+                            properties:
+                              services:
+                                type: string
+                            required:
+                            - services
+                            type: object
+                          links:
+                            additionalProperties: false
+                            properties:
+                              actions:
+                                description: Actions path endpoint address
+                                type: string
+                              eCards:
+                                description: eCards path endpoint address
+                                type: string
+                              offers:
+                                description: Offers path endpoint address
+                                type: string
+                              places:
+                                description: Places path endpoint address
+                                type: string
+                              schema:
+                                description: Schema path endpoint address
+                                type: string
+                              templateSelections:
+                                description: Template selections path endpoint address
+                                type: string
+                              templates:
+                                description: Templates path endpoint address
+                                type: string
+                              user:
+                                description: User path endpoint address
+                                type: string
+                            required:
+                            - actions
+                            - eCards
+                            - offers
+                            - places
+                            - schema
+                            - templateSelections
+                            - templates
+                            - user
+                            type: object
+                          serverTime:
+                            type: number
+                        required:
+                        - currentVersion
+                        - links
+                        - linkTemplates
+                        - serverTime
+                        type: object
+                BalanceAndTransactionsResponseBody:
+                  additionalProperties: false
+                  id: '#BalanceAndTransactions/Response'
+                  properties:
+                    balance:
+                      type: number
+                    balanceFactor:
+                      type: number
+                    currency:
+                      type: string
+                    dateBalanceUpdated:
+                      type: string
+                    search:
+                      additionalProperties: false
+                      properties:
+                        cardCode:
+                          type: string
+                        dateSearch:
+                          type: string
+                        paging:
+                          $ref: '#/components/schemas/Paging'
+                      required:
+                      - cardCode
+                      - dateSearch
+                      - paging
+                      type: object
+                    transactions:
+                      additionalProperties: false
+                      properties:
+                        page:
+                          items:
+                            $ref: '#/components/schemas/Transaction'
+                          type: array
+                        totalCount:
+                          description: Total number of transactions.
+                          type: number
+                      required:
+                      - totalCount
+                      - page
+                      type: object
+                  required:
+                  - balance
+                  - balanceFactor
+                  - currency
+                  - dateBalanceUpdated
+                  - search
+                  - transactions
+                  title: Balance and transactions response body
+                  type: object
+                BrandName:
+                  properties:
+                    name:
+                      description: Brand name to be used on the eCard.
+                      title: Brand Name
+                      type: string
+                  required:
+                  - name
+                  title: Brand name
+                  type: object
+                CardId:
+                  additionalProperties: false
+                  description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/61079553/SDD+6+-+cardId.
+                  properties:
+                    mask:
+                      type: string
+                    prefix:
+                      type:
+                      - 'null'
+                      - string
+                    suffix:
+                      type:
+                      - 'null'
+                      - string
+                    symbology:
+                      type: string
+                    validator:
+                      type: string
+                    visibility:
+                      type: string
+                  required:
+                  - mask
+                  - prefix
+                  - suffix
+                  - symbology
+                  - validator
+                  - visibility
+                  title: Card Id
+                  type: object
+                CardIdSymbology:
+                  items:
+                    enum:
+                    - Aztec Code
+                    - Codabar
+                    - Code 128
+                    - Code 39
+                    - Code 39 mod 43
+                    - Code 93
+                    - DataBar Expanded
+                    - DataBar-14
+                    - DataMatrix
+                    - EAN-128
+                    - EAN-13
+                    - EAN-8
+                    - GS1 DataMatrix
+                    - GS1 QR Code
+                    - GS1-128
+                    - GS1-13
+                    - ITF
+                    - ITF-14
+                    - MaxiCode
+                    - PDF417
+                    - QR
+                    - UPC-E
+                    title: Card code symbology
+                    type: string
+                  title: Card code symbologies
+                  type:
+                  - array
+                  - 'null'
+                Distance:
+                  id: '#Distance'
+                  properties:
+                    lengthUnitOfMeasure:
+                      enum:
+                      - meter
+                      - kilometer
+                      - mile
+                      type: string
+                    number:
+                      type: number
+                  required:
+                  - number
+                  title: Distance
+                  type: object
+                Geometry:
+                  description: See https://schema.org/geo
+                  id: '#Geometry'
+                  properties:
+                    latitude:
+                      type: number
+                    longitude:
+                      type: number
+                  required:
+                  - latitude
+                  - longitude
+                  title: Geometry
+                  type: object
+                HttpResponseBody:
+                  additionalProperties: false
+                  id: '#HttpResponse'
+                  properties:
+                    code:
+                      title: Http response status code
+                      type: string
+                    message:
+                      title: Response message
+                      type: string
+                  required:
+                  - code
+                  - message
+                  title: HTTP response body
+                  type: object
+                InteractActionList:
+                  id: '#InteractActionList'
+                  items:
+                    allOf:
+                    - $ref: '#Action'
+                    - properties:
+                        type:
+                          enum:
+                          - InteractAction
+                          type: string
+                      title: Interaction
+                      type: object
+                  title: Interactions
+                  type: array
+                Link:
+                  properties:
+                    href:
+                      description: Webshop url
+                      type: string
+                    rel:
+                      description: Indication of the type of resource.
+                      example: webshop
+                      type: string
+                  required:
+                  - href
+                  - rel
+                  type: object
+                MaxDistance:
+                  allOf:
+                  - $ref: '#/components/schemas/Distance'
+                  - default:
+                      lengthUnitOfMeasure: kilometer
+                      number: '5'
+                  description: Maximum distance between the search location and the
+                    place.
+                  id: '#MaxDistance'
+                  title: Maximum distance
+                Metadata:
+                  id: '#Metadata'
+                  properties:
+                    source:
+                      description: Source meta data
+                      properties:
+                        dateDeleted:
+                          description: Date of deletion
+                          type: string
+                        dateModified:
+                          description: Date of latest modification
+                          type: string
+                        id:
+                          description: Id as used by the source
+                          type: string
+                        name:
+                          description: Source name
+                          type: string
+                      required:
+                      - id
+                      - dateModified
+                      - name
+                      type: object
+                  required:
+                  - source
+                  title: Meta data
+                  type: object
+                Name:
+                  description: See https://schema.org/name
+                  format: Literal
+                  title: Name
+                  type: string
+                ObjectId:
+                  description: eCard object id, see https://docs.mongodb.com/manual/reference/method/ObjectId/
+                  example: 5c1383e649362d5b0414ca3c
+                  title: Object id
+                  type: string
+                Offer:
+                  description: Offer
+                  id: '#Offer'
+                  properties:
+                    _id:
+                      type: string
+                    campaign_id:
+                      title: Campaing id
+                      type:
+                      - string
+                      - 'null'
+                    currency:
+                      title: Currency
+                      type: string
+                    currency_symbol:
+                      title: Currency symbol
+                      type: string
+                    dateCreated:
+                      title: dateCreated
+                      type: string
+                    dateDelete:
+                      title: dateDelete
+                      type:
+                      - string
+                      - 'null'
+                    dateEnd:
+                      title: dateDelete
+                      type:
+                      - string
+                      - 'null'
+                    dateModified:
+                      title: dateDelete
+                      type:
+                      - string
+                      - 'null'
+                    datePublish:
+                      title: datePublish
+                      type:
+                      - string
+                      - 'null'
+                    dateStart:
+                      title: datePublish
+                      type:
+                      - string
+                      - 'null'
+                    description:
+                      properties:
+                        description:
+                          title: Offer description
+                          type: string
+                        descriptionShort:
+                          title: Short offer description
+                          type: string
+                        discountAmount:
+                          title: Discount amount
+                          type: string
+                        terms_conditions:
+                          title: Terms / conditions
+                          type: string
+                        title:
+                          title: Offer title
+                          type: string
+                      required:
+                      - description
+                      - descriptionShort
+                      - discountAmount
+                      - terms_conditions
+                      - title
+                      title: Description
+                      type: object
+                    images:
+                      $ref: '#/components/schemas/SizedImage'
+                    imagesCoupon:
+                      $ref: '#/components/schemas/SizedImage'
+                    links:
+                      items:
+                        $ref: '#/components/schemas/Link'
+                      type: array
+                    metadata:
+                      $ref: '#/components/schemas/Metadata'
+                    name:
+                      $ref: '#/components/schemas/Name'
+                    priority:
+                      title: Priority
+                      type: number
+                    status:
+                      enum:
+                      - active
+                      type: string
+                    templatesEligibility:
+                      description: Array of identifiers of templates that are relevant
+                        for the offer.
+                      items:
+                        type: string
+                      type: array
+                  required:
+                  - _id
+                  - campaign_id
+                  - currency
+                  - currency_symbol
+                  - dateCreated
+                  - dateDelete
+                  - dateEnd
+                  - dateModified
+                  - datePublish
+                  - dateStart
+                  - description
+                  - images
+                  - imagesCoupon
+                  - links
+                  - metadata
+                  - name
+                  - priority
+                  - status
+                  - templatesEligibility
+                  title: Offer
+                  type: object
+                OffersRequestBody:
+                  additionalProperties: false
+                  description: Offers request body schema
+                  id: '#Offers/Request'
+                  properties:
+                    paging:
+                      $ref: '#/components/schemas/Paging'
+                  title: Offers request body
+                  type: object
+                OffersResponseBody:
+                  additionalProperties: false
+                  description: Offers response body schema
+                  id: '#Offers/Response'
+                  properties:
+                    offers:
+                      items:
+                        $ref: '#/components/schemas/Offer'
+                      type: array
+                    search:
+                      additionalProperties: false
+                      properties:
+                        dateSearch:
+                          type: string
+                        paging:
+                          $ref: '#/components/schemas/Paging'
+                      required:
+                      - dateSearch
+                      - paging
+                      type: object
+                    total:
+                      description: Total number of offers found.
+                      type: number
+                  required:
+                  - places
+                  - search
+                  - total
+                  title: Offers response body
+                  type: object
+                Offset:
+                  default: 0
+                  description: The number of items to skip in the search results.
+                  id: '#Offset'
+                  title: Offset
+                  type: number
+                PageSize:
+                  default: 10
+                  description: The maximum number of items to be included in the search
+                    results.
+                  id: '#PageSize'
+                  maximum: 1000
+                  title: Page Size
+                  type: number
+                Paging:
+                  id: '#Paging'
+                  properties:
+                    offset:
+                      $ref: '#/components/schemas/Offset'
+                    pageSize:
+                      $ref: '#/components/schemas/PageSize'
+                  title: Paging
+                  type: object
+                Place:
+                  additionalProperties: false
+                  description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/360649/SDD+3+-+eCards+Places.
+                  id: '#Place'
+                  properties:
+                    _id:
+                      type: string
+                    addressComponents:
+                      $ref: '#/components/schemas/AddressComponents'
+                    addressFormatted:
+                      type: string
+                    categories:
+                      items:
+                        type: string
+                      title: Categories
+                      type: array
+                    dateCreated:
+                      title: dateCreated
+                      type: string
+                    distance:
+                      allOf:
+                      - $ref: '#/components/schemas/Distance'
+                      - required:
+                        - lengthUnitOfMeasure
+                    geometry:
+                      $ref: '#/components/schemas/Geometry'
+                    icon:
+                      $ref: '#/components/schemas/SizedImage'
+                    name:
+                      $ref: '#/components/schemas/Name'
+                    priority:
+                      type: number
+                    status:
+                      type: string
+                    templatesEligibility:
+                      items:
+                        type: string
+                      type: array
+                    types:
+                      items:
+                        type: string
+                      type: array
+                    utc_offset:
+                      type: number
+                    website:
+                      type: string
+                  required:
+                  - _id
+                  - addressComponents
+                  - addressFormatted
+                  - categories
+                  - dateCreated
+                  - distance
+                  - geometry
+                  - icon
+                  - metadata
+                  - name
+                  - phoneNumberInternational
+                  - priority
+                  - status
+                  - templatesEligibility
+                  - types
+                  - utc_offset
+                  - website
+                  title: Place
+                  type: object
+                PlacesRequestBody:
+                  additionalProperties: false
+                  description: Places request body schema
+                  id: '#Places/Request'
+                  properties:
+                    geometry:
+                      $ref: '#/components/schemas/Geometry'
+                      description: Geographical search location.
+                      title: Geometry
+                    maxDistance:
+                      $ref: '#/components/schemas/MaxDistance'
+                    paging:
+                      $ref: '#/components/schemas/Paging'
+                    templateEligibility:
+                      $ref: '#eCardsAccepted'
+                      description: Requested search criterium with respect to the
+                        accepted eCards.
+                  title: Places request body
+                  type: object
+                PlacesResponseBody:
+                  additionalProperties: false
+                  description: Places response body schema
+                  id: '#Places/Response'
+                  properties:
+                    places:
+                      items:
+                        $ref: '#Place'
+                      type: array
+                    search:
+                      additionalProperties: false
+                      properties:
+                        dateSearch:
+                          type: string
+                        geometry:
+                          $ref: '#/components/schemas/Geometry'
+                        maxDistance:
+                          $ref: '#/components/schemas/MaxDistance'
+                        paging:
+                          $ref: '#/components/schemas/Paging'
+                        templateEligibility:
+                          description: eCard Template object id as given in the search
+                            request.
+                          type: string
+                      required:
+                      - dateSearch
+                      - geometry
+                      - maxDistance
+                      - paging
+                      - templateEligibility
+                      type: object
+                    total:
+                      description: Total number of places found.
+                      type: number
+                  required:
+                  - places
+                  - search
+                  - total
+                  title: Places response body
+                  type: object
+                PreCheckRequestBody:
+                  $ref: '#/components/schemas/BalanceAndTransactionsRequestBody'
+                  title: Pre check request body
+                PreCheckResponseBody:
+                  $ref: '#/components/schemas/BalanceAndTransactionsResponseBody'
+                  title: Pre check response body
+                ServiceTitle:
+                  properties:
+                    title:
+                      patternProperties:
+                        '[a-z]{2}(-[A-Z]{2})?':
+                          description: Label for locale
+                          type: string
+                      properties:
+                        default:
+                          description: Default label
+                          type: string
+                      type: object
+                  title: Service title
+                  type: object
+                Services:
+                  additionalProperties: false
+                  description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/1605639/SDD+5+eCard+service+descriptor
+                  properties:
+                    balanceAndTransactions:
+                      allOf:
+                      - additionalProperties: false
+                        type: object
+                      - $ref: '#/schemas/ServiceTitle'
+                      title: Balance & transactions
+                    offers:
+                      allOf:
+                      - type: object
+                      - $ref: '#/schemas/ServiceTitle'
+                      title: Offers
+                    places:
+                      allOf:
+                      - additionalProperties: false
+                        type: object
+                      - $ref: '#/schemas/ServiceTitle'
+                      title: Places
+                    preCheck:
+                      additionalProperties: false
+                      title: Precheck
+                      type: object
+                    webshops:
+                      allOf:
+                      - additionalProperties: false
+                        type: object
+                      - $ref: '#/schemas/ServiceTitle'
+                      title: Webshops
+                  title: Service descriptor
+                  type: object
+                SizedImages:
+                  items:
+                    properties:
+                      size:
+                        enum:
+                        - small
+                        - medium
+                        - large
+                        title: Size
+                        type: string
+                      url:
+                        title: Sized image
+                        type: string
+                    required:
+                    - size
+                    - url
+                    type: object
+                  title: Sized images
+                  type: array
+                Style:
+                  description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/393400/SDD+1+-+eCard+face+and+back+images
+                  properties:
+                    backgroundColor:
+                      title: Background color
+                      type: string
+                    eCardBackImage:
+                      $ref: '#/components/schemas/SizedImages'
+                    eCardFrontImage:
+                      $ref: '#/components/schemas/SizedImages'
+                    fontColor:
+                      title: Background color
+                      type: string
+                    logoImage:
+                      $ref: '#/components/schemas/SizedImages'
+                  title: Style
+                  type: object
+                Transaction:
+                  additionalProperties: false
+                  id: '#Transaction'
+                  properties:
+                    currency:
+                      type:
+                      - string
+                      - 'null'
+                    id:
+                      type: string
+                    retailer:
+                      additionalProperties: false
+                      properties:
+                        address:
+                          description: Street name and number
+                          type:
+                          - 'null'
+                          - string
+                        city:
+                          description: City
+                          type:
+                          - 'null'
+                          - string
+                        name:
+                          description: Retailer name
+                          type:
+                          - 'null'
+                          - string
+                        postalCode:
+                          description: Postal code
+                          type:
+                          - 'null'
+                          - string
+                      required:
+                      - address
+                      - city
+                      - name
+                      - postalCode
+                      title: Retailer
+                      type: object
+                    seq:
+                      type: number
+                    time:
+                      type: string
+                    type:
+                      type: string
+                    value:
+                      type: number
+                    valueFactor:
+                      type: number
+                    valueSign:
+                      type: string
+                  required:
+                  - currency
+                  - id
+                  - retailer
+                  - seq
+                  - time
+                  - type
+                  - value
+                  - valueFactor
+                  - valueSign
+                  type: object
+                UserId:
+                  description: User Id, a uuid
+                  title: User Id
+                  type: string
+                UsersServicesOffersRequestBody:
+                  additionalProperties: false
+                  description: Users Services Offers request body schema
+                  id: '#Users/Services/Offers/Request'
+                  properties:
+                    paging:
+                      $ref: '#/components/schemas/Paging'
+                  title: Users Services Offers request body
+                  type: object
+                UsersServicesOffersResponseBody:
+                  additionalProperties: false
+                  description: Users Services Offers response body schema
+                  id: '#Users/Services/Offers/Request'
+                  properties:
+                    offers:
+                      items:
+                        $ref: '#/components/schemas/Offer'
+                      type: array
+                    search:
+                      additionalProperties: false
+                      properties:
+                        dateSearch:
+                          type: string
+                        paging:
+                          $ref: '#/components/schemas/Paging'
+                        templateIds:
+                          description: List of template object id's.
+                          items:
+                            $ref: '#/components/schemas/ObjectId'
+                          type: array
+                      required:
+                      - dateSearch
+                      - templateIds
+                      - paging
+                      type: object
+                    total:
+                      description: Total number of offers found.
+                      type: number
+                  required:
+                  - places
+                  - search
+                  - total
+                  title: Users Services Offers response body
+                  type: object
+                Webshop:
+                  additionalProperties: true
+                  id: '#Webshop'
+                  properties:
+                    _id:
+                      type: string
+                    categories:
+                      items:
+                        type: string
+                      title: Categories
+                      type: array
+                    dateCreated:
+                      title: dateCreated
+                      type: string
+                    dateModified:
+                      title: dateModified
+                      type:
+                      - string
+                      - 'null'
+                    icon:
+                      $ref: '#/components/schemas/SizedImage'
+                    links:
+                      items:
+                        $ref: '#/components/schemas/Link'
+                      type: array
+                    metadata:
+                      $ref: '#/components/schemas/Metadata'
+                    name:
+                      $ref: '#/components/schemas/Name'
+                    priority:
+                      type: number
+                    status:
+                      type: string
+                    templatesEligibility:
+                      description: Array of identifiers of templates that are relevant
+                        for the place.
+                      items:
+                        type: string
+                      type: array
+                    types:
+                      items:
+                        description: Type of webshop.
+                        type: string
+                      type: array
+                    utc_offset:
+                      type: number
+                  required:
+                  - _id
+                  - categories
+                  - dateCreated
+                  - icon
+                  - metadata
+                  - name
+                  - priority
+                  - links
+                  - status
+                  - templatesEligibility
+                  title: Webshop
+                  type: object
+                WebshopsRequestBody:
+                  additionalProperties: false
+                  description: Webshops request body schema
+                  id: '#Webshops/Request'
+                  properties:
+                    paging:
+                      $ref: '#/components/schemas/Paging'
+                  title: Webshops request body
+                  type: object
+                WebshopsResponseBody:
+                  additionalProperties: false
+                  description: Webshops response body schema
+                  id: '#Webshops/Response'
+                  properties:
+                    search:
+                      additionalProperties: false
+                      properties:
+                        dateSearch:
+                          type: string
+                        paging:
+                          $ref: '#/components/schemas/Paging'
+                      required:
+                      - dateSearch
+                      - paging
+                      type: object
+                    total:
+                      description: Total number of places found.
+                      type: number
+                    webshops:
+                      items:
+                        $ref: '#/components/schemas/Webshop'
+                      type: array
+                  required:
+                  - webshops
+                  - search
+                  - total
+                  title: Webshops response body
+                  type: object
+                eCard:
+                  allOf:
+                  - additionalProperties: true
+                    required:
+                    - _id
+                    - cardIdCipher
+                    - cardIdCipherIV
+                    - cardIdCipherKey
+                    - cardIdCipherPin
+                    - cardIdSymbology
+                    - creator_id
+                    - name
+                    - dateCreated
+                    - dateModified
+                    - eCardTemplate
+                    - sortName
+                    type: object
+                  - $ref: '#/components/schemas/eCardProperties'
+                  id: '#eCard'
+                  title: eCard
+                eCardDetailsRequest:
+                  description: eCard details request body schema
+                  id: '#eCard/Details/Request'
+                  properties:
+                    cardId:
+                      description: Card code as known to the user.
+                      title: Card code
+                      type: string
+                    currency:
+                      description: ISO 4217 currency code, default EUR.
+                      type: string
+                    paging:
+                      properties:
+                        offset:
+                          description: Offset for returned transactions, default 10.
+                          type: number
+                        pageSize:
+                          $ref: '#/components/schemas/PageSize'
+                          description: Maximum number of returned transactions.
+                      type: object
+                    pin:
+                      description: Card pin code.
+                      maxLength: 30
+                      title: Pin
+                      type: string
+                  title: eCard Details Request
+                  type: object
+                eCardDetailsResponse:
+                  allOf:
+                  - $ref: '#/components/schemas/eCardDetailsRequest'
+                  - properties:
+                      eCard:
+                        $ref: '#/components/schemas/eCard'
+                  - properties:
+                      dateSearch:
+                        description: Search datetimestamp.
+                        title: Search date
+                        type: string
+                    type: object
+                  description: eCard details response body schema
+                  id: '#eCard/Details/Response'
+                  title: eCard Details Response
+                eCardProperties:
+                  properties:
+                    _id:
+                      title: _id
+                      type: string
+                    ballance:
+                      title: Card ballance, eg 5.00
+                      type: number
+                    cardIdCipher:
+                      title: Card id cipher
+                      type: string
+                    cardIdCipherIV:
+                      title: Card id cipher iv
+                      type: string
+                    cardIdCipherKey:
+                      title: Card id cipher key
+                      type: string
+                    cardIdCipherPin:
+                      title: Card id cipher pin
+                      type:
+                      - 'null'
+                      - string
+                    cardIdSymbology:
+                      $ref: '#/components/schemas/CardIdSymbology'
+                      title: Card code symbology
+                    creator_id:
+                      title: creator_id
+                      type: string
+                    currency:
+                      description: ISO 4217 currency code, default EUR.
+                      title: Currency code
+                      type: string
+                    dateBalanceUpdated:
+                      title: Date balance updated
+                      type:
+                      - string
+                    dateCreated:
+                      title: dateCreated
+                      type:
+                      - string
+                    dateDeleted:
+                      title: dateDeleted
+                      type:
+                      - string
+                      - 'null'
+                    dateIssued:
+                      title: Date that the card was issued.
+                      type: string
+                    dateModified:
+                      title: dateModified
+                      type:
+                      - string
+                      - 'null'
+                    description:
+                      title: description
+                      type:
+                      - string
+                      - 'null'
+                    eCardTemplate:
+                      allOf:
+                      - type:
+                        - 'null'
+                        - object
+                      - $ref: '#/components/schemas/eCardTemplateProperties'
+                    name:
+                      title: name
+                      type:
+                      - string
+                      - 'null'
+                    notes:
+                      title: name
+                      type:
+                      - string
+                      - 'null'
+                    sortName:
+                      title: sortName
+                      type:
+                      - string
+                      - 'null'
+                    style:
+                      $ref: '#/components/schemas/Style'
+                    transactions:
+                      items:
+                        $ref: '#/components/schemas/Transaction'
+                      type: array
+                  title: eCard properties
+                eCardTemplate:
+                  allOf:
+                  - additionalProperties: false
+                    required:
+                    - _id
+                    - brand
+                    - cardIdSymbology
+                    - creator
+                    - dateCreated
+                    - dateModified
+                    - name
+                    - services
+                    - sortName
+                    - style
+                  - $ref: '#/components/schemas/eCardTemplateProperties'
+                  description: 'The eCard Template Schema applies to templates for
+                    eCards: digital cards, such as digital loyalty cards.'
+                  id: '#eCardTemplate'
+                  title: eCardTemplate
+                  type:
+                  - object
+                  - 'null'
+                eCardTemplateProperties:
+                  description: The eCard Template Properties Schema.
+                  id: '#eCardTemplateProperties'
+                  properties:
+                    _id:
+                      $ref: '#/components/schemas/ObjectId'
+                      title: eCard template object id
+                    brand:
+                      $ref: '#/components/schemas/BrandName'
+                    cardId:
+                      $ref: '#/components/schemas/CardId'
+                    cardIdSymbology:
+                      $ref: '#/components/schemas/CardIdSymbology'
+                    creator:
+                      description: Creator of the eCard template.
+                      properties:
+                        name:
+                          title: Creator name
+                          type: string
+                      required:
+                      - name
+                      title: Creator
+                      type: object
+                    dateCreated:
+                      title: dateCreated
+                      type:
+                      - string
+                    dateDeleted:
+                      title: dateDeleted
+                      type:
+                      - string
+                      - 'null'
+                    dateModified:
+                      title: dateModified
+                      type:
+                      - string
+                      - 'null'
+                    keywords:
+                      items:
+                        title: Keyword
+                        type: string
+                      type:
+                      - array
+                      - 'null'
+                    name:
+                      description: Name to be displayed on the eCard.
+                      type:
+                      - string
+                      - 'null'
+                    notes:
+                      type:
+                      - string
+                      - 'null'
+                    services:
+                      $ref: '#/components/schemas/Services'
+                    sortName:
+                      type:
+                      - string
+                      - 'null'
+                    style:
+                      $ref: '#/components/schemas/Style'
+                    types:
+                      items:
+                        description: 'Type name as defined in the Technical data model
+                          for the Templates collection: https://code.in.digital-me.nl/DEV/ecards/tree/master/mongodb#templates-collection.'
+                        enum:
+                        - customer_membership_account
+                        - customer_rebate_account
+                        - customer_loyalty_program
+                        - customer_subscription_program
+                        - stored_value_instrument
+                        - stored_value_instrument_open
+                        - stored_value_instrument_closed
+                        title: eCard type
+                        type: string
+                      type: array
+                    url:
+                      description: Webshop url, see https://digital-me.atlassian.net/wiki/spaces/DAP/pages/1605639/SDD+5+eCard+service+descriptor
+                      type: string
+                  title: eCard template properties
+                eCardTemplatesSelections:
+                  id: '#eCardTemplatesSelections'
+                  patternProperties:
+                    '[A-Za-z0-9_-]+':
+                      description: eCard templates selections for the indicated criterium.
+                      properties:
+                        order:
+                          description: List of eCard template object ids.
+                          items:
+                            $ref: '#/components/schemas/ObjectId'
+                          type: array
+                        prompt:
+                          patternProperties:
+                            '[a-z]{2}(-[A-Z]{2})?':
+                              description: Localized prompt for the indicated language.
+                              type: string
+                            default:
+                              description: Default prompt.
+                              type: string
+                          type: object
+                      type: object
+                  title: eCard templates selections
+                  type: object
+                eCardsAccepted:
+                  id: '#eCardsAccepted'
+                  items:
+                    description: eCardTemplate _id
+                    type: string
+                  title: eCards Accepted
+                  type:
+                  - array
+                  - 'null'
+            id: https://digital-me.com/schema+json/v1#
+            paths:
+              /users/{user_id}:
+                delete:
+                  responses:
+                    '204':
+                      description: 204 Response
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+              /users/{user_id}/actions:
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+                post:
+                  requestBody:
+                    content:
+                      application/json:
+                        schema:
+                          $ref: '#/components/schemas/InteractActionList'
+                    required: true
+                  responses:
+                    '204':
+                      description: 204 Response
+              /users/{user_id}/api:
+                get:
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/ApiResponseBody'
+                      description: 200 Response
+              /users/{user_id}/api/schema:
+                get:
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            type: object
+                      description: 200 Response
+              /users/{user_id}/eCardTemplates:
+                get:
+                  parameters:
+                  - $ref: '#/components/parameters/eCardTemplateObjectIds'
+                  - $ref: '#/components/parameters/Projection'
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            items:
+                              $ref: '#/components/schemas/eCardTemplate'
+                            type:
+                            - array
+                      description: 200 Response
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+              /users/{user_id}/eCardTemplates/{ecard_template_id}/services/balanceAndTransactions:
+                description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+4+-+eCards+Balance+and+Transactions
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+                - $ref: '#/components/parameters/eCardTemplateId'
+                post:
+                  requestBody:
+                    content:
+                      application/json:
+                        schema:
+                          $ref: '#/components/schemas/BalanceAndTransactionsRequestBody'
+                    required: true
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/BalanceAndTransactionsResponseBody'
+                      description: 200 Response
+                    '202':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/HttpResponseBody'
+                      description: 202 Response
+              /users/{user_id}/eCardTemplates/{ecard_template_id}/services/offers:
+                description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/67567629/SDD+%237+-+Offers
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+                - $ref: '#/components/parameters/eCardTemplateId'
+                post:
+                  requestBody:
+                    content:
+                      application/json:
+                        schema:
+                          $ref: '#/components/schemas/OffersRequestBody'
+                    required: true
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/OffersResponseBody'
+                      description: 200 Response
+              /users/{user_id}/eCardTemplates/{ecard_template_id}/services/places:
+                description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/360649/SDD+3+-+eCards+Places.
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+                - $ref: '#/components/parameters/eCardTemplateId'
+                post:
+                  requestBody:
+                    content:
+                      application/json:
+                        schema:
+                          $ref: '#/components/schemas/PlacesRequestBody'
+                    required: true
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/PlacesResponseBody'
+                      description: 200 Response
+              /users/{user_id}/eCardTemplates/{ecard_template_id}/services/preCheck:
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+                - $ref: '#/components/parameters/eCardTemplateId'
+                post:
+                  requestBody:
+                    content:
+                      application/json:
+                        schema:
+                          $ref: '#/components/schemas/PreCheckRequestBody'
+                    required: true
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/PreCheckResponseBody'
+                      description: 200 Response
+              /users/{user_id}/eCardTemplates/{ecard_template_id}/services/webshops:
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+                - $ref: '#/components/parameters/eCardTemplateId'
+                post:
+                  requestBody:
+                    content:
+                      application/json:
+                        schema:
+                          $ref: '#/components/schemas/WebshopsRequestBody'
+                    required: false
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/WebshopsResponseBody'
+                      description: 200 Response
+              /users/{user_id}/eCardTemplatesSelections:
+                get:
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/eCardTemplatesSelections'
+                      description: 200 Response
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+              /users/{user_id}/eCards:
+                get:
+                  parameters:
+                  - $ref: '#/components/parameters/eCardObjectIds'
+                  - $ref: '#/components/parameters/Projection'
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            items:
+                              $ref: '#/components/schemas/eCardProperties'
+                            type:
+                            - array
+                      description: 200 Response
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+                post:
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/eCard'
+                      description: 200 Response
+              /users/{user_id}/eCards/{ecard_id}:
+                delete:
+                  responses:
+                    '204':
+                      description: 204 Response
+                parameters:
+                - $ref: '#/components/parameters/eCardObjectId'
+                - $ref: '#/components/parameters/UserId'
+                put:
+                  requestBody:
+                    content:
+                      application/json:
+                        schema:
+                          $ref: '#/components/schemas/eCard'
+                    required: true
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/eCard'
+                      description: 200 Response
+              /users/{user_id}/services/offers:
+                description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/67567629/SDD+%237+-+Offers
+                parameters:
+                - $ref: '#/components/parameters/UserId'
+                - $ref: '#/components/parameters/eCardTemplateId'
+                post:
+                  requestBody:
+                    content:
+                      application/json:
+                        schema:
+                          $ref: '#/components/schemas/UsersServicesOffersRequestBody'
+                    required: true
+                  responses:
+                    '200':
+                      content:
+                        application/json:
+                          schema:
+                            $ref: '#/components/schemas/UsersServicesOffersResponseBody'
+                      description: 200 Response
     default:
       content:
         application/json:
@@ -796,6 +2344,8 @@ paths:
       description: tbd
       operationId: Get
       responses:
+        '200':
+          $ref: '#/components/responses/apiSchema'
         default:
           $ref: '#/components/responses/default'
       tags:
