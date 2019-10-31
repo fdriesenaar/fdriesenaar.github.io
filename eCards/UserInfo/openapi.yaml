@@ -73,7 +73,9 @@ components:
       format: url
       type: string
 info:
-  description: User Info API for websites
+  description: User Info API for websites\n\nPlease contact the Service Desk and provide:\n*
+    your website url for test and production\n* your preferred encryption algorithm
+    (AES128, AES192, AES256)
   externalDocs:
     description: Find more info here
     url: https://dappre.com
