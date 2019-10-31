@@ -104,7 +104,7 @@
             "getUrlResponse": {
                 "description": "Get url response",
                 "type": "object",
-                "format": "encrypted using AES128, AES192 or AES256",
+                "format": "encrypted using AES128, AES192 or AES256 and none IV",
                 "properties": {
                     "balance": {
                         "description": "Part of the Cardinfo scope",
@@ -183,6 +183,7 @@
                         },
                         "examples": {
                             "example": {
+                                "summary": "AES256 encrypted example",
                                 "value": {
                                     "userInfo": "PlPY81WkHVqy+FAtUKs8vQXqXTRcsChw1KaEDB22DlTc3eN1IG3mr0759oOX5dCl6weacHMIBD6OtXGGmvslCA=="
                                 }
