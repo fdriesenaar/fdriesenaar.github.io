@@ -31,7 +31,7 @@
         "/users/{userId}": {
             "delete": {
                 "tags": [
-                    "users"
+                    "Users"
                 ],
                 "description": "See [Delete user](https://github.com/fdriesenaar/eCards#delete-user).",
                 "operationId": "Delete user",
@@ -75,7 +75,7 @@
         "/users/{userId}/actions": {
             "post": {
                 "tags": [
-                    "actions"
+                    "Actions"
                 ],
                 "description": "See [Post actions](https://github.com/fdriesenaar/eCards#post-actions).",
                 "operationId": "Post actions",
@@ -97,6 +97,120 @@
                     "204": {
                         "$ref": "#/components/responses/actionPosted"
                     },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                }
+            ]
+        },
+        "/users/{userId}/dataExchange": {
+            "get": {
+                "tags": [
+                    "Data Exchange"
+                ],
+                "description": "tbd",
+                "operationId": "Get",
+                "responses": {
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                }
+            ]
+        },
+        "/users/{userId}/eCards": {
+            "get": {
+                "tags": [
+                    "eCards"
+                ],
+                "description": "tbd",
+                "operationId": "Get",
+                "responses": {
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                }
+            ]
+        },
+        "/users/{userId}/services/offers": {
+            "get": {
+                "tags": [
+                    "Offers"
+                ],
+                "description": "tbd",
+                "operationId": "Get",
+                "responses": {
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                }
+            ]
+        },
+        "/users/{userId}/api/schema": {
+            "get": {
+                "tags": [
+                    "Schema"
+                ],
+                "description": "tbd",
+                "operationId": "Get",
+                "responses": {
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                }
+            ]
+        },
+        "/users/{userId}/eCardTemplates": {
+            "get": {
+                "tags": [
+                    "Templates"
+                ],
+                "description": "tbd",
+                "operationId": "Get",
+                "responses": {
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                }
+            ]
+        },
+        "/users/{userId}/eCardTemplatesSelections": {
+            "get": {
+                "tags": [
+                    "Templates Selections"
+                ],
+                "description": "tbd",
+                "operationId": "Get",
+                "responses": {
                     "default": {
                         "$ref": "#/components/responses/default"
                     }
@@ -181,12 +295,75 @@
             "apiInfo": {
                 "type": "object",
                 "properties": {
+                    "currentVersion": {
+                        "type": "string"
+                    },
+                    "links": {
+                        "type": "object",
+                        "properties": {
+                            "actions": {
+                                "description": "Current Actions Endpoint url, see [Actions](#/Actions)",
+                                "type": "string",
+                                "format": "url",
+                                "example": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/actions"
+                            },
+                            "dataExchange": {
+                                "description": "Current Data Exchange Endpoint url, see [Data Exchange](#/Data%20Exchange)",
+                                "type": "string",
+                                "format": "url",
+                                "example": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/dataExchange"
+                            },
+                            "eCards": {
+                                "description": "Current eCards Endpoint url, see [eCards](#/eCards)",
+                                "type": "string",
+                                "format": "url",
+                                "example": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCards"
+                            },
+                            "offers": {
+                                "description": "Current Offers Endpoint url, see [Offers](#/Offers)",
+                                "type": "string",
+                                "format": "url",
+                                "example": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/services/offers"
+                            },
+                            "schema": {
+                                "description": "Current Schema Endpoint url, see [Schema](#/Schema)",
+                                "type": "string",
+                                "format": "url",
+                                "example": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/api/schema"
+                            },
+                            "templates": {
+                                "description": "Current Templates Endpoint url, see [Templates](#/Templates)",
+                                "type": "string",
+                                "format": "url",
+                                "example": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplates"
+                            },
+                            "templatesSelections": {
+                                "description": "Current Templates Selections Endpoint url, see [Templates Selections](#/Templates Selections)",
+                                "type": "string",
+                                "format": "url",
+                                "example": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplatesSelections"
+                            },
+                            "user": {
+                                "description": "Current User Endpoint url, see [Users](#/Users)",
+                                "type": "string",
+                                "format": "url",
+                                "example": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy"
+                            }
+                        }
+                    },
+                    "linkTemplates": {
+                        "type": "object",
+                        "properties": {
+                            "services": {
+                                "type": "string",
+                                "format": "url",
+                                "example": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplates/{templateId}/services/{service}"
+                            }
+                        }
+                    },
                     "serverTime": {
                         "description": "Server time in unix time in mili seconds.",
                         "type": "number"
-                    },
-                    "currentVersion": {
-                        "type": "string"
                     }
                 }
             },
@@ -234,7 +411,7 @@
                             "Code 93",
                             "GS1 DataMatrix",
                             "ITF"
-                            ],
+                        ],
                         "minItems": 1,
                         "maxItems": 1
                     },
@@ -622,10 +799,8 @@
                 "type": "object"
             },
             "userId": {
-                "description": "[User Id](https://github.com/fdriesenaar/eCards#user-id)",
-                "type": "string",
-                "minItems": 1,
-                "maxItems": 1
+                "description": "See [User Id](https://github.com/fdriesenaar/eCards#user-id)",
+                "type": "string"
             }
         },
         "responses": {
@@ -641,7 +816,7 @@
                         },
                         "examples": {
                             "apiGetAppAuthenticated": {
-                                "$ref": "#/components/examples/apiGetAppAuthenticated"
+                                "$ref": "#/components/examples/apiInfo"
                             }
                         }
                     }
@@ -906,10 +1081,23 @@
                     "type": "InteractAction"
                 }
             ],
-            "apiGetAppAuthenticated": {
+            "apiInfo": {
                 "value": {
-                    "serverTime": 1568366519145,
-                    "currentVersion": "1.0.67-SNAPSHOT"
+                    "currentVersion": "1.3.1-SNAPSHOT",
+                    "links": {
+                        "actions": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/actions",
+                        "dataExchange": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/dataExchange",
+                        "eCards": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCards",
+                        "offers": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/services/offers",
+                        "schema": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/api/schema",
+                        "templates": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplates",
+                        "templateSelections": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplatesSelections",
+                        "user": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy"
+                    },
+                    "linkTemplates": {
+                        "services": "https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplates/{templateId}/services/{service}"
+                    },
+                    "serverTime": 1572531524892
                 }
             },
             "authenticationRequired": {

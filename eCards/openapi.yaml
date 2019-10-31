@@ -143,10 +143,21 @@ components:
           - size: large
             url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
       type: InteractAction
-    apiGetAppAuthenticated:
+    apiInfo:
       value:
-        currentVersion: 1.0.67-SNAPSHOT
-        serverTime: 1568366519145
+        currentVersion: 1.3.1-SNAPSHOT
+        linkTemplates:
+          services: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplates/{templateId}/services/{service}
+        links:
+          actions: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/actions
+          dataExchange: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/dataExchange
+          eCards: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCards
+          offers: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/services/offers
+          schema: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/api/schema
+          templateSelections: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplatesSelections
+          templates: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplates
+          user: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy
+        serverTime: 1572531524892
     authenticationRequired:
       value:
         errors:
@@ -246,7 +257,7 @@ components:
         application/json:
           examples:
             apiGetAppAuthenticated:
-              $ref: '#/components/examples/apiGetAppAuthenticated'
+              $ref: '#/components/examples/apiInfo'
           schema:
             $ref: '#/components/schemas/apiInfo'
       description: Api response
@@ -334,6 +345,57 @@ components:
       properties:
         currentVersion:
           type: string
+        linkTemplates:
+          properties:
+            services:
+              example: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplates/{templateId}/services/{service}
+              format: url
+              type: string
+          type: object
+        links:
+          properties:
+            actions:
+              description: Current Actions Endpoint url, see [Actions](#/Actions)
+              example: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/actions
+              format: url
+              type: string
+            dataExchange:
+              description: Current Data Exchange Endpoint url, see [Data Exchange](#/Data%20Exchange)
+              example: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/dataExchange
+              format: url
+              type: string
+            eCards:
+              description: Current eCards Endpoint url, see [eCards](#/eCards)
+              example: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCards
+              format: url
+              type: string
+            offers:
+              description: Current Offers Endpoint url, see [Offers](#/Offers)
+              example: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/services/offers
+              format: url
+              type: string
+            schema:
+              description: Current Schema Endpoint url, see [Schema](#/Schema)
+              example: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/api/schema
+              format: url
+              type: string
+            templates:
+              description: Current Templates Endpoint url, see [Templates](#/Templates)
+              example: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplates
+              format: url
+              type: string
+            templatesSelections:
+              description: Current Templates Selections Endpoint url, see [Templates
+                Selections](#/Templates Selections)
+              example: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplatesSelections
+              format: url
+              type: string
+            user:
+              description: Current User Endpoint url, see [Users](#/Users)
+              example: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy
+              format: url
+              type: string
+          type: object
         serverTime:
           description: Server time in unix time in mili seconds.
           type: number
@@ -665,9 +727,7 @@ components:
     transaction:
       type: object
     userId:
-      description: '[User Id](https://github.com/fdriesenaar/eCards#user-id)'
-      maxItems: 1
-      minItems: 1
+      description: See [User Id](https://github.com/fdriesenaar/eCards#user-id)
       type: string
   securitySchemes:
     appAuthentication:
@@ -694,7 +754,7 @@ paths:
         default:
           $ref: '#/components/responses/default'
       tags:
-      - users
+      - Users
     parameters:
     - $ref: '#/components/parameters/userId'
   /users/{userId}/actions:
@@ -717,7 +777,7 @@ paths:
         default:
           $ref: '#/components/responses/default'
       tags:
-      - actions
+      - Actions
   /users/{userId}/api:
     get:
       description: See [GET Api](https://github.com/fdriesenaar/eCards#api-info).
@@ -729,6 +789,72 @@ paths:
           $ref: '#/components/responses/default'
       tags:
       - api
+    parameters:
+    - $ref: '#/components/parameters/userId'
+  /users/{userId}/api/schema:
+    get:
+      description: tbd
+      operationId: Get
+      responses:
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - Schema
+    parameters:
+    - $ref: '#/components/parameters/userId'
+  /users/{userId}/dataExchange:
+    get:
+      description: tbd
+      operationId: Get
+      responses:
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - Data Exchange
+    parameters:
+    - $ref: '#/components/parameters/userId'
+  /users/{userId}/eCardTemplates:
+    get:
+      description: tbd
+      operationId: Get
+      responses:
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - Templates
+    parameters:
+    - $ref: '#/components/parameters/userId'
+  /users/{userId}/eCardTemplatesSelections:
+    get:
+      description: tbd
+      operationId: Get
+      responses:
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - Templates Selections
+    parameters:
+    - $ref: '#/components/parameters/userId'
+  /users/{userId}/eCards:
+    get:
+      description: tbd
+      operationId: Get
+      responses:
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - eCards
+    parameters:
+    - $ref: '#/components/parameters/userId'
+  /users/{userId}/services/offers:
+    get:
+      description: tbd
+      operationId: Get
+      responses:
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - Offers
     parameters:
     - $ref: '#/components/parameters/userId'
 security:
