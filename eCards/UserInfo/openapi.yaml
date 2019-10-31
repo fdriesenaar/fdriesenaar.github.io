@@ -16,11 +16,32 @@ components:
       description: Get url response
       format: encrypted using AES128, AES192 or AES256 and none IV
       properties:
-        balance:
-          description: Standard claim and part of the Cardinfo scope
+        card_balance:
+          description: Standard claim and part of the Card Balance scope
           type: number
-        cardnumber:
-          description: Standard claim and part of the Cardinfo scope
+        card_expire_date:
+          description: Standard claim and part of the Card Info scope
+          format: date-time
+          type: string
+        card_expire_date_verified:
+          description: Standard claim and part of the Card Info scope
+          format: date-time
+          type: string
+        card_number:
+          description: Unique identifier of an eCard, standard claim and part of the
+            Card Info scope
+          type: string
+        card_number_verified:
+          description: Standard claim and part of the Card Info scope
+          format: date-time
+          type: string
+        card_secret:
+          description: PIN or security code of the (gift)card, standard claim and
+            part of the Card Secret scope.
+          type: string
+        card_secret_verified:
+          description: Standard claim and part of the Card Secret scope.
+          format: date-time
           type: string
         email:
           description: Part of the Email scope
@@ -52,10 +73,6 @@ components:
         picture:
           description: Part of the Profile scope
           format: binary
-          type: string
-        secret:
-          description: PIN or security code of the (gift)card, standard claim and
-            part of the Secret scope.
           type: string
         updated_at:
           description: Part of the Profile scope
@@ -124,7 +141,9 @@ paths:
           description: (base part of) Website url
   /{urlPath}:
     get:
-      description: Get encrypted User Info
+      description: 'Get encrypted data using provided url, for an example: [click
+        here](https://card.dolden.net/ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5).<p>The
+        data is cached for 10 minutes by default, so .'
       operationId: Get encrypted User Info
       responses:
         '200':
