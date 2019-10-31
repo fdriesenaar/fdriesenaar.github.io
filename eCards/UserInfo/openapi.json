@@ -107,11 +107,11 @@
                 "format": "encrypted using AES128, AES192 or AES256 and none IV",
                 "properties": {
                     "balance": {
-                        "description": "Part of the Cardinfo scope",
-                        "type": "string"
+                        "description": "Standard claim and part of the Cardinfo scope",
+                        "type": "number"
                     },
                     "cardnumber": {
-                        "description": "Part of the Cardinfo scope",
+                        "description": "Standard claim and part of the Cardinfo scope",
                         "type": "string"
                     },
                     "email": {
@@ -131,8 +131,10 @@
                         "type": "string"
                     },
                     "locale": {
-                        "description": "Part of the Locale scope",
-                        "type": "string"
+                        "description": "Standard claim and part of the Locale scope",
+                        "type": "string",
+                        "format": "BCP47 with underscore ('_') support als alternative for the dash ('-')",
+                        "example": "en-US"
                     },
                     "middle_name": {
                         "description": "Part of the Profile scope",
@@ -148,15 +150,17 @@
                     },
                     "picture": {
                         "description": "Part of the Profile scope",
-                        "type": "string"
+                        "type": "string",
+                        "format": "binary"
                     },
                     "secret": {
-                        "description": "PIN or security code of the (gift)card, part of the Secret scope.",
+                        "description": "PIN or security code of the (gift)card, standard claim and part of the Secret scope.",
                         "type": "string"
                     },
                     "updated_at": {
                         "description": "Part of the Profile scope",
-                        "type": "string"
+                        "type": "string",
+                        "format": "date-time"
                     }
                 }
             },
