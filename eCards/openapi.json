@@ -9,8 +9,8 @@
         },
         "version": "1.0.0",
         "license": {
-            "name": "Copyright DigitalMe B.V. 2019 - all rights reserved",
-            "url": "https://digital-me.nl"
+            "name": "Copyright Dappre B.V. 2019 - all rights reserved",
+            "url": "https://dappre.com"
         }
     },
     "servers": [
@@ -1060,3 +1060,4 @@
         }
     ]
 }
+

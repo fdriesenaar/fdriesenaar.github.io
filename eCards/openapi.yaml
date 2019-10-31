@@ -678,8 +678,8 @@ info:
     description: Find more info here
     url: https://github.com/fdriesenaar/eCards
   license:
-    name: Copyright DigitalMe B.V. 2019 - all rights reserved
-    url: https://digital-me.nl
+    name: Copyright Dappre B.V. 2019 - all rights reserved
+    url: https://dappre.com
   title: eCards API
   version: 1.0.0
 openapi: 3.0.0
