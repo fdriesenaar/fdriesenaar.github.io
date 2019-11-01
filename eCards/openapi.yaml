@@ -882,7 +882,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HttpResponseBody'
+                $ref: '#/components/reponses/HttpResponseBody'
           description: 202 Response
         '204':
           $ref: '#/components/responses/userDeleted'
@@ -911,7 +911,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HttpResponseBody'
+                $ref: '#/components/reponses/HttpResponseBody'
           description: 202 Response
         '204':
           $ref: '#/components/responses/actionPosted'
@@ -930,7 +930,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HttpResponseBody'
+                $ref: '#/components/reponses/HttpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -949,7 +949,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HttpResponseBody'
+                $ref: '#/components/reponses/HttpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -966,7 +966,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HttpResponseBody'
+                $ref: '#/components/reponses/HttpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -983,7 +983,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HttpResponseBody'
+                $ref: '#/components/reponses/HttpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1010,7 +1010,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HttpResponseBody'
+                $ref: '#/components/reponses/HttpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1025,7 +1025,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HttpResponseBody'
+                $ref: '#/components/reponses/HttpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1044,7 +1044,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HttpResponseBody'
+                $ref: '#/components/reponses/HttpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1100,7 +1100,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HttpResponseBody'
+                $ref: '#/components/reponses/HttpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'

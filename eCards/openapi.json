@@ -65,7 +65,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                    "$ref": "#/components/reponses/HttpResponseBody"
                                 }
                             }
                         }
@@ -100,7 +100,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                    "$ref": "#/components/reponses/HttpResponseBody"
                                 }
                             }
                         }
@@ -132,7 +132,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                    "$ref": "#/components/reponses/HttpResponseBody"
                                 }
                             }
                         }
@@ -175,7 +175,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                    "$ref": "#/components/reponses/HttpResponseBody"
                                 }
                             }
                         }
@@ -207,7 +207,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                    "$ref": "#/components/reponses/HttpResponseBody"
                                 }
                             }
                         }
@@ -239,7 +239,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                    "$ref": "#/components/reponses/HttpResponseBody"
                                 }
                             }
                         }
@@ -333,7 +333,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                    "$ref": "#/components/reponses/HttpResponseBody"
                                 }
                             }
                         }
@@ -362,7 +362,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                    "$ref": "#/components/reponses/HttpResponseBody"
                                 }
                             }
                         }
@@ -411,7 +411,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                    "$ref": "#/components/reponses/HttpResponseBody"
                                 }
                             }
                         }
@@ -435,7 +435,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                    "$ref": "#/components/reponses/HttpResponseBody"
                                 }
                             }
                         }
