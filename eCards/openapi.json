@@ -919,44 +919,6 @@
                             "$ref": "#/components/schemas/balanceAndTransactionsResponse"
                         }
                     }
-                },
-                "default": {
-                    "description": "Default response",
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "errors": {
-                                        "type": "array",
-                                        "items": {
-                                            "type": "object",
-                                            "properties": {
-                                                "status": {
-                                                    "type": "number",
-                                                    "enum": [
-                                                        401
-                                                    ]
-                                                },
-                                                "message": {
-                                                    "type": "string",
-                                                    "pattern": "Authentication required!"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            "examples": {
-                                "example": {
-                                    "$ref": "#/components/examples/authenticationRequired"
-                                }
-                            }
-                        }
-                    }
-                },
-                "userDeleted": {
-                    "description": "User deleted"
                 }
             },
             "default": {
@@ -1017,6 +979,9 @@
                         }
                     }
                 }
+            },
+            "userDeleted": {
+                "description": "User deleted"
             }
         },
         "parameters": {

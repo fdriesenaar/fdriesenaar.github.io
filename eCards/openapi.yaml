@@ -279,31 +279,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/balanceAndTransactionsResponse'
-      default:
-        content:
-          application/json:
-            examples:
-              example:
-                $ref: '#/components/examples/authenticationRequired'
-            schema:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      message:
-                        pattern: Authentication required!
-                        type: string
-                      status:
-                        enum:
-                        - 401
-                        type: number
-                    type: object
-                  type: array
-              type: object
-        description: Default response
       description: BalanceAndTransactions Get response 200
-      userDeleted:
-        description: User deleted
     default:
       content:
         application/json:
@@ -340,6 +316,8 @@ components:
             example:
               $ref: examples/openapi.yaml
       description: Get openapi.yaml response
+    userDeleted:
+      description: User deleted
   schemas:
     action:
       description: See [Action](https://github.com/fdriesenaar/eCards#action)
