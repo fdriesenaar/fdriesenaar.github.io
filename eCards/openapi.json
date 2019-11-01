@@ -437,6 +437,9 @@
                 "type": "http",
                 "scheme": "Basic"
             },
+            "balanceAndTransactions": {
+                "description": "Balance and Transactions response body"
+            },
             "balanceAndTransactionsRequest": {
                 "description": "Balance and Transactions request body",
                 "type": "object",
@@ -914,12 +917,12 @@
                     }
                 }
             },
-            "balanceAndTransactionsResponse": {
+            "balanceAndTransactions": {
                 "description": "BalanceAndTransactions Get response 200",
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "#/components/schemas/balanceAndTransactionsResponse"
+                            "$ref": "#/components/schemas/balanceAndTransactions"
                         }
                     }
                 }

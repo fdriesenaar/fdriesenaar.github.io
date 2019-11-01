@@ -274,11 +274,11 @@ components:
             json-schema draf-4 example:
               description: See [.examples/schema.json](./examples/schema.json)
       description: Api schema response
-    balanceAndTransactionsResponse:
+    balanceAndTransactions:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/balanceAndTransactionsResponse'
+            $ref: '#/components/schemas/balanceAndTransactions'
       description: BalanceAndTransactions Get response 200
     default:
       content:
@@ -437,6 +437,8 @@ components:
       description: See [App Authentication](https://github.com/fdriesenaar/eCards#app-authentication)
       scheme: Basic
       type: http
+    balanceAndTransactions:
+      description: Balance and Transactions response body
     balanceAndTransactionsRequest:
       description: Balance and Transactions request body
       properties:
