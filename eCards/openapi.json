@@ -341,8 +341,8 @@
                 "tags": [
                     "Templates"
                 ],
-                "description": "tbd",
-                "operationId": "Get",
+                "description": "Get templates",
+                "operationId": "Get templates",
                 "responses": {
                     "202": {
                         "$ref": "#/components/responses/httpResponseBody"
@@ -358,7 +358,7 @@
                 }
             ]
         },
-        "/v1/users/{userId}/eCardTemplates/{ecardTemplateId}/services/balanceAndTransactions": {
+        "/v1/users/{userId}/eCardTemplates/{templateId}/services/balanceAndTransactions": {
             "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+4+-+eCards+Balance+and+Transactions",
             "post": {
                 "tags": [
@@ -391,7 +391,45 @@
                     "$ref": "#/components/parameters/userId"
                 },
                 {
-                    "$ref": "#/components/parameters/eCardTemplateId"
+                    "$ref": "#/components/parameters/templateId"
+                }
+            ]
+        },
+        "/v1/users/{userId}/eCardTemplates/{templateId}/services/places": {
+            "post": {
+                "tags": [
+                    "Places"
+                ],
+                "description": "Get places",
+                "operationId": "Get places",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/placesFilterV1"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/places"
+                    },
+                    "202": {
+                        "$ref": "#/components/responses/httpResponseBody"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                },
+                {
+                    "$ref": "#/components/parameters/templateId"
                 }
             ]
         },
@@ -694,6 +732,23 @@
                         "QR",
                         "UPC-E"
                     ]
+                }
+            },
+            "distance": {
+                "type": "object",
+                "properties": {
+                    "number": {
+                        "minimum": 0,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "lengthUnitOfMeasure": {
+                        "type": "string",
+                        "enum": [
+                            "miles",
+                            "km"
+                        ]
+                    }
                 }
             },
             "eCard": {
@@ -1037,7 +1092,21 @@
                 }
             },
             "geometry": {
-                "type": "object"
+                "summary": "Geometry",
+                "description": "See https://schema.org/geo",
+                "type": "object",
+                "properties": {
+                    "latitude": {
+                        "type": "number",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "minItems": 1,
+                        "maxItems": 1
+                    }
+                }
             },
             "httpResponseBody": {
                 "type": "object",
@@ -1083,6 +1152,28 @@
                         "format": "int32",
                         "minItems": 1,
                         "maxItems": 1
+                    }
+                }
+            },
+            "placesFilterV1": {
+                "description": "Get places request body",
+                "type": "object",
+                "properties": {
+                    "geometry": {
+                        "$ref": "#/components/schemas/geometry",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "paging": {
+                        "$ref": "#/components/schemas/paging"
+                    },
+                    "maxDistance": {
+                        "$ref": "#/components/schemas/distance",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "templateEligibility": {
+                        "$ref": "#/components/schemas/objectId"
                     }
                 }
             },
@@ -1237,8 +1328,8 @@
                     "$ref": "#/components/schemas/eCardsMetaData"
                 }
             },
-            "eCardTemplateId": {
-                "name": "ecard_template_id",
+            "templateId": {
+                "name": "templateId",
                 "description": "eCard template object id",
                 "in": "path",
                 "schema": {
