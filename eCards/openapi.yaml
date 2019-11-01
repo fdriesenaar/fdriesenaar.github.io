@@ -1067,20 +1067,6 @@ paths:
     - $ref: '#/components/parameters/userId'
     post:
       operationId: addECard
-      parameters:
-      - in: path
-        name: userId
-        required: true
-        schema:
-          $ref: '#/components/schemas/CreatorId'
-      - in: header
-        name: ECards-MetaData
-        schema:
-          type: string
-      - in: header
-        name: User-Agent
-        schema:
-          type: string
       requestBody:
         content:
           application/json:

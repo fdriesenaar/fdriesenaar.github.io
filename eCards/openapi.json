@@ -209,30 +209,6 @@
             },
             "post": {
                 "operationId": "addECard",
-                "parameters": [
-                    {
-                        "name": "userId",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/CreatorId"
-                        }
-                    },
-                    {
-                        "name": "ECards-MetaData",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "User-Agent",
-                        "in": "header",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -384,14 +360,6 @@
         },
         "/v1/users/{userId}/eCardTemplates/{ecardTemplateId}/services/balanceAndTransactions": {
             "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+4+-+eCards+Balance+and+Transactions",
-            "parameters": [
-                {
-                    "$ref": "#/components/parameters/userId"
-                },
-                {
-                    "$ref": "#/components/parameters/eCardTemplateId"
-                }
-            ],
             "post": {
                 "tags": [
                     "Balance and transactions"
@@ -417,7 +385,15 @@
                         "$ref": "#/components/responses/default"
                     }
                 }
-            }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                },
+                {
+                    "$ref": "#/components/parameters/eCardTemplateId"
+                }
+            ]
         },
         "/v1/users/{userId}/eCardTemplatesSelections": {
             "get": {
