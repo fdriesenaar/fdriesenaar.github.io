@@ -158,9 +158,6 @@ components:
           templates: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy/eCardTemplates
           user: https://dev2-card.testonly.digital-me.nl/ecards/v1/users/rudy
         serverTime: 1572531524892
-    apiSchema:
-      externalValue: schema.json
-      summary: Api schema example
     authenticationRequired:
       value:
         errors:
@@ -236,12 +233,6 @@ components:
           url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
         - size: large
           url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-    openapiDotJson:
-      externalValue: examples/openapi.json
-      summary: openapi.json example
-    openapiDotYaml:
-      externalValue: examples/openapi.yaml
-      summary: openapi.yaml example
     style:
       backgroundColor: '#FFDD00'
       backgroundImage:
@@ -281,7 +272,7 @@ components:
         application/json:
           examples:
             json-schema draf-4 example:
-              $ref: '#/components/examples/apiSchema'
+              $ref: examples/schema.json
       description: Api schema response
     balanceAndTransactions:
       content:
@@ -313,19 +304,41 @@ components:
       description: BalanceAndTransactions Get response 200
       userDeleted:
         description: User deleted
+    default:
+      content:
+        application/json:
+          examples:
+            example:
+              $ref: '#/components/examples/authenticationRequired'
+          schema:
+            properties:
+              errors:
+                items:
+                  properties:
+                    message:
+                      pattern: Authentication required!
+                      type: string
+                    status:
+                      enum:
+                      - 401
+                      type: number
+                  type: object
+                type: array
+            type: object
+      description: Default response
     openapiDotJson:
       content:
         application/json:
           examples:
             example:
-              $ref: '#/components/examples/openapiDotJson'
+              $ref: examples/openapi.json
       description: Get openapi.json response
     openapiDotYaml:
       content:
         application/yaml:
           examples:
             example:
-              $ref: '#/components/examples/openapiDotYaml'
+              $ref: examples/openapi.yaml
       description: Get openapi.yaml response
   schemas:
     action:
@@ -794,6 +807,20 @@ info:
   version: 1.0.0
 openapi: 3.0.0
 paths:
+  /openapi.json:
+    get:
+      responses:
+        '200':
+          $ref: '#/components/responses/openapiDotJson'
+      tags:
+      - openapi
+  /openapi.yaml:
+    get:
+      responses:
+        '200':
+          $ref: '#/components/responses/openapiDotYaml'
+      tags:
+      - openapi
   /v1/users/{userId}:
     delete:
       description: See [Delete user](https://github.com/fdriesenaar/eCards#delete-user).
@@ -843,7 +870,7 @@ paths:
     - $ref: '#/components/parameters/userId'
   /v1/users/{userId}/api/schema:
     get:
-      description: tbd
+      description: OpenAPI Document for eCards in json-schema draft 4
       operationId: Get
       responses:
         '200':
@@ -851,7 +878,7 @@ paths:
         default:
           $ref: '#/components/responses/default'
       tags:
-      - Schema
+      - openapi
     parameters:
     - $ref: '#/components/parameters/userId'
   /v1/users/{userId}/dataExchange:
@@ -930,20 +957,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/HttpResponseBody'
           description: 202 Response
-  openapi.json:
-    get:
-      responses:
-        '200':
-          $ref: '#/components/responses/openapiDotJson'
-      tags:
-      - openapi.json
-  openapi.yaml:
-    get:
-      responses:
-        '200':
-          $ref: '#/components/responses/openapiDotYaml'
-      tags:
-      - openapi.yaml
 security:
 - appAuthentication: []
 servers:

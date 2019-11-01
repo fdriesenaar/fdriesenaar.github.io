@@ -28,10 +28,10 @@
         }
     ],
     "paths": {
-        "openapi.json": {
+        "/openapi.json": {
             "get": {
                 "tags": [
-                    "openapi.json"
+                    "openapi"
                 ],
                 "responses": {
                     "200": {
@@ -40,10 +40,10 @@
                 }
             }
         },
-        "openapi.yaml": {
+        "/openapi.yaml": {
             "get": {
                 "tags": [
-                    "openapi.yaml"
+                    "openapi"
                 ],
                 "responses": {
                     "200": {
@@ -84,6 +84,28 @@
                 "responses": {
                     "200": {
                         "$ref": "#/components/responses/api"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                }
+            ]
+        },
+        "/v1/users/{userId}/api/schema": {
+            "get": {
+                "tags": [
+                    "openapi"
+                ],
+                "description": "OpenAPI Document for eCards in json-schema draft 4",
+                "operationId": "Get",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/apiSchema"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -178,28 +200,6 @@
                 "description": "tbd",
                 "operationId": "Get",
                 "responses": {
-                    "default": {
-                        "$ref": "#/components/responses/default"
-                    }
-                }
-            },
-            "parameters": [
-                {
-                    "$ref": "#/components/parameters/userId"
-                }
-            ]
-        },
-        "/v1/users/{userId}/api/schema": {
-            "get": {
-                "tags": [
-                    "Schema"
-                ],
-                "description": "tbd",
-                "operationId": "Get",
-                "responses": {
-                    "200": {
-                        "$ref": "#/components/responses/apiSchema"
-                    },
                     "default": {
                         "$ref": "#/components/responses/default"
                     }
@@ -905,7 +905,7 @@
                     "application/json": {
                         "examples": {
                             "json-schema draf-4 example": {
-                                "$ref": "#/components/examples/apiSchema"
+                                "$ref": "examples/schema.json"
                             }
                         }
                     }
@@ -959,13 +959,48 @@
                     "description": "User deleted"
                 }
             },
+            "default": {
+                "description": "Default response",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "errors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "status": {
+                                                "type": "number",
+                                                "enum": [
+                                                    401
+                                                ]
+                                            },
+                                            "message": {
+                                                "type": "string",
+                                                "pattern": "Authentication required!"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "examples": {
+                            "example": {
+                                "$ref": "#/components/examples/authenticationRequired"
+                            }
+                        }
+                    }
+                }
+            },
             "openapiDotJson": {
                 "description": "Get openapi.json response",
                 "content": {
                     "application/json": {
                         "examples": {
                             "example": {
-                                "$ref": "#/components/examples/openapiDotJson"
+                                "$ref": "examples/openapi.json"
                             }
                         }
                     }
@@ -977,7 +1012,7 @@
                     "application/yaml": {
                         "examples": {
                             "example": {
-                                "$ref": "#/components/examples/openapiDotYaml"
+                                "$ref": "examples/openapi.yaml"
                             }
                         }
                     }
@@ -1231,10 +1266,6 @@
                     "serverTime": 1572531524892
                 }
             },
-            "apiSchema": {
-                "summary": "Api schema example",
-                "externalValue": "schema.json"
-            },
             "authenticationRequired": {
                 "value": {
                     "errors": [
@@ -1352,14 +1383,6 @@
                         }
                     ]
                 }
-            },
-            "openapiDotJson": {
-                "summary": "openapi.json example",
-                "externalValue": "examples/openapi.json"
-            },
-            "openapiDotYaml": {
-                "summary": "openapi.yaml example",
-                "externalValue": "examples/openapi.yaml"
             },
             "style": {
                 "backgroundColor": "#FFDD00",
