@@ -1,0 +1,644 @@
+openapi: 3.0.1
+info:
+  title: eCards API
+  description: The eCards API provides persistence and loyalty services for eCards
+    to end-users.
+  version: 1.3.1-SNAPSHOT
+paths:
+  /v1/users/{userId}/api/schema:
+    get:
+      operationId: getSchema
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/users/{userId}/api:
+    get:
+      operationId: getApiInfo
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /v1/users/{userId}/actions:
+    post:
+      operationId: addActions
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - name: User-Agent
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Document'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /v1/users/{userId}/eCards:
+    get:
+      operationId: listECards
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - name: _id
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+      - name: projection
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document'
+    post:
+      operationId: addECard
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - name: ECards-MetaData
+        in: header
+        schema:
+          type: string
+      - name: User-Agent
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                empty:
+                  type: boolean
+              additionalProperties:
+                type: object
+        required: true
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /v1/users/{userId}/eCards/{oid}:
+    put:
+      operationId: updateECard
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - name: oid
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ObjectId'
+      - name: ECards-MetaData
+        in: header
+        schema:
+          type: string
+      - name: User-Agent
+        in: header
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                empty:
+                  type: boolean
+              additionalProperties:
+                type: object
+        required: true
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+    delete:
+      operationId: deleteECard
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - name: oid
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ObjectId'
+      - name: ECards-MetaData
+        in: header
+        schema:
+          type: string
+      - name: User-Agent
+        in: header
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /v1/users/{userId}/eCardTemplates:
+    get:
+      operationId: getTemplates
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - name: _id
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+      - name: summaries
+        in: query
+        schema:
+          type: boolean
+      - name: projection
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document'
+  /v1/users/{userId}/eCardTemplatesSelections:
+    get:
+      operationId: getTemplates_1
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - name: projection
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Document'
+  /v1/users/{userId}/eCardTemplates/{templateId}/services/places:
+    post:
+      operationId: places
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPlacesFilterV1'
+        required: true
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /v1/users/{userId}/eCardTemplates/{templateId}/services/webshops:
+    post:
+      operationId: webshops
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PagingFilterV1'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /v1/users/{userId}/eCardTemplates/{templateId}/services/offers:
+    post:
+      operationId: offers
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - name: templateId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PagingFilterV1'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /v1/users/{userId}/eCardTemplates/{templateId}/services/preCheck:
+    post:
+      operationId: preCheck
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetCardBalanceFilterV1'
+        required: true
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /v1/users/{userId}/eCardTemplates/{templateId}/services/balanceAndTransactions:
+    post:
+      operationId: balanceAndTransactions
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: templateId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ObjectId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetCardBalanceFilterV1'
+        required: true
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /{a}/eCardTemplates:
+    get:
+      operationId: getTemplates_2
+      parameters:
+      - name: _id
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'
+      - name: projection
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Document'
+  /{a}/dataExchange/{id}:
+    get:
+      operationId: retrieveDataFromExchange
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /v1/users/{userId}:
+    get:
+      operationId: getCreator
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+    delete:
+      operationId: deleteCreator
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - name: ECards-MetaData
+        in: header
+        schema:
+          type: string
+      - name: User-Agent
+        in: header
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /v1/users/{userId}/dataExchange:
+    post:
+      operationId: addDataToExchange
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - name: callsLeft
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 2
+      - name: ttlSec
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 60
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+                format: byte
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /v1/users/{userId}/services/offers:
+    post:
+      operationId: offers_1
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplatePagingFilterV1'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+components:
+  schemas:
+    CreatorId:
+      type: object
+    Document:
+      type: object
+      properties:
+        empty:
+          type: boolean
+      additionalProperties:
+        type: object
+    ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+        counter:
+          type: integer
+          format: int32
+        time:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date-time
+        machineIdentifier:
+          type: integer
+          format: int32
+        processIdentifier:
+          type: integer
+          format: int32
+        timeSecond:
+          type: integer
+          format: int32
+    Distance:
+      type: object
+      properties:
+        number:
+          minimum: 0
+          type: integer
+          format: int32
+        lengthUnitOfMeasure:
+          type: string
+    Geometry:
+      required:
+      - latitude
+      - longitude
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+    GetPlacesFilterV1:
+      required:
+      - geometry
+      - maxDistance
+      type: object
+      properties:
+        paging:
+          $ref: '#/components/schemas/Paging'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        templateEligibility:
+          $ref: '#/components/schemas/ObjectId'
+        maxDistance:
+          $ref: '#/components/schemas/Distance'
+    Paging:
+      required:
+      - offset
+      - pageSize
+      type: object
+      properties:
+        offset:
+          minimum: 0
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+    PagingFilterV1:
+      type: object
+      properties:
+        paging:
+          $ref: '#/components/schemas/Paging'
+    GetCardBalanceFilterV1:
+      type: object
+      properties:
+        paging:
+          $ref: '#/components/schemas/Paging'
+        pin:
+          type: string
+          writeOnly: true
+        cardCode:
+          type: string
+        cardId:
+          type: string
+    TemplatePagingFilterV1:
+      required:
+      - templateIds
+      type: object
+      properties:
+        paging:
+          $ref: '#/components/schemas/Paging'
+        templateIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectId'

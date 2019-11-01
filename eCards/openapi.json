@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "eCards API",
-        "description": "Find more info here: [eCards Service](https://github.com/fdriesenaar/eCards)",
+        "description": "Find more info here: [eCards API](https://github.com/fdriesenaar/eCards)",
         "externalDocs": {
             "description": "Find more info here",
             "url": "https://github.com/fdriesenaar/eCards"
@@ -15,20 +15,44 @@
     },
     "servers": [
         {
-            "url": "https://dev2-card.testonly.digital-me.nl/ecards/v1",
+            "url": "https://dev2-card.testonly.digital-me.nl/ecards",
             "description": "Development 2 server"
         },
         {
-            "url": "https://card.dolden.net/ecards/v1",
+            "url": "https://card.dolden.net/ecards",
             "description": "Acceptance server"
         },
         {
-            "url": "https://card.digital-me.nl/ecards/v1",
+            "url": "https://card.digital-me.nl/ecards",
             "description": "Production server"
         }
     ],
     "paths": {
-        "/users/{userId}": {
+        "openapi.json": {
+            "get": {
+                "tags": [
+                    "openapi.json"
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/openapiDotJson"
+                    }
+                }
+            }
+        },
+        "openapi.yaml": {
+            "get": {
+                "tags": [
+                    "openapi.yaml"
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/openapiDotYaml"
+                    }
+                }
+            }
+        },
+        "/v1/users/{userId}": {
             "delete": {
                 "tags": [
                     "Users"
@@ -50,7 +74,7 @@
                 }
             ]
         },
-        "/users/{userId}/api": {
+        "/v1/users/{userId}/api": {
             "get": {
                 "tags": [
                     "api"
@@ -72,7 +96,7 @@
                 }
             ]
         },
-        "/users/{userId}/actions": {
+        "/v1/users/{userId}/actions": {
             "post": {
                 "tags": [
                     "Actions"
@@ -108,7 +132,7 @@
                 }
             ]
         },
-        "/users/{userId}/dataExchange": {
+        "/v1/users/{userId}/dataExchange": {
             "get": {
                 "tags": [
                     "Data Exchange"
@@ -127,7 +151,7 @@
                 }
             ]
         },
-        "/users/{userId}/eCards": {
+        "/v1/users/{userId}/eCards": {
             "get": {
                 "tags": [
                     "eCards"
@@ -146,7 +170,7 @@
                 }
             ]
         },
-        "/users/{userId}/services/offers": {
+        "/v1/users/{userId}/services/offers": {
             "get": {
                 "tags": [
                     "Offers"
@@ -165,7 +189,7 @@
                 }
             ]
         },
-        "/users/{userId}/api/schema": {
+        "/v1/users/{userId}/api/schema": {
             "get": {
                 "tags": [
                     "Schema"
@@ -187,7 +211,7 @@
                 }
             ]
         },
-        "/users/{userId}/eCardTemplates": {
+        "/v1/users/{userId}/eCardTemplates": {
             "get": {
                 "tags": [
                     "Templates"
@@ -206,7 +230,45 @@
                 }
             ]
         },
-        "/users/{userId}/eCardTemplatesSelections": {
+        "/v1/users/{user_id}/eCardTemplates/{ecard_template_id}/services/balanceAndTransactions": {
+            "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+4+-+eCards+Balance+and+Transactions",
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                },
+                {
+                    "$ref": "#/components/parameters/eCardTemplateId"
+                }
+            ],
+            "post": {
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/cardInfoScopre"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/balanceAndTransactions"
+                    },
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/users/{userId}/eCardTemplatesSelections": {
             "get": {
                 "tags": [
                     "Templates Selections"
@@ -374,6 +436,18 @@
                 "description": "See [App Authentication](https://github.com/fdriesenaar/eCards#app-authentication)",
                 "type": "http",
                 "scheme": "Basic"
+            },
+            "balanceAndTransactionsRequest": {
+                "description": "Balance and Transactions request body",
+                "type": "object",
+                "properties": {
+                    "cardId": {
+                        "type": "string"
+                    },
+                    "pin": {
+                        "type": "string"
+                    }
+                }
             },
             "brandName": {
                 "type": "object",
@@ -826,2297 +900,99 @@
                 }
             },
             "apiSchema": {
+                "description": "Api schema response",
                 "content": {
-                    "examples": {
-                        "example": {
-                            "$schema": "http://json-schema.org/draft-04/schema#",
-                            "id": "https://digital-me.com/schema+json/v1#",
-                            "components": {
-                                "parameters": {
-                                    "eCardObjectId": {
-                                        "name": "ecard_id",
-                                        "description": "eCard object id",
-                                        "in": "path",
-                                        "required": true,
-                                        "schema": {
-                                            "$ref": "#/components/schemas/ObjectId"
-                                        }
-                                    },
-                                    "eCardObjectIds": {
-                                        "name": "_id",
-                                        "description": "eCard object id",
-                                        "in": "query",
-                                        "required": false,
-                                        "schema": {
-                                            "$ref": "#/components/schemas/ObjectId"
-                                        },
-                                        "style": "form",
-                                        "explode": true
-                                    },
-                                    "eCardTemplateId": {
-                                        "name": "ecard_template_id",
-                                        "description": "eCard template object id",
-                                        "in": "path",
-                                        "schema": {
-                                            "$ref": "#/components/schemas/ObjectId"
-                                        }
-                                    },
-                                    "eCardTemplateObjectIds": {
-                                        "name": "_id",
-                                        "description": "eCard template object id",
-                                        "in": "query",
-                                        "required": false,
-                                        "schema": {
-                                            "type": "array"
-                                        },
-                                        "style": "form",
-                                        "explode": true
-                                    },
-                                    "Projection": {
-                                        "name": "projection",
-                                        "in": "query",
-                                        "description": "Project fields to return from request, see https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/#projection.",
-                                        "example": "%7B%22_id%22%3A%20true%2C%20%22dateModified%22%3A%20true%7D",
-                                        "allowReserved": false,
-                                        "required": false
-                                    },
-                                    "UserId": {
-                                        "name": "user_id",
-                                        "in": "path",
-                                        "required": true,
-                                        "schema": {
-                                            "$ref": "#/components/schemas/UserId"
-                                        }
-                                    }
-                                },
-                                "schemas": {
-                                    "Action": {
-                                        "id": "#Action",
-                                        "type": "object",
-                                        "title": "The Action Schema",
-                                        "additionalProperties": false,
-                                        "required": [
-                                            "type",
-                                            "creator_id",
-                                            "dateStart",
-                                            "dateEnd"
-                                        ],
-                                        "properties": {
-                                            "_id": {
-                                                "type": "string",
-                                                "title": "_id"
-                                            },
-                                            "type": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "CreateAction",
-                                                    "InteractAction",
-                                                    "DeleteAction",
-                                                    "ViewOfferAction",
-                                                    "UpdateAction"
-                                                ],
-                                                "title": "Action Type"
-                                            },
-                                            "creator_id": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "Action creator_id"
-                                            },
-                                            "dateStart": {
-                                                "type": [
-                                                    "string"
-                                                ],
-                                                "title": "Action dateStart"
-                                            },
-                                            "dateEnd": {
-                                                "type": [
-                                                    "string"
-                                                ],
-                                                "title": "Action dateEnd"
-                                            },
-                                            "eCard": {
-                                                "$ref": "#/components/schemas/eCard"
-                                            },
-                                            "location": {
-                                                "$ref": "#/components/schemas/Geometry"
-                                            },
-                                            "offer": {
-                                                "$ref": "#/components/schemas/Offer"
-                                            },
-                                            "userAgent": {
-                                                "type": "string",
-                                                "title": "Action User Agent"
-                                            }
-                                        }
-                                    },
-                                    "AddressComponents": {
-                                        "title": "Address components",
-                                        "description": "Address components, loosely based on address_components as defined as part of the Google Places API, see https://developers.google.com/maps/documentation/geocoding/intro#Types.",
-                                        "type": "object",
-                                        "properties": {
-                                            "administrativeAreaLevel1": {
-                                                "type": "string"
-                                            },
-                                            "administrativeAreaLevel2": {
-                                                "type": "string"
-                                            },
-                                            "administrativeAreaLevel3": {
-                                                "type": "string"
-                                            },
-                                            "administrativeAreaLevel4": {
-                                                "type": "string"
-                                            },
-                                            "administrativeAreaLevel5": {
-                                                "type": "string"
-                                            },
-                                            "colloquialArea": {
-                                                "type": "string"
-                                            },
-                                            "countryCode2": {
-                                                "description": "NB: This property has no Google equivalent.",
-                                                "type": "string"
-                                            },
-                                            "countryCode3": {
-                                                "description": "NB: This property has no Google equivalent.",
-                                                "type": "string"
-                                            },
-                                            "countryName": {
-                                                "type": "string"
-                                            },
-                                            "locality": {
-                                                "type": "string"
-                                            },
-                                            "postalCode": {
-                                                "type": "string"
-                                            },
-                                            "route": {
-                                                "type": "string"
-                                            },
-                                            "streetAddress": {
-                                                "type": "string"
-                                            },
-                                            "streetName": {
-                                                "description": "NB: This property has no Google equivalent.",
-                                                "type": "string"
-                                            },
-                                            "streetNumber": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "ApiResponseBody": {
-                                        "content": {
-                                            "application/json": {
-                                                "schema": {
-                                                    "type": "object",
-                                                    "required": [
-                                                        "currentVersion",
-                                                        "links",
-                                                        "linkTemplates",
-                                                        "serverTime"
-                                                    ],
-                                                    "properties": {
-                                                        "currentVersion": {
-                                                            "type": "string"
-                                                        },
-                                                        "links": {
-                                                            "type": "object",
-                                                            "additionalProperties": false,
-                                                            "required": [
-                                                                "actions",
-                                                                "eCards",
-                                                                "offers",
-                                                                "places",
-                                                                "schema",
-                                                                "templateSelections",
-                                                                "templates",
-                                                                "user"
-                                                            ],
-                                                            "properties": {
-                                                                "actions": {
-                                                                    "description": "Actions path endpoint address",
-                                                                    "type": "string"
-                                                                },
-                                                                "eCards": {
-                                                                    "description": "eCards path endpoint address",
-                                                                    "type": "string"
-                                                                },
-                                                                "offers": {
-                                                                    "description": "Offers path endpoint address",
-                                                                    "type": "string"
-                                                                },
-                                                                "places": {
-                                                                    "description": "Places path endpoint address",
-                                                                    "type": "string"
-                                                                },
-                                                                "schema": {
-                                                                    "description": "Schema path endpoint address",
-                                                                    "type": "string"
-                                                                },
-                                                                "templateSelections": {
-                                                                    "description": "Template selections path endpoint address",
-                                                                    "type": "string"
-                                                                },
-                                                                "templates": {
-                                                                    "description": "Templates path endpoint address",
-                                                                    "type": "string"
-                                                                },
-                                                                "user": {
-                                                                    "description": "User path endpoint address",
-                                                                    "type": "string"
-                                                                }
-                                                            }
-                                                        },
-                                                        "linkTemplates": {
-                                                            "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/1605639/SDD+5+eCard+service+descriptor.",
-                                                            "type": "object",
-                                                            "additionalProperties": false,
-                                                            "required": [
-                                                                "services"
-                                                            ],
-                                                            "properties": {
-                                                                "services": {
-                                                                    "type": "string"
-                                                                }
-                                                            }
-                                                        },
-                                                        "serverTime": {
-                                                            "type": "number"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "BalanceAndTransactionsResponseBody": {
-                                        "title": "Balance and transactions response body",
-                                        "id": "#BalanceAndTransactions/Response",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "required": [
-                                            "balance",
-                                            "balanceFactor",
-                                            "currency",
-                                            "dateBalanceUpdated",
-                                            "search",
-                                            "transactions"
-                                        ],
-                                        "properties": {
-                                            "balance": {
-                                                "type": "number"
-                                            },
-                                            "balanceFactor": {
-                                                "type": "number"
-                                            },
-                                            "currency": {
-                                                "type": "string"
-                                            },
-                                            "dateBalanceUpdated": {
-                                                "type": "string"
-                                            },
-                                            "search": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "required": [
-                                                    "cardCode",
-                                                    "dateSearch",
-                                                    "paging"
-                                                ],
-                                                "properties": {
-                                                    "cardCode": {
-                                                        "type": "string"
-                                                    },
-                                                    "dateSearch": {
-                                                        "type": "string"
-                                                    },
-                                                    "paging": {
-                                                        "$ref": "#/components/schemas/Paging"
-                                                    }
-                                                }
-                                            },
-                                            "transactions": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "required": [
-                                                    "totalCount",
-                                                    "page"
-                                                ],
-                                                "properties": {
-                                                    "page": {
-                                                        "type": "array",
-                                                        "items": {
-                                                            "$ref": "#/components/schemas/Transaction"
-                                                        }
-                                                    },
-                                                    "totalCount": {
-                                                        "description": "Total number of transactions.",
-                                                        "type": "number"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "BrandName": {
-                                        "type": "object",
-                                        "title": "Brand name",
-                                        "required": [
-                                            "name"
-                                        ],
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "title": "Brand Name",
-                                                "description": "Brand name to be used on the eCard."
-                                            }
-                                        }
-                                    },
-                                    "CardId": {
-                                        "title": "Card Id",
-                                        "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/61079553/SDD+6+-+cardId.",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "required": [
-                                            "mask",
-                                            "prefix",
-                                            "suffix",
-                                            "symbology",
-                                            "validator",
-                                            "visibility"
-                                        ],
-                                        "properties": {
-                                            "mask": {
-                                                "type": "string"
-                                            },
-                                            "prefix": {
-                                                "type": [
-                                                    "null",
-                                                    "string"
-                                                ]
-                                            },
-                                            "suffix": {
-                                                "type": [
-                                                    "null",
-                                                    "string"
-                                                ]
-                                            },
-                                            "symbology": {
-                                                "type": "string"
-                                            },
-                                            "validator": {
-                                                "type": "string"
-                                            },
-                                            "visibility": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "CardIdSymbology": {
-                                        "type": [
-                                            "array",
-                                            "null"
-                                        ],
-                                        "title": "Card code symbologies",
-                                        "items": {
-                                            "type": "string",
-                                            "title": "Card code symbology",
-                                            "enum": [
-                                                "Aztec Code",
-                                                "Codabar",
-                                                "Code 128",
-                                                "Code 39",
-                                                "Code 39 mod 43",
-                                                "Code 93",
-                                                "DataBar Expanded",
-                                                "DataBar-14",
-                                                "DataMatrix",
-                                                "EAN-128",
-                                                "EAN-13",
-                                                "EAN-8",
-                                                "GS1 DataMatrix",
-                                                "GS1 QR Code",
-                                                "GS1-128",
-                                                "GS1-13",
-                                                "ITF",
-                                                "ITF-14",
-                                                "MaxiCode",
-                                                "PDF417",
-                                                "QR",
-                                                "UPC-E"
-                                            ]
-                                        }
-                                    },
-                                    "Distance": {
-                                        "title": "Distance",
-                                        "id": "#Distance",
-                                        "type": "object",
-                                        "required": [
-                                            "number"
-                                        ],
-                                        "properties": {
-                                            "number": {
-                                                "type": "number"
-                                            },
-                                            "lengthUnitOfMeasure": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "meter",
-                                                    "kilometer",
-                                                    "mile"
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    "eCardsAccepted": {
-                                        "id": "#eCardsAccepted",
-                                        "title": "eCards Accepted",
-                                        "type": [
-                                            "array",
-                                            "null"
-                                        ],
-                                        "items": {
-                                            "type": "string",
-                                            "description": "eCardTemplate _id"
-                                        }
-                                    },
-                                    "eCard": {
-                                        "id": "#eCard",
-                                        "title": "eCard",
-                                        "allOf": [
-                                            {
-                                                "type": "object",
-                                                "additionalProperties": true,
-                                                "required": [
-                                                    "_id",
-                                                    "cardIdCipher",
-                                                    "cardIdCipherIV",
-                                                    "cardIdCipherKey",
-                                                    "cardIdCipherPin",
-                                                    "cardIdSymbology",
-                                                    "creator_id",
-                                                    "name",
-                                                    "dateCreated",
-                                                    "dateModified",
-                                                    "eCardTemplate",
-                                                    "sortName"
-                                                ]
-                                            },
-                                            {
-                                                "$ref": "#/components/schemas/eCardProperties"
-                                            }
-                                        ]
-                                    },
-                                    "eCardProperties": {
-                                        "title": "eCard properties",
-                                        "properties": {
-                                            "_id": {
-                                                "type": "string",
-                                                "title": "_id"
-                                            },
-                                            "ballance": {
-                                                "type": "number",
-                                                "title": "Card ballance, eg 5.00"
-                                            },
-                                            "cardIdCipher": {
-                                                "title": "Card id cipher",
-                                                "type": "string"
-                                            },
-                                            "cardIdCipherIV": {
-                                                "title": "Card id cipher iv",
-                                                "type": "string"
-                                            },
-                                            "cardIdCipherKey": {
-                                                "title": "Card id cipher key",
-                                                "type": "string"
-                                            },
-                                            "cardIdCipherPin": {
-                                                "title": "Card id cipher pin",
-                                                "type": [
-                                                    "null",
-                                                    "string"
-                                                ]
-                                            },
-                                            "cardIdSymbology": {
-                                                "title": "Card code symbology",
-                                                "$ref": "#/components/schemas/CardIdSymbology"
-                                            },
-                                            "creator_id": {
-                                                "type": "string",
-                                                "title": "creator_id"
-                                            },
-                                            "currency": {
-                                                "title": "Currency code",
-                                                "description": "ISO 4217 currency code, default EUR.",
-                                                "type": "string"
-                                            },
-                                            "dateBalanceUpdated": {
-                                                "type": [
-                                                    "string"
-                                                ],
-                                                "title": "Date balance updated"
-                                            },
-                                            "dateCreated": {
-                                                "type": [
-                                                    "string"
-                                                ],
-                                                "title": "dateCreated"
-                                            },
-                                            "dateDeleted": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "dateDeleted"
-                                            },
-                                            "dateIssued": {
-                                                "type": "string",
-                                                "title": "Date that the card was issued."
-                                            },
-                                            "dateModified": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "dateModified"
-                                            },
-                                            "description": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "description"
-                                            },
-                                            "eCardTemplate": {
-                                                "allOf": [
-                                                    {
-                                                        "type": [
-                                                            "null",
-                                                            "object"
-                                                        ]
-                                                    },
-                                                    {
-                                                        "$ref": "#/components/schemas/eCardTemplateProperties"
-                                                    }
-                                                ]
-                                            },
-                                            "name": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "name"
-                                            },
-                                            "notes": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "name"
-                                            },
-                                            "sortName": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "sortName"
-                                            },
-                                            "style": {
-                                                "$ref": "#/components/schemas/Style"
-                                            },
-                                            "transactions": {
-                                                "type": "array",
-                                                "items": {
-                                                    "$ref": "#/components/schemas/Transaction"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "eCardDetailsRequest": {
-                                        "title": "eCard Details Request",
-                                        "id": "#eCard/Details/Request",
-                                        "description": "eCard details request body schema",
-                                        "type": "object",
-                                        "properties": {
-                                            "currency": {
-                                                "description": "ISO 4217 currency code, default EUR.",
-                                                "type": "string"
-                                            },
-                                            "paging": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "offset": {
-                                                        "description": "Offset for returned transactions, default 10.",
-                                                        "type": "number"
-                                                    },
-                                                    "pageSize": {
-                                                        "$ref": "#/components/schemas/PageSize",
-                                                        "description": "Maximum number of returned transactions."
-                                                    }
-                                                }
-                                            },
-                                            "pin": {
-                                                "title": "Pin",
-                                                "description": "Card pin code.",
-                                                "type": "string",
-                                                "maxLength": 30
-                                            },
-                                            "cardId": {
-                                                "title": "Card code",
-                                                "description": "Card code as known to the user.",
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "eCardDetailsResponse": {
-                                        "title": "eCard Details Response",
-                                        "id": "#eCard/Details/Response",
-                                        "description": "eCard details response body schema",
-                                        "allOf": [
-                                            {
-                                                "$ref": "#/components/schemas/eCardDetailsRequest"
-                                            },
-                                            {
-                                                "properties": {
-                                                    "eCard": {
-                                                        "$ref": "#/components/schemas/eCard"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "type": "object",
-                                                "properties": {
-                                                    "dateSearch": {
-                                                        "title": "Search date",
-                                                        "description": "Search datetimestamp.",
-                                                        "type": "string"
-                                                    }
-                                                }
-                                            }
-                                        ]
-                                    },
-                                    "eCardTemplate": {
-                                        "id": "#eCardTemplate",
-                                        "type": [
-                                            "object",
-                                            "null"
-                                        ],
-                                        "title": "eCardTemplate",
-                                        "description": "The eCard Template Schema applies to templates for eCards: digital cards, such as digital loyalty cards.",
-                                        "allOf": [
-                                            {
-                                                "additionalProperties": false,
-                                                "required": [
-                                                    "_id",
-                                                    "brand",
-                                                    "cardIdSymbology",
-                                                    "creator",
-                                                    "dateCreated",
-                                                    "dateModified",
-                                                    "name",
-                                                    "services",
-                                                    "sortName",
-                                                    "style"
-                                                ]
-                                            },
-                                            {
-                                                "$ref": "#/components/schemas/eCardTemplateProperties"
-                                            }
-                                        ]
-                                    },
-                                    "eCardTemplateProperties": {
-                                        "id": "#eCardTemplateProperties",
-                                        "title": "eCard template properties",
-                                        "description": "The eCard Template Properties Schema.",
-                                        "properties": {
-                                            "_id": {
-                                                "title": "eCard template object id",
-                                                "$ref": "#/components/schemas/ObjectId"
-                                            },
-                                            "brand": {
-                                                "$ref": "#/components/schemas/BrandName"
-                                            },
-                                            "cardIdSymbology": {
-                                                "$ref": "#/components/schemas/CardIdSymbology"
-                                            },
-                                            "cardId": {
-                                                "$ref": "#/components/schemas/CardId"
-                                            },
-                                            "creator": {
-                                                "type": "object",
-                                                "title": "Creator",
-                                                "description": "Creator of the eCard template.",
-                                                "required": [
-                                                    "name"
-                                                ],
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string",
-                                                        "title": "Creator name"
-                                                    }
-                                                }
-                                            },
-                                            "dateCreated": {
-                                                "type": [
-                                                    "string"
-                                                ],
-                                                "title": "dateCreated"
-                                            },
-                                            "dateDeleted": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "dateDeleted"
-                                            },
-                                            "dateModified": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "dateModified"
-                                            },
-                                            "keywords": {
-                                                "type": [
-                                                    "array",
-                                                    "null"
-                                                ],
-                                                "items": {
-                                                    "title": "Keyword",
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "name": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "description": "Name to be displayed on the eCard."
-                                            },
-                                            "notes": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ]
-                                            },
-                                            "services": {
-                                                "$ref": "#/components/schemas/Services"
-                                            },
-                                            "sortName": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ]
-                                            },
-                                            "style": {
-                                                "$ref": "#/components/schemas/Style"
-                                            },
-                                            "types": {
-                                                "type": "array",
-                                                "items": {
-                                                    "title": "eCard type",
-                                                    "description": "Type name as defined in the Technical data model for the Templates collection: https://code.in.digital-me.nl/DEV/ecards/tree/master/mongodb#templates-collection.",
-                                                    "type": "string",
-                                                    "enum": [
-                                                        "customer_membership_account",
-                                                        "customer_rebate_account",
-                                                        "customer_loyalty_program",
-                                                        "customer_subscription_program",
-                                                        "stored_value_instrument",
-                                                        "stored_value_instrument_open",
-                                                        "stored_value_instrument_closed"
-                                                    ]
-                                                }
-                                            },
-                                            "url": {
-                                                "description": "Webshop url, see https://digital-me.atlassian.net/wiki/spaces/DAP/pages/1605639/SDD+5+eCard+service+descriptor",
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "eCardTemplatesSelections": {
-                                        "title": "eCard templates selections",
-                                        "id": "#eCardTemplatesSelections",
-                                        "type": "object",
-                                        "patternProperties": {
-                                            "[A-Za-z0-9_-]+": {
-                                                "description": "eCard templates selections for the indicated criterium.",
-                                                "type": "object",
-                                                "properties": {
-                                                    "order": {
-                                                        "description": "List of eCard template object ids.",
-                                                        "type": "array",
-                                                        "items": {
-                                                            "$ref": "#/components/schemas/ObjectId"
-                                                        }
-                                                    },
-                                                    "prompt": {
-                                                        "type": "object",
-                                                        "patternProperties": {
-                                                            "[a-z]{2}(-[A-Z]{2})?": {
-                                                                "description": "Localized prompt for the indicated language.",
-                                                                "type": "string"
-                                                            },
-                                                            "default": {
-                                                                "description": "Default prompt.",
-                                                                "type": "string"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "Geometry": {
-                                        "title": "Geometry",
-                                        "id": "#Geometry",
-                                        "description": "See https://schema.org/geo",
-                                        "type": "object",
-                                        "required": [
-                                            "latitude",
-                                            "longitude"
-                                        ],
-                                        "properties": {
-                                            "latitude": {
-                                                "type": "number"
-                                            },
-                                            "longitude": {
-                                                "type": "number"
-                                            }
-                                        }
-                                    },
-                                    "HttpResponseBody": {
-                                        "title": "HTTP response body",
-                                        "id": "#HttpResponse",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "required": [
-                                            "code",
-                                            "message"
-                                        ],
-                                        "properties": {
-                                            "code": {
-                                                "title": "Http response status code",
-                                                "type": "string"
-                                            },
-                                            "message": {
-                                                "title": "Response message",
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "InteractActionList": {
-                                        "type": "array",
-                                        "title": "Interactions",
-                                        "id": "#InteractActionList",
-                                        "items": {
-                                            "allOf": [
-                                                {
-                                                    "$ref": "#Action"
-                                                },
-                                                {
-                                                    "type": "object",
-                                                    "title": "Interaction",
-                                                    "properties": {
-                                                        "type": {
-                                                            "type": "string",
-                                                            "enum": [
-                                                                "InteractAction"
-                                                            ]
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "Link": {
-                                        "type": "object",
-                                        "required": [
-                                            "href",
-                                            "rel"
-                                        ],
-                                        "properties": {
-                                            "href": {
-                                                "description": "Webshop url",
-                                                "type": "string"
-                                            },
-                                            "rel": {
-                                                "description": "Indication of the type of resource.",
-                                                "example": "webshop",
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "MaxDistance": {
-                                        "title": "Maximum distance",
-                                        "description": "Maximum distance between the search location and the place.",
-                                        "id": "#MaxDistance",
-                                        "allOf": [
-                                            {
-                                                "$ref": "#/components/schemas/Distance"
-                                            },
-                                            {
-                                                "default": {
-                                                    "number": "5",
-                                                    "lengthUnitOfMeasure": "kilometer"
-                                                }
-                                            }
-                                        ]
-                                    },
-                                    "Metadata": {
-                                        "title": "Meta data",
-                                        "id": "#Metadata",
-                                        "type": "object",
-                                        "required": [
-                                            "source"
-                                        ],
-                                        "properties": {
-                                            "source": {
-                                                "description": "Source meta data",
-                                                "type": "object",
-                                                "required": [
-                                                    "id",
-                                                    "dateModified",
-                                                    "name"
-                                                ],
-                                                "properties": {
-                                                    "dateDeleted": {
-                                                        "description": "Date of deletion",
-                                                        "type": "string"
-                                                    },
-                                                    "dateModified": {
-                                                        "description": "Date of latest modification",
-                                                        "type": "string"
-                                                    },
-                                                    "id": {
-                                                        "description": "Id as used by the source",
-                                                        "type": "string"
-                                                    },
-                                                    "name": {
-                                                        "description": "Source name",
-                                                        "type": "string"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "Name": {
-                                        "type": "string",
-                                        "description": "See https://schema.org/name",
-                                        "title": "Name",
-                                        "format": "Literal"
-                                    },
-                                    "ObjectId": {
-                                        "title": "Object id",
-                                        "description": "eCard object id, see https://docs.mongodb.com/manual/reference/method/ObjectId/",
-                                        "example": "5c1383e649362d5b0414ca3c",
-                                        "type": "string"
-                                    },
-                                    "Offer": {
-                                        "title": "Offer",
-                                        "id": "#Offer",
-                                        "description": "Offer",
-                                        "type": "object",
-                                        "required": [
-                                            "_id",
-                                            "campaign_id",
-                                            "currency",
-                                            "currency_symbol",
-                                            "dateCreated",
-                                            "dateDelete",
-                                            "dateEnd",
-                                            "dateModified",
-                                            "datePublish",
-                                            "dateStart",
-                                            "description",
-                                            "images",
-                                            "imagesCoupon",
-                                            "links",
-                                            "metadata",
-                                            "name",
-                                            "priority",
-                                            "status",
-                                            "templatesEligibility"
-                                        ],
-                                        "properties": {
-                                            "_id": {
-                                                "type": "string"
-                                            },
-                                            "campaign_id": {
-                                                "title": "Campaing id",
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ]
-                                            },
-                                            "currency": {
-                                                "title": "Currency",
-                                                "type": "string"
-                                            },
-                                            "currency_symbol": {
-                                                "title": "Currency symbol",
-                                                "type": "string"
-                                            },
-                                            "dateCreated": {
-                                                "type": "string",
-                                                "title": "dateCreated"
-                                            },
-                                            "dateDelete": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "dateDelete"
-                                            },
-                                            "dateEnd": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "dateDelete"
-                                            },
-                                            "dateModified": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "dateDelete"
-                                            },
-                                            "datePublish": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "datePublish"
-                                            },
-                                            "dateStart": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "datePublish"
-                                            },
-                                            "description": {
-                                                "title": "Description",
-                                                "type": "object",
-                                                "required": [
-                                                    "description",
-                                                    "descriptionShort",
-                                                    "discountAmount",
-                                                    "terms_conditions",
-                                                    "title"
-                                                ],
-                                                "properties": {
-                                                    "description": {
-                                                        "title": "Offer description",
-                                                        "type": "string"
-                                                    },
-                                                    "descriptionShort": {
-                                                        "title": "Short offer description",
-                                                        "type": "string"
-                                                    },
-                                                    "discountAmount": {
-                                                        "title": "Discount amount",
-                                                        "type": "string"
-                                                    },
-                                                    "terms_conditions": {
-                                                        "title": "Terms / conditions",
-                                                        "type": "string"
-                                                    },
-                                                    "title": {
-                                                        "title": "Offer title",
-                                                        "type": "string"
-                                                    }
-                                                }
-                                            },
-                                            "images": {
-                                                "$ref": "#/components/schemas/SizedImage"
-                                            },
-                                            "imagesCoupon": {
-                                                "$ref": "#/components/schemas/SizedImage"
-                                            },
-                                            "links": {
-                                                "type": "array",
-                                                "items": {
-                                                    "$ref": "#/components/schemas/Link"
-                                                }
-                                            },
-                                            "metadata": {
-                                                "$ref": "#/components/schemas/Metadata"
-                                            },
-                                            "name": {
-                                                "$ref": "#/components/schemas/Name"
-                                            },
-                                            "priority": {
-                                                "title": "Priority",
-                                                "type": "number"
-                                            },
-                                            "status": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "active"
-                                                ]
-                                            },
-                                            "templatesEligibility": {
-                                                "description": "Array of identifiers of templates that are relevant for the offer.",
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "OffersRequestBody": {
-                                        "title": "Offers request body",
-                                        "id": "#Offers/Request",
-                                        "description": "Offers request body schema",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "properties": {
-                                            "paging": {
-                                                "$ref": "#/components/schemas/Paging"
-                                            }
-                                        }
-                                    },
-                                    "OffersResponseBody": {
-                                        "title": "Offers response body",
-                                        "id": "#Offers/Response",
-                                        "description": "Offers response body schema",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "required": [
-                                            "places",
-                                            "search",
-                                            "total"
-                                        ],
-                                        "properties": {
-                                            "offers": {
-                                                "type": "array",
-                                                "items": {
-                                                    "$ref": "#/components/schemas/Offer"
-                                                }
-                                            },
-                                            "search": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "required": [
-                                                    "dateSearch",
-                                                    "paging"
-                                                ],
-                                                "properties": {
-                                                    "dateSearch": {
-                                                        "type": "string"
-                                                    },
-                                                    "paging": {
-                                                        "$ref": "#/components/schemas/Paging"
-                                                    }
-                                                }
-                                            },
-                                            "total": {
-                                                "description": "Total number of offers found.",
-                                                "type": "number"
-                                            }
-                                        }
-                                    },
-                                    "Offset": {
-                                        "title": "Offset",
-                                        "description": "The number of items to skip in the search results.",
-                                        "id": "#Offset",
-                                        "type": "number",
-                                        "default": 0
-                                    },
-                                    "PageSize": {
-                                        "title": "Page Size",
-                                        "description": "The maximum number of items to be included in the search results.",
-                                        "id": "#PageSize",
-                                        "type": "number",
-                                        "default": 10,
-                                        "maximum": 1000
-                                    },
-                                    "Paging": {
-                                        "title": "Paging",
-                                        "id": "#Paging",
-                                        "type": "object",
-                                        "properties": {
-                                            "offset": {
-                                                "$ref": "#/components/schemas/Offset"
-                                            },
-                                            "pageSize": {
-                                                "$ref": "#/components/schemas/PageSize"
-                                            }
-                                        }
-                                    },
-                                    "Place": {
-                                        "title": "Place",
-                                        "id": "#Place",
-                                        "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/360649/SDD+3+-+eCards+Places.",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "required": [
-                                            "_id",
-                                            "addressComponents",
-                                            "addressFormatted",
-                                            "categories",
-                                            "dateCreated",
-                                            "distance",
-                                            "geometry",
-                                            "icon",
-                                            "metadata",
-                                            "name",
-                                            "phoneNumberInternational",
-                                            "priority",
-                                            "status",
-                                            "templatesEligibility",
-                                            "types",
-                                            "utc_offset",
-                                            "website"
-                                        ],
-                                        "properties": {
-                                            "_id": {
-                                                "type": "string"
-                                            },
-                                            "addressComponents": {
-                                                "$ref": "#/components/schemas/AddressComponents"
-                                            },
-                                            "addressFormatted": {
-                                                "type": "string"
-                                            },
-                                            "categories": {
-                                                "title": "Categories",
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "dateCreated": {
-                                                "type": "string",
-                                                "title": "dateCreated"
-                                            },
-                                            "distance": {
-                                                "allOf": [
-                                                    {
-                                                        "$ref": "#/components/schemas/Distance"
-                                                    },
-                                                    {
-                                                        "required": [
-                                                            "lengthUnitOfMeasure"
-                                                        ]
-                                                    }
-                                                ]
-                                            },
-                                            "geometry": {
-                                                "$ref": "#/components/schemas/Geometry"
-                                            },
-                                            "icon": {
-                                                "$ref": "#/components/schemas/SizedImage"
-                                            },
-                                            "name": {
-                                                "$ref": "#/components/schemas/Name"
-                                            },
-                                            "priority": {
-                                                "type": "number"
-                                            },
-                                            "status": {
-                                                "type": "string"
-                                            },
-                                            "templatesEligibility": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "types": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "utc_offset": {
-                                                "type": "number"
-                                            },
-                                            "website": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "PlacesRequestBody": {
-                                        "title": "Places request body",
-                                        "id": "#Places/Request",
-                                        "description": "Places request body schema",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "properties": {
-                                            "templateEligibility": {
-                                                "description": "Requested search criterium with respect to the accepted eCards.",
-                                                "$ref": "#eCardsAccepted"
-                                            },
-                                            "geometry": {
-                                                "title": "Geometry",
-                                                "description": "Geographical search location.",
-                                                "$ref": "#/components/schemas/Geometry"
-                                            },
-                                            "maxDistance": {
-                                                "$ref": "#/components/schemas/MaxDistance"
-                                            },
-                                            "paging": {
-                                                "$ref": "#/components/schemas/Paging"
-                                            }
-                                        }
-                                    },
-                                    "PlacesResponseBody": {
-                                        "title": "Places response body",
-                                        "id": "#Places/Response",
-                                        "description": "Places response body schema",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "required": [
-                                            "places",
-                                            "search",
-                                            "total"
-                                        ],
-                                        "properties": {
-                                            "places": {
-                                                "type": "array",
-                                                "items": {
-                                                    "$ref": "#Place"
-                                                }
-                                            },
-                                            "search": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "required": [
-                                                    "dateSearch",
-                                                    "geometry",
-                                                    "maxDistance",
-                                                    "paging",
-                                                    "templateEligibility"
-                                                ],
-                                                "properties": {
-                                                    "dateSearch": {
-                                                        "type": "string"
-                                                    },
-                                                    "geometry": {
-                                                        "$ref": "#/components/schemas/Geometry"
-                                                    },
-                                                    "maxDistance": {
-                                                        "$ref": "#/components/schemas/MaxDistance"
-                                                    },
-                                                    "paging": {
-                                                        "$ref": "#/components/schemas/Paging"
-                                                    },
-                                                    "templateEligibility": {
-                                                        "description": "eCard Template object id as given in the search request.",
-                                                        "type": "string"
-                                                    }
-                                                }
-                                            },
-                                            "total": {
-                                                "description": "Total number of places found.",
-                                                "type": "number"
-                                            }
-                                        }
-                                    },
-                                    "PreCheckRequestBody": {
-                                        "title": "Pre check request body",
-                                        "$ref": "#/components/schemas/BalanceAndTransactionsRequestBody"
-                                    },
-                                    "PreCheckResponseBody": {
-                                        "title": "Pre check response body",
-                                        "$ref": "#/components/schemas/BalanceAndTransactionsResponseBody"
-                                    },
-                                    "Services": {
-                                        "title": "Service descriptor",
-                                        "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/1605639/SDD+5+eCard+service+descriptor",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "properties": {
-                                            "balanceAndTransactions": {
-                                                "title": "Balance & transactions",
-                                                "allOf": [
-                                                    {
-                                                        "type": "object",
-                                                        "additionalProperties": false
-                                                    },
-                                                    {
-                                                        "$ref": "#/schemas/ServiceTitle"
-                                                    }
-                                                ]
-                                            },
-                                            "offers": {
-                                                "title": "Offers",
-                                                "allOf": [
-                                                    {
-                                                        "type": "object"
-                                                    },
-                                                    {
-                                                        "$ref": "#/schemas/ServiceTitle"
-                                                    }
-                                                ]
-                                            },
-                                            "places": {
-                                                "title": "Places",
-                                                "allOf": [
-                                                    {
-                                                        "type": "object",
-                                                        "additionalProperties": false
-                                                    },
-                                                    {
-                                                        "$ref": "#/schemas/ServiceTitle"
-                                                    }
-                                                ]
-                                            },
-                                            "preCheck": {
-                                                "title": "Precheck",
-                                                "type": "object",
-                                                "additionalProperties": false
-                                            },
-                                            "webshops": {
-                                                "title": "Webshops",
-                                                "allOf": [
-                                                    {
-                                                        "type": "object",
-                                                        "additionalProperties": false
-                                                    },
-                                                    {
-                                                        "$ref": "#/schemas/ServiceTitle"
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    },
-                                    "UsersServicesOffersRequestBody": {
-                                        "title": "Users Services Offers request body",
-                                        "id": "#Users/Services/Offers/Request",
-                                        "description": "Users Services Offers request body schema",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "properties": {
-                                            "paging": {
-                                                "$ref": "#/components/schemas/Paging"
-                                            }
-                                        }
-                                    },
-                                    "UsersServicesOffersResponseBody": {
-                                        "title": "Users Services Offers response body",
-                                        "id": "#Users/Services/Offers/Request",
-                                        "description": "Users Services Offers response body schema",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "required": [
-                                            "places",
-                                            "search",
-                                            "total"
-                                        ],
-                                        "properties": {
-                                            "offers": {
-                                                "type": "array",
-                                                "items": {
-                                                    "$ref": "#/components/schemas/Offer"
-                                                }
-                                            },
-                                            "search": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "required": [
-                                                    "dateSearch",
-                                                    "templateIds",
-                                                    "paging"
-                                                ],
-                                                "properties": {
-                                                    "dateSearch": {
-                                                        "type": "string"
-                                                    },
-                                                    "templateIds": {
-                                                        "description": "List of template object id's.",
-                                                        "type": "array",
-                                                        "items": {
-                                                            "$ref": "#/components/schemas/ObjectId"
-                                                        }
-                                                    },
-                                                    "paging": {
-                                                        "$ref": "#/components/schemas/Paging"
-                                                    }
-                                                }
-                                            },
-                                            "total": {
-                                                "description": "Total number of offers found.",
-                                                "type": "number"
-                                            }
-                                        }
-                                    },
-                                    "ServiceTitle": {
-                                        "title": "Service title",
-                                        "type": "object",
-                                        "properties": {
-                                            "title": {
-                                                "type": "object",
-                                                "patternProperties": {
-                                                    "[a-z]{2}(-[A-Z]{2})?": {
-                                                        "description": "Label for locale",
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "properties": {
-                                                    "default": {
-                                                        "description": "Default label",
-                                                        "type": "string"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "SizedImages": {
-                                        "title": "Sized images",
+                    "application/json": {
+                        "examples": {
+                            "json-schema draf-4 example": {
+                                "$ref": "#/components/examples/apiSchema"
+                            }
+                        }
+                    }
+                }
+            },
+            "balanceAndTransactions": {
+                "description": "BalanceAndTransactions Get response 200",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/balanceAndTransactionsResponse"
+                        }
+                    }
+                },
+                "default": {
+                    "description": "Default response",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "errors": {
                                         "type": "array",
                                         "items": {
                                             "type": "object",
-                                            "required": [
-                                                "size",
-                                                "url"
-                                            ],
                                             "properties": {
-                                                "size": {
-                                                    "title": "Size",
-                                                    "type": "string",
+                                                "status": {
+                                                    "type": "number",
                                                     "enum": [
-                                                        "small",
-                                                        "medium",
-                                                        "large"
+                                                        401
                                                     ]
                                                 },
-                                                "url": {
-                                                    "title": "Sized image",
-                                                    "type": "string"
+                                                "message": {
+                                                    "type": "string",
+                                                    "pattern": "Authentication required!"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "Style": {
-                                        "title": "Style",
-                                        "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/393400/SDD+1+-+eCard+face+and+back+images",
-                                        "type": "object",
-                                        "properties": {
-                                            "backgroundColor": {
-                                                "type": "string",
-                                                "title": "Background color"
-                                            },
-                                            "fontColor": {
-                                                "type": "string",
-                                                "title": "Background color"
-                                            },
-                                            "eCardFrontImage": {
-                                                "$ref": "#/components/schemas/SizedImages"
-                                            },
-                                            "eCardBackImage": {
-                                                "$ref": "#/components/schemas/SizedImages"
-                                            },
-                                            "logoImage": {
-                                                "$ref": "#/components/schemas/SizedImages"
-                                            }
-                                        }
-                                    },
-                                    "Transaction": {
-                                        "type": "object",
-                                        "id": "#Transaction",
-                                        "additionalProperties": false,
-                                        "required": [
-                                            "currency",
-                                            "id",
-                                            "retailer",
-                                            "seq",
-                                            "time",
-                                            "type",
-                                            "value",
-                                            "valueFactor",
-                                            "valueSign"
-                                        ],
-                                        "properties": {
-                                            "currency": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ]
-                                            },
-                                            "id": {
-                                                "type": "string"
-                                            },
-                                            "retailer": {
-                                                "title": "Retailer",
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "required": [
-                                                    "address",
-                                                    "city",
-                                                    "name",
-                                                    "postalCode"
-                                                ],
-                                                "properties": {
-                                                    "address": {
-                                                        "description": "Street name and number",
-                                                        "type": [
-                                                            "null",
-                                                            "string"
-                                                        ]
-                                                    },
-                                                    "city": {
-                                                        "description": "City",
-                                                        "type": [
-                                                            "null",
-                                                            "string"
-                                                        ]
-                                                    },
-                                                    "name": {
-                                                        "description": "Retailer name",
-                                                        "type": [
-                                                            "null",
-                                                            "string"
-                                                        ]
-                                                    },
-                                                    "postalCode": {
-                                                        "description": "Postal code",
-                                                        "type": [
-                                                            "null",
-                                                            "string"
-                                                        ]
-                                                    }
-                                                }
-                                            },
-                                            "seq": {
-                                                "type": "number"
-                                            },
-                                            "time": {
-                                                "type": "string"
-                                            },
-                                            "type": {
-                                                "type": "string"
-                                            },
-                                            "value": {
-                                                "type": "number"
-                                            },
-                                            "valueFactor": {
-                                                "type": "number"
-                                            },
-                                            "valueSign": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    },
-                                    "UserId": {
-                                        "title": "User Id",
-                                        "description": "User Id, a uuid",
-                                        "type": "string"
-                                    },
-                                    "Webshop": {
-                                        "title": "Webshop",
-                                        "id": "#Webshop",
-                                        "type": "object",
-                                        "additionalProperties": true,
-                                        "required": [
-                                            "_id",
-                                            "categories",
-                                            "dateCreated",
-                                            "icon",
-                                            "metadata",
-                                            "name",
-                                            "priority",
-                                            "links",
-                                            "status",
-                                            "templatesEligibility"
-                                        ],
-                                        "properties": {
-                                            "_id": {
-                                                "type": "string"
-                                            },
-                                            "categories": {
-                                                "title": "Categories",
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "dateCreated": {
-                                                "type": "string",
-                                                "title": "dateCreated"
-                                            },
-                                            "dateModified": {
-                                                "type": [
-                                                    "string",
-                                                    "null"
-                                                ],
-                                                "title": "dateModified"
-                                            },
-                                            "icon": {
-                                                "$ref": "#/components/schemas/SizedImage"
-                                            },
-                                            "metadata": {
-                                                "$ref": "#/components/schemas/Metadata"
-                                            },
-                                            "links": {
-                                                "type": "array",
-                                                "items": {
-                                                    "$ref": "#/components/schemas/Link"
-                                                }
-                                            },
-                                            "name": {
-                                                "$ref": "#/components/schemas/Name"
-                                            },
-                                            "priority": {
-                                                "type": "number"
-                                            },
-                                            "status": {
-                                                "type": "string"
-                                            },
-                                            "templatesEligibility": {
-                                                "description": "Array of identifiers of templates that are relevant for the place.",
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "types": {
-                                                "type": "array",
-                                                "items": {
-                                                    "description": "Type of webshop.",
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "utc_offset": {
-                                                "type": "number"
-                                            }
-                                        }
-                                    },
-                                    "WebshopsRequestBody": {
-                                        "title": "Webshops request body",
-                                        "id": "#Webshops/Request",
-                                        "description": "Webshops request body schema",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "properties": {
-                                            "paging": {
-                                                "$ref": "#/components/schemas/Paging"
-                                            }
-                                        }
-                                    },
-                                    "WebshopsResponseBody": {
-                                        "title": "Webshops response body",
-                                        "id": "#Webshops/Response",
-                                        "description": "Webshops response body schema",
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "required": [
-                                            "webshops",
-                                            "search",
-                                            "total"
-                                        ],
-                                        "properties": {
-                                            "webshops": {
-                                                "type": "array",
-                                                "items": {
-                                                    "$ref": "#/components/schemas/Webshop"
-                                                }
-                                            },
-                                            "search": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "required": [
-                                                    "dateSearch",
-                                                    "paging"
-                                                ],
-                                                "properties": {
-                                                    "dateSearch": {
-                                                        "type": "string"
-                                                    },
-                                                    "paging": {
-                                                        "$ref": "#/components/schemas/Paging"
-                                                    }
-                                                }
-                                            },
-                                            "total": {
-                                                "description": "Total number of places found.",
-                                                "type": "number"
                                             }
                                         }
                                     }
                                 }
                             },
-                            "paths": {
-                                "/users/{user_id}/api": {
-                                    "get": {
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/ApiResponseBody"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/api/schema": {
-                                    "get": {
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "type": "object"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}": {
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        }
-                                    ],
-                                    "delete": {
-                                        "responses": {
-                                            "204": {
-                                                "description": "204 Response"
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/actions": {
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        }
-                                    ],
-                                    "post": {
-                                        "requestBody": {
-                                            "required": true,
-                                            "content": {
-                                                "application/json": {
-                                                    "schema": {
-                                                        "$ref": "#/components/schemas/InteractActionList"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "responses": {
-                                            "204": {
-                                                "description": "204 Response"
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/eCards": {
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        }
-                                    ],
-                                    "get": {
-                                        "parameters": [
-                                            {
-                                                "$ref": "#/components/parameters/eCardObjectIds"
-                                            },
-                                            {
-                                                "$ref": "#/components/parameters/Projection"
-                                            }
-                                        ],
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "type": [
-                                                                "array"
-                                                            ],
-                                                            "items": {
-                                                                "$ref": "#/components/schemas/eCardProperties"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "post": {
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/eCard"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/eCards/{ecard_id}": {
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/eCardObjectId"
-                                        },
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        }
-                                    ],
-                                    "delete": {
-                                        "responses": {
-                                            "204": {
-                                                "description": "204 Response"
-                                            }
-                                        }
-                                    },
-                                    "put": {
-                                        "requestBody": {
-                                            "required": true,
-                                            "content": {
-                                                "application/json": {
-                                                    "schema": {
-                                                        "$ref": "#/components/schemas/eCard"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/eCard"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/eCardTemplates": {
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        }
-                                    ],
-                                    "get": {
-                                        "parameters": [
-                                            {
-                                                "$ref": "#/components/parameters/eCardTemplateObjectIds"
-                                            },
-                                            {
-                                                "$ref": "#/components/parameters/Projection"
-                                            }
-                                        ],
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "type": [
-                                                                "array"
-                                                            ],
-                                                            "items": {
-                                                                "$ref": "#/components/schemas/eCardTemplate"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/eCardTemplates/{ecard_template_id}/services/balanceAndTransactions": {
-                                    "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+4+-+eCards+Balance+and+Transactions",
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        },
-                                        {
-                                            "$ref": "#/components/parameters/eCardTemplateId"
-                                        }
-                                    ],
-                                    "post": {
-                                        "requestBody": {
-                                            "required": true,
-                                            "content": {
-                                                "application/json": {
-                                                    "schema": {
-                                                        "$ref": "#/components/schemas/BalanceAndTransactionsRequestBody"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/BalanceAndTransactionsResponseBody"
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "202": {
-                                                "description": "202 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/HttpResponseBody"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/eCardTemplates/{ecard_template_id}/services/offers": {
-                                    "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/67567629/SDD+%237+-+Offers",
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        },
-                                        {
-                                            "$ref": "#/components/parameters/eCardTemplateId"
-                                        }
-                                    ],
-                                    "post": {
-                                        "requestBody": {
-                                            "required": true,
-                                            "content": {
-                                                "application/json": {
-                                                    "schema": {
-                                                        "$ref": "#/components/schemas/OffersRequestBody"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/OffersResponseBody"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/eCardTemplates/{ecard_template_id}/services/places": {
-                                    "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/360649/SDD+3+-+eCards+Places.",
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        },
-                                        {
-                                            "$ref": "#/components/parameters/eCardTemplateId"
-                                        }
-                                    ],
-                                    "post": {
-                                        "requestBody": {
-                                            "required": true,
-                                            "content": {
-                                                "application/json": {
-                                                    "schema": {
-                                                        "$ref": "#/components/schemas/PlacesRequestBody"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/PlacesResponseBody"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/eCardTemplates/{ecard_template_id}/services/preCheck": {
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        },
-                                        {
-                                            "$ref": "#/components/parameters/eCardTemplateId"
-                                        }
-                                    ],
-                                    "post": {
-                                        "requestBody": {
-                                            "required": true,
-                                            "content": {
-                                                "application/json": {
-                                                    "schema": {
-                                                        "$ref": "#/components/schemas/PreCheckRequestBody"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/PreCheckResponseBody"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/eCardTemplates/{ecard_template_id}/services/webshops": {
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        },
-                                        {
-                                            "$ref": "#/components/parameters/eCardTemplateId"
-                                        }
-                                    ],
-                                    "post": {
-                                        "requestBody": {
-                                            "required": false,
-                                            "content": {
-                                                "application/json": {
-                                                    "schema": {
-                                                        "$ref": "#/components/schemas/WebshopsRequestBody"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/WebshopsResponseBody"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/eCardTemplatesSelections": {
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        }
-                                    ],
-                                    "get": {
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/eCardTemplatesSelections"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "/users/{user_id}/services/offers": {
-                                    "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/67567629/SDD+%237+-+Offers",
-                                    "parameters": [
-                                        {
-                                            "$ref": "#/components/parameters/UserId"
-                                        },
-                                        {
-                                            "$ref": "#/components/parameters/eCardTemplateId"
-                                        }
-                                    ],
-                                    "post": {
-                                        "requestBody": {
-                                            "required": true,
-                                            "content": {
-                                                "application/json": {
-                                                    "schema": {
-                                                        "$ref": "#/components/schemas/UsersServicesOffersRequestBody"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "responses": {
-                                            "200": {
-                                                "description": "200 Response",
-                                                "content": {
-                                                    "application/json": {
-                                                        "schema": {
-                                                            "$ref": "#/components/schemas/UsersServicesOffersResponseBody"
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
+                            "examples": {
+                                "example": {
+                                    "$ref": "#/components/examples/authenticationRequired"
                                 }
                             }
                         }
                     }
+                },
+                "userDeleted": {
+                    "description": "User deleted"
                 }
             },
-            "default": {
-                "description": "Default response",
+            "openapiDotJson": {
+                "description": "Get openapi.json response",
                 "content": {
                     "application/json": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "errors": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "status": {
-                                                "type": "number",
-                                                "enum": [
-                                                    401
-                                                ]
-                                            },
-                                            "message": {
-                                                "type": "string",
-                                                "pattern": "Authentication required!"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
                         "examples": {
                             "example": {
-                                "$ref": "#/components/examples/authenticationRequired"
+                                "$ref": "#/components/examples/openapiDotJson"
                             }
                         }
                     }
                 }
             },
-            "userDeleted": {
-                "description": "User deleted"
+            "openapiDotYaml": {
+                "description": "Get openapi.yaml response",
+                "content": {
+                    "application/yaml": {
+                        "examples": {
+                            "example": {
+                                "$ref": "#/components/examples/openapiDotYaml"
+                            }
+                        }
+                    }
+                }
             }
         },
         "parameters": {
+            "eCardTemplateId": {
+                "name": "ecard_template_id",
+                "description": "eCard template object id",
+                "in": "path",
+                "schema": {
+                    "$ref": "#/components/schemas/ObjectId"
+                }
+            },
             "userId": {
                 "name": "userId",
                 "in": "path",
@@ -3355,6 +1231,10 @@
                     "serverTime": 1572531524892
                 }
             },
+            "apiSchema": {
+                "summary": "Api schema example",
+                "externalValue": "schema.json"
+            },
             "authenticationRequired": {
                 "value": {
                     "errors": [
@@ -3472,6 +1352,14 @@
                         }
                     ]
                 }
+            },
+            "openapiDotJson": {
+                "summary": "openapi.json example",
+                "externalValue": "examples/openapi.json"
+            },
+            "openapiDotYaml": {
+                "summary": "openapi.yaml example",
+                "externalValue": "examples/openapi.yaml"
             },
             "style": {
                 "backgroundColor": "#FFDD00",
