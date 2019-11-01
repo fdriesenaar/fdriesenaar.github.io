@@ -61,7 +61,7 @@
                 "operationId": "Delete user",
                 "responses": {
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "204": {
                         "$ref": "#/components/responses/userDeleted"
@@ -89,7 +89,7 @@
                         "$ref": "#/components/responses/api"
                     },
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -114,7 +114,7 @@
                         "$ref": "#/components/responses/apiSchema"
                     },
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -150,7 +150,7 @@
                 },
                 "responses": {
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "204": {
                         "$ref": "#/components/responses/actionPosted"
@@ -175,7 +175,7 @@
                 "operationId": "Get",
                 "responses": {
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -200,7 +200,7 @@
                         "$ref": "#/components/responses/eCards"
                     },
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -286,7 +286,7 @@
                 "operationId": "Delete eCard",
                 "responses": {
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "204": {
                         "description": "204 Response"
@@ -316,7 +316,7 @@
                         "description": "200 Response"
                     },
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -347,7 +347,7 @@
                 "operationId": "Get offers",
                 "responses": {
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -369,7 +369,7 @@
                 "operationId": "Get",
                 "responses": {
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -411,7 +411,7 @@
                         "$ref": "#/components/responses/balanceAndTransactions"
                     },
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -428,7 +428,7 @@
                 "operationId": "Get",
                 "responses": {
                     "202": {
-                        "$ref": "#/components/reponses/httpResponseBody"
+                        "$ref": "#/components/responses/httpResponseBody"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"

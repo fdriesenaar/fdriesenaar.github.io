@@ -928,7 +928,7 @@ paths:
       operationId: Delete user
       responses:
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         '204':
           $ref: '#/components/responses/userDeleted'
         default:
@@ -953,7 +953,7 @@ paths:
               $ref: '#/components/schemas/actionList'
       responses:
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         '204':
           $ref: '#/components/responses/actionPosted'
         default:
@@ -968,7 +968,7 @@ paths:
         '200':
           $ref: '#/components/responses/api'
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -983,7 +983,7 @@ paths:
         '200':
           $ref: '#/components/responses/apiSchema'
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -996,7 +996,7 @@ paths:
       operationId: Get
       responses:
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1009,7 +1009,7 @@ paths:
       operationId: Get
       responses:
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1032,7 +1032,7 @@ paths:
         '200':
           $ref: '#/components/responses/balanceAndTransactions'
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1043,7 +1043,7 @@ paths:
       operationId: Get
       responses:
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1058,7 +1058,7 @@ paths:
         '200':
           $ref: '#/components/responses/eCards'
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1109,7 +1109,7 @@ paths:
       operationId: Delete eCard
       responses:
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         '204':
           description: 204 Response
         default:
@@ -1133,7 +1133,7 @@ paths:
         '200':
           description: 200 Response
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1144,7 +1144,7 @@ paths:
       operationId: Get offers
       responses:
         '202':
-          $ref: '#/components/reponses/httpResponseBody'
+          $ref: '#/components/responses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
