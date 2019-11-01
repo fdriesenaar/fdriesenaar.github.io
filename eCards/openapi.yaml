@@ -928,11 +928,7 @@ paths:
       operationId: Delete user
       responses:
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         '204':
           $ref: '#/components/responses/userDeleted'
         default:
@@ -957,11 +953,7 @@ paths:
               $ref: '#/components/schemas/actionList'
       responses:
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         '204':
           $ref: '#/components/responses/actionPosted'
         default:
@@ -976,11 +968,7 @@ paths:
         '200':
           $ref: '#/components/responses/api'
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -995,11 +983,7 @@ paths:
         '200':
           $ref: '#/components/responses/apiSchema'
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1012,11 +996,7 @@ paths:
       operationId: Get
       responses:
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1029,11 +1009,7 @@ paths:
       operationId: Get
       responses:
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1056,11 +1032,7 @@ paths:
         '200':
           $ref: '#/components/responses/balanceAndTransactions'
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1071,11 +1043,7 @@ paths:
       operationId: Get
       responses:
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1090,11 +1058,7 @@ paths:
         '200':
           $ref: '#/components/responses/eCards'
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1145,11 +1109,7 @@ paths:
       operationId: Delete eCard
       responses:
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         '204':
           description: 204 Response
         default:
@@ -1173,11 +1133,7 @@ paths:
         '200':
           description: 200 Response
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -1188,11 +1144,7 @@ paths:
       operationId: Get offers
       responses:
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/reponses/httpResponseBody'
-          description: 202 Response
+          $ref: '#/components/reponses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
