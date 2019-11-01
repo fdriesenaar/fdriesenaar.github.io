@@ -256,6 +256,22 @@ components:
       schema:
         $ref: '#/components/schemas/userId'
   responses:
+    HttpResponseBody:
+      description: The request has been accepted but not processed, see body for more
+        information.
+      properties:
+        code:
+          maxItems: 1
+          minItems: 1
+          title: Http response status code
+          type: string
+        message:
+          maxItems: 1
+          minItems: 1
+          title: Response message
+          type: string
+      summary: HTTP 202 response body
+      type: object
     actionPosted:
       description: Action posted
     api:
@@ -808,6 +824,12 @@ paths:
       description: See [Delete user](https://github.com/fdriesenaar/eCards#delete-user).
       operationId: Delete user
       responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
         '204':
           $ref: '#/components/responses/userDeleted'
         default:
@@ -831,6 +853,12 @@ paths:
             schema:
               $ref: '#/components/schemas/actionList'
       responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
         '204':
           $ref: '#/components/responses/actionPosted'
         default:
@@ -844,6 +872,12 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/api'
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -857,6 +891,12 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/apiSchema'
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -868,6 +908,12 @@ paths:
       description: tbd
       operationId: Get
       responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -879,6 +925,12 @@ paths:
       description: tbd
       operationId: Get
       responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -890,6 +942,12 @@ paths:
       description: tbd
       operationId: Get
       responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -901,6 +959,12 @@ paths:
       description: tbd
       operationId: Get
       responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -912,6 +976,12 @@ paths:
       description: tbd
       operationId: Get
       responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
         default:
           $ref: '#/components/responses/default'
       tags:
@@ -939,6 +1009,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/HttpResponseBody'
           description: 202 Response
+        default:
+          $ref: '#/components/responses/default'
 security:
 - appAuthentication: []
 servers:

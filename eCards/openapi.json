@@ -60,6 +60,16 @@
                 "description": "See [Delete user](https://github.com/fdriesenaar/eCards#delete-user).",
                 "operationId": "Delete user",
                 "responses": {
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                }
+                            }
+                        }
+                    },
                     "204": {
                         "$ref": "#/components/responses/userDeleted"
                     },
@@ -85,6 +95,16 @@
                     "200": {
                         "$ref": "#/components/responses/api"
                     },
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                }
+                            }
+                        }
+                    },
                     "default": {
                         "$ref": "#/components/responses/default"
                     }
@@ -106,6 +126,16 @@
                 "responses": {
                     "200": {
                         "$ref": "#/components/responses/apiSchema"
+                    },
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                }
+                            }
+                        }
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -140,6 +170,16 @@
                     }
                 },
                 "responses": {
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                }
+                            }
+                        }
+                    },
                     "204": {
                         "$ref": "#/components/responses/actionPosted"
                     },
@@ -162,6 +202,16 @@
                 "description": "tbd",
                 "operationId": "Get",
                 "responses": {
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                }
+                            }
+                        }
+                    },
                     "default": {
                         "$ref": "#/components/responses/default"
                     }
@@ -181,6 +231,16 @@
                 "description": "tbd",
                 "operationId": "Get",
                 "responses": {
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                }
+                            }
+                        }
+                    },
                     "default": {
                         "$ref": "#/components/responses/default"
                     }
@@ -200,6 +260,16 @@
                 "description": "tbd",
                 "operationId": "Get",
                 "responses": {
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                }
+                            }
+                        }
+                    },
                     "default": {
                         "$ref": "#/components/responses/default"
                     }
@@ -219,6 +289,16 @@
                 "description": "tbd",
                 "operationId": "Get",
                 "responses": {
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                }
+                            }
+                        }
+                    },
                     "default": {
                         "$ref": "#/components/responses/default"
                     }
@@ -264,6 +344,9 @@
                                 }
                             }
                         }
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
                     }
                 }
             }
@@ -276,10 +359,19 @@
                 "description": "tbd",
                 "operationId": "Get",
                 "responses": {
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HttpResponseBody"
+                                }
+                            }
+                        }
+                    },
                     "default": {
                         "$ref": "#/components/responses/default"
-                    }
-                }
+                    }                }
             },
             "parameters": [
                 {
@@ -959,6 +1051,25 @@
                                 "$ref": "#/components/examples/authenticationRequired"
                             }
                         }
+                    }
+                }
+            },
+            "HttpResponseBody": {
+                "summary": "HTTP 202 response body",
+                "description": "The request has been accepted but not processed, see body for more information.",
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "title": "Http response status code",
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "message": {
+                        "title": "Response message",
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
                     }
                 }
             },
