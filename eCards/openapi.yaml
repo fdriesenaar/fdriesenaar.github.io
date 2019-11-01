@@ -290,7 +290,7 @@ components:
       in: path
       name: ecard_template_id
       schema:
-        $ref: '#/components/schemas/ObjectId'
+        $ref: '#/components/schemas/objectId'
     eCardsMetaData:
       in: header
       name: ECards-MetaData

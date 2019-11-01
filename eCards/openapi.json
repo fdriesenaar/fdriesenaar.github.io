@@ -1083,7 +1083,6 @@
                         "format": "int32",
                         "minItems": 1,
                         "maxItems": 1
-
                     }
                 }
             },
@@ -1243,7 +1242,7 @@
                 "description": "eCard template object id",
                 "in": "path",
                 "schema": {
-                    "$ref": "#/components/schemas/ObjectId"
+                    "$ref": "#/components/schemas/objectId"
                 }
             },
             "oid": {
