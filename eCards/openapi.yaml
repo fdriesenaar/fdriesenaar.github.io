@@ -300,6 +300,7 @@ components:
       description: eCard template object id
       in: path
       name: templateId
+      required: true
       schema:
         $ref: '#/components/schemas/objectId'
     userAgent:
@@ -390,6 +391,12 @@ components:
             example:
               description: See [.examples/openapi.yaml](./examples/openapi.yaml)
       description: Get openapi.yaml response
+    places:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/places'
+      description: Get places response
     userDeleted:
       description: User deleted
   schemas:
@@ -448,6 +455,45 @@ components:
       items:
         $ref: '#/components/schemas/action'
       type: array
+    addressComponents:
+      description: Address components, loosely based on address_components as defined
+        as part of the Google Places API, see https://developers.google.com/maps/documentation/geocoding/intro#Types.
+      properties:
+        administrativeAreaLevel1:
+          type: string
+        administrativeAreaLevel2:
+          type: string
+        administrativeAreaLevel3:
+          type: string
+        administrativeAreaLevel4:
+          type: string
+        administrativeAreaLevel5:
+          type: string
+        colloquialArea:
+          type: string
+        countryCode2:
+          description: 'NB: This property has no Google equivalent.'
+          type: string
+        countryCode3:
+          description: 'NB: This property has no Google equivalent.'
+          type: string
+        countryName:
+          type: string
+        locality:
+          type: string
+        postalCode:
+          type: string
+        route:
+          type: string
+        streetAddress:
+          type: string
+        streetName:
+          description: 'NB: This property has no Google equivalent.'
+          type: string
+        streetNumber:
+          type: string
+      summary: Address components
+      type: object
     apiInfo:
       properties:
         currentVersion:
@@ -903,6 +949,9 @@ components:
           title: Response message
           type: string
       type: object
+    name:
+      description: See https://schema.org/name
+      type: string
     objectId:
       example: 5c1b5a3b49362d15e90af6b4
       externalDocs:
@@ -926,6 +975,87 @@ components:
           minItems: 1
           type: integer
       type: object
+    place:
+      additionalProperties: false
+      description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/360649/SDD+3+-+eCards+Places.
+      properties:
+        addressComponents:
+          $ref: '#/components/schemas/addressComponents'
+          maxItems: 1
+          minItems: 1
+        addressFormatted:
+          maxItems: 1
+          minItems: 1
+          type: string
+        categories:
+          items:
+            type: string
+          maxItems: 1
+          minItems: 1
+          title: Categories
+          type: array
+        dateCreated:
+          format: date-time
+          summary: dateCreated
+          type: string
+        distance:
+          allOf:
+          - $ref: '#/components/schemas/distance'
+          - properties:
+              lengthUnitOfMeasure:
+                maxItems: 1
+                minItems: 1
+          maxItems: 1
+          minItems: 1
+        geometry:
+          $ref: '#/components/schemas/geometry'
+        icon:
+          $ref: '#/components/schemas/sizedImages'
+          maxItems: 1
+          minItems: 1
+        name:
+          $ref: '#/components/schemas/name'
+          maxItems: 1
+          minItems: 1
+        phoneNumberInternational:
+          maxItems: 1
+          minItems: 1
+          type: string
+        priority:
+          maxItems: 1
+          minItems: 1
+          type: number
+        status:
+          maxItems: 1
+          minItems: 1
+          type: string
+        templatesEligibility:
+          items:
+            type: string
+          maxItems: 1
+          minItems: 1
+          type: array
+        types:
+          items:
+            type: string
+          maxItems: 1
+          minItems: 1
+          type: array
+        utc_offset:
+          maxItems: 1
+          minItems: 1
+          type: number
+        website:
+          format: url
+          maxItems: 1
+          minItems: 1
+          type: string
+      summary: Place
+      type: object
+    places:
+      items:
+        $ref: '#/components/schemas/place'
+      type: array
     placesFilterV1:
       description: Get places request body
       properties:
@@ -944,6 +1074,27 @@ components:
       type: object
     services:
       type: object
+    sizedImages:
+      items:
+        properties:
+          size:
+            enum:
+            - small
+            - medium
+            - large
+            maxItems: 1
+            minItems: 1
+            summery: Size
+            type: string
+          url:
+            format: url
+            maxItems: 1
+            minItems: 1
+            summery: Sized image url
+            type: string
+        type: object
+      title: Sized images
+      type: array
     style:
       type: object
     transaction:

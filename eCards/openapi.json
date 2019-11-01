@@ -525,6 +525,61 @@
                     "$ref": "#/components/schemas/action"
                 }
             },
+            "addressComponents": {
+                "summary": "Address components",
+                "description": "Address components, loosely based on address_components as defined as part of the Google Places API, see https://developers.google.com/maps/documentation/geocoding/intro#Types.",
+                "type": "object",
+                "properties": {
+                    "administrativeAreaLevel1": {
+                        "type": "string"
+                    },
+                    "administrativeAreaLevel2": {
+                        "type": "string"
+                    },
+                    "administrativeAreaLevel3": {
+                        "type": "string"
+                    },
+                    "administrativeAreaLevel4": {
+                        "type": "string"
+                    },
+                    "administrativeAreaLevel5": {
+                        "type": "string"
+                    },
+                    "colloquialArea": {
+                        "type": "string"
+                    },
+                    "countryCode2": {
+                        "description": "NB: This property has no Google equivalent.",
+                        "type": "string"
+                    },
+                    "countryCode3": {
+                        "description": "NB: This property has no Google equivalent.",
+                        "type": "string"
+                    },
+                    "countryName": {
+                        "type": "string"
+                    },
+                    "locality": {
+                        "type": "string"
+                    },
+                    "postalCode": {
+                        "type": "string"
+                    },
+                    "route": {
+                        "type": "string"
+                    },
+                    "streetAddress": {
+                        "type": "string"
+                    },
+                    "streetName": {
+                        "description": "NB: This property has no Google equivalent.",
+                        "type": "string"
+                    },
+                    "streetNumber": {
+                        "type": "string"
+                    }
+                }
+            },
             "apiInfo": {
                 "type": "object",
                 "properties": {
@@ -1125,6 +1180,10 @@
                     }
                 }
             },
+            "name": {
+                "description": "See https://schema.org/name",
+                "type": "string"
+            },
             "objectId": {
                 "summary": "MongoDB object id",
                 "type": "string",
@@ -1155,6 +1214,116 @@
                     }
                 }
             },
+            "place": {
+                "summary": "Place",
+                "description": "See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/360649/SDD+3+-+eCards+Places.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "addressComponents": {
+                        "$ref": "#/components/schemas/addressComponents",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "addressFormatted": {
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "categories": {
+                        "title": "Categories",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "dateCreated": {
+                        "summary": "dateCreated",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "distance": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/distance"
+                            },
+                            {
+                                "properties": {
+                                    "lengthUnitOfMeasure": {
+                                        "minItems": 1,
+                                        "maxItems": 1
+                                    }
+                                }
+                            }
+                        ],
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "geometry": {
+                        "$ref": "#/components/schemas/geometry"
+                    },
+                    "icon": {
+                        "$ref": "#/components/schemas/sizedImages",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/name",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "phoneNumberInternational": {
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "priority": {
+                        "type": "number",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "status": {
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "templatesEligibility": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "utc_offset": {
+                        "type": "number",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "website": {
+                        "type": "string",
+                        "format": "url",
+                        "minItems": 1,
+                        "maxItems": 1
+                    }
+                }
+            },
+            "places": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/place"
+                }
+            },
             "placesFilterV1": {
                 "description": "Get places request body",
                 "type": "object",
@@ -1179,6 +1348,33 @@
             },
             "services": {
                 "type": "object"
+            },
+            "sizedImages": {
+                "title": "Sized images",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "size": {
+                            "summery": "Size",
+                            "type": "string",
+                            "enum": [
+                                "small",
+                                "medium",
+                                "large"
+                            ],
+                            "minItems": 1,
+                            "maxItems": 1
+                        },
+                        "url": {
+                            "summery": "Sized image url",
+                            "type": "string",
+                            "format": "url",
+                            "minItems": 1,
+                            "maxItems": 1
+                        }
+                    }
+                }
             },
             "style": {
                 "type": "object"
@@ -1316,6 +1512,16 @@
                     }
                 }
             },
+            "places": {
+                "description": "Get places response",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/places"
+                        }
+                    }
+                }
+            },
             "userDeleted": {
                 "description": "User deleted"
             }
@@ -1332,6 +1538,7 @@
                 "name": "templateId",
                 "description": "eCard template object id",
                 "in": "path",
+                "required": true,
                 "schema": {
                     "$ref": "#/components/schemas/objectId"
                 }
