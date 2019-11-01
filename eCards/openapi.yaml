@@ -233,6 +233,48 @@ components:
           url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
         - size: large
           url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+    eCards:
+    - cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
+      cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
+      cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
+      cardIdSymbology: null
+      creator_id: eCardsApiDocDev2User
+      dateCreated: '2018-11-19T13:38:00.001+00:00'
+      dateDeleted: null
+      dateModified: '2018-11-19T13:38:00.001+00:00'
+      description: null
+      eCardTemplate:
+        brand:
+          name: Praxis
+        cardIdSymbology: null
+        creator:
+          name: Digital Me
+        dateCreated: '2018-11-13T11:38:00.001+00:00'
+        dateDeleted: null
+        dateModified: '2018-12-03T23:08:54.215+00:00'
+        name: Praxis
+        sortName: Praxis
+        style:
+          backgroundColor: '#FFDD00'
+          backgroundImage:
+          - size: small
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+          - size: medium
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+          - size: large
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+      name: Praxis
+      notes: null
+      sortName: Praxis
+      style:
+        backgroundColor: '#FFDD00'
+        backgroundImage:
+        - size: small
+          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+        - size: medium
+          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+        - size: large
+          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
     style:
       backgroundColor: '#FFDD00'
       backgroundImage:
@@ -318,6 +360,14 @@ components:
                 type: array
             type: object
       description: Default response
+    eCards:
+      content:
+        application/json:
+          examples:
+            example:
+              '#ref': '#/components/examples/eCards'
+          schema:
+            $ref: '#/components/schemas/eCards'
     openapiDotJson:
       content:
         application/json:
@@ -777,6 +827,10 @@ components:
           maxItems: 1
           minItems: 0
           type: string
+    eCards:
+      items:
+        $ref: '#/components/schemas/eCard'
+      type: array
     geometry:
       type: object
     offer:
@@ -937,58 +991,7 @@ paths:
       - Templates
     parameters:
     - $ref: '#/components/parameters/userId'
-  /v1/users/{userId}/eCardTemplatesSelections:
-    get:
-      description: tbd
-      operationId: Get
-      responses:
-        '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpResponseBody'
-          description: 202 Response
-        default:
-          $ref: '#/components/responses/default'
-      tags:
-      - Templates Selections
-    parameters:
-    - $ref: '#/components/parameters/userId'
-  /v1/users/{userId}/eCards:
-    get:
-      description: tbd
-      operationId: Get
-      responses:
-        '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpResponseBody'
-          description: 202 Response
-        default:
-          $ref: '#/components/responses/default'
-      tags:
-      - eCards
-    parameters:
-    - $ref: '#/components/parameters/userId'
-  /v1/users/{userId}/services/offers:
-    get:
-      description: tbd
-      operationId: Get
-      responses:
-        '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpResponseBody'
-          description: 202 Response
-        default:
-          $ref: '#/components/responses/default'
-      tags:
-      - Offers
-    parameters:
-    - $ref: '#/components/parameters/userId'
-  /v1/users/{user_id}/eCardTemplates/{ecard_template_id}/services/balanceAndTransactions:
+  /v1/users/{userId}/eCardTemplates/{ecardTemplateId}/services/balanceAndTransactions:
     description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+4+-+eCards+Balance+and+Transactions
     parameters:
     - $ref: '#/components/parameters/userId'
@@ -1011,6 +1014,100 @@ paths:
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
+      tags:
+      - Balance and transactions
+  /v1/users/{userId}/eCardTemplatesSelections:
+    get:
+      description: tbd
+      operationId: Get
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - Templates Selections
+    parameters:
+    - $ref: '#/components/parameters/userId'
+  /v1/users/{userId}/eCards:
+    get:
+      description: Get eCard
+      operationId: Get eCard
+      responses:
+        '200':
+          $ref: '#/components/responses/eCards'
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - eCards
+    parameters:
+    - $ref: '#/components/parameters/userId'
+    post:
+      operationId: addECard
+      parameters:
+      - in: path
+        name: userId
+        required: true
+        schema:
+          $ref: '#/components/schemas/CreatorId'
+      - in: header
+        name: ECards-MetaData
+        schema:
+          type: string
+      - in: header
+        name: User-Agent
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties:
+                type: object
+              properties:
+                empty:
+                  type: boolean
+              type: object
+        required: true
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: object
+                properties:
+                  empty:
+                    type: boolean
+                type: object
+          description: default response
+  /v1/users/{userId}/services/offers:
+    get:
+      description: tbd
+      operationId: Get offers
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponseBody'
+          description: 202 Response
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - Offers
+    parameters:
+    - $ref: '#/components/parameters/userId'
 security:
 - appAuthentication: []
 servers:
