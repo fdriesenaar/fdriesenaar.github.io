@@ -513,13 +513,18 @@ components:
       type: http
     balanceAndTransactions:
       description: Balance and Transactions response body
-    balanceAndTransactionsRequest:
-      description: Balance and Transactions request body
+    balanceAndTransactionsGetFilterV1:
+      description: Get Balance and Transactions request body
       properties:
+        cardCode:
+          type: string
         cardId:
           type: string
+        paging:
+          $ref: '#/components/schemas/paging'
         pin:
           type: string
+          writeOnly: true
       type: object
     brandName:
       properties:
@@ -884,6 +889,20 @@ components:
       type: string
     offer:
       type: object
+    paging:
+      properties:
+        offset:
+          format: int32
+          maxItems: 1
+          minItems: 1
+          minimum: 0
+          type: integer
+        pageSize:
+          format: int32
+          maxItems: 1
+          minItems: 1
+          type: integer
+      type: object
     services:
       type: object
     style:
@@ -1026,7 +1045,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/cardInfoScopre'
+              $ref: '#/components/schemas/balanceAndTransactionsGetFilterV1'
         required: true
       responses:
         '200':

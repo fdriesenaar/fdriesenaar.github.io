@@ -369,7 +369,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/cardInfoScopre"
+                                "$ref": "#/components/schemas/balanceAndTransactionsGetFilterV1"
                             }
                         }
                     }
@@ -570,14 +570,21 @@
             "balanceAndTransactions": {
                 "description": "Balance and Transactions response body"
             },
-            "balanceAndTransactionsRequest": {
-                "description": "Balance and Transactions request body",
+            "balanceAndTransactionsGetFilterV1": {
+                "description": "Get Balance and Transactions request body",
                 "type": "object",
                 "properties": {
-                    "cardId": {
-                        "type": "string"
+                    "paging": {
+                        "$ref": "#/components/schemas/paging"
                     },
                     "pin": {
+                        "type": "string",
+                        "writeOnly": true
+                    },
+                    "cardCode": {
+                        "type": "string"
+                    },
+                    "cardId": {
                         "type": "string"
                     }
                 }
@@ -1060,6 +1067,25 @@
             },
             "offer": {
                 "type": "object"
+            },
+            "paging": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "format": "int32",
+                        "minimum": 0,
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32",
+                        "minItems": 1,
+                        "maxItems": 1
+
+                    }
+                }
             },
             "services": {
                 "type": "object"
