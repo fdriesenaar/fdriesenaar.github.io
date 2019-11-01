@@ -763,6 +763,8 @@ components:
       type: object
     offer:
       type: object
+    services:
+      type: object
     style:
       type: object
     transaction:
