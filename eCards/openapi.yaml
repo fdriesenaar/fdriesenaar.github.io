@@ -291,6 +291,22 @@ components:
       name: ecard_template_id
       schema:
         $ref: '#/components/schemas/ObjectId'
+    eCardsMetaData:
+      in: header
+      name: ECards-MetaData
+      schema:
+        $ref: '#/components/schemas/eCardsMetaData'
+    oid:
+      in: path
+      name: oid
+      required: true
+      schema:
+        $ref: '#/components/schemas/objectId'
+    userAgent:
+      in: header
+      name: User-Agent
+      schema:
+        type: string
     userId:
       in: path
       name: userId
@@ -827,12 +843,36 @@ components:
           maxItems: 1
           minItems: 0
           type: string
+    eCardUpdate:
+      summary: eCard update request body
+      type: object
     eCards:
       items:
         $ref: '#/components/schemas/eCard'
       type: array
+    eCardsMetaData:
+      properties:
+        dateEnd:
+          description: Datetimestamp of action end
+          format: iso 8601
+          maxItems: 1
+          minItems: 1
+          type: string
+        dateStart:
+          description: Datetimestamp of action start
+          format: iso 8601
+          maxItems: 1
+          minItems: 1
+          type: string
+      type: object
     geometry:
       type: object
+    objectId:
+      externalDocs:
+        description: MongoDB ObjectId description
+        url: https://docs.mongodb.com/manual/reference/method/ObjectId/
+      summary: MongoDB object id
+      type: string
     offer:
       type: object
     services:
@@ -1091,6 +1131,48 @@ paths:
                     type: boolean
                 type: object
           description: default response
+  /v1/users/{userId}/eCards/{oid}:
+    delete:
+      operationId: Delete eCard
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/reponses/HttpResponseBody'
+          description: 202 Response
+        '204':
+          description: 204 Response
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - eCards
+    parameters:
+    - $ref: '#/components/parameters/userId'
+    - $ref: '#/components/parameters/oid'
+    - $ref: '#/components/parameters/eCardsMetaData'
+    - $ref: '#/components/parameters/userAgent'
+    put:
+      operationId: Update eCard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/eCardUpdate'
+        required: true
+      responses:
+        '200':
+          description: 200 Response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/reponses/HttpResponseBody'
+          description: 202 Response
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - eCards
   /v1/users/{userId}/services/offers:
     get:
       description: tbd

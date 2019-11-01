@@ -320,6 +320,80 @@
                 }
             ]
         },
+        "/v1/users/{userId}/eCards/{oid}": {
+            "delete": {
+                "tags": [
+                    "eCards"
+                ],
+                "operationId": "Delete eCard",
+                "responses": {
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "204 Response"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "eCards"
+                ],
+                "operationId": "Update eCard",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/eCardUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "202": {
+                        "description": "202 Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "200 Response"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                },
+                {
+                    "$ref": "#/components/parameters/oid"
+                },
+                {
+                    "$ref": "#/components/parameters/eCardsMetaData"
+                },
+                {
+                    "$ref": "#/components/parameters/userAgent"
+                }
+            ]
+        },
         "/v1/users/{userId}/services/offers": {
             "get": {
                 "tags": [
@@ -882,6 +956,29 @@
                     }
                 }
             },
+            "eCardUpdate": {
+                "summary": "eCard update request body",
+                "type": "object"
+            },
+            "eCardsMetaData": {
+                "type": "object",
+                "properties": {
+                    "dateStart": {
+                        "description": "Datetimestamp of action start",
+                        "type": "string",
+                        "format": "iso 8601",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "dateEnd": {
+                        "description": "Datetimestamp of action end",
+                        "type": "string",
+                        "format": "iso 8601",
+                        "minItems": 1,
+                        "maxItems": 1
+                    }
+                }
+            },
             "eCards": {
                 "type": "array",
                 "items": {
@@ -1039,6 +1136,14 @@
             "geometry": {
                 "type": "object"
             },
+            "objectId": {
+                "summary": "MongoDB object id",
+                "externalDocs": {
+                    "description": "MongoDB ObjectId description",
+                    "url": "https://docs.mongodb.com/manual/reference/method/ObjectId/"
+                },
+                "type": "string"
+            },
             "offer": {
                 "type": "object"
             },
@@ -1194,12 +1299,34 @@
             }
         },
         "parameters": {
+            "eCardsMetaData": {
+                "name": "ECards-MetaData",
+                "in": "header",
+                "schema": {
+                    "$ref": "#/components/schemas/eCardsMetaData"
+                }
+            },
             "eCardTemplateId": {
                 "name": "ecard_template_id",
                 "description": "eCard template object id",
                 "in": "path",
                 "schema": {
                     "$ref": "#/components/schemas/ObjectId"
+                }
+            },
+            "oid": {
+                "name": "oid",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "$ref": "#/components/schemas/objectId"
+                }
+            },
+            "userAgent": {
+                "name": "User-Agent",
+                "in": "header",
+                "schema": {
+                    "type": "string"
                 }
             },
             "userId": {
