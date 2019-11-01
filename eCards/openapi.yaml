@@ -272,7 +272,7 @@ components:
         application/json:
           examples:
             json-schema draf-4 example:
-              $ref: examples/schema.json
+              description: See [.examples/schema.json](./examples/schema.json)
       description: Api schema response
     balanceAndTransactions:
       content:
@@ -307,14 +307,14 @@ components:
         application/json:
           examples:
             example:
-              $ref: examples/openapi.json
+              description: See [.examples/openapi.json](./examples/openapi.json)
       description: Get openapi.json response
     openapiDotYaml:
       content:
         application/yaml:
           examples:
             example:
-              $ref: examples/openapi.yaml
+              description: See [.examples/openapi.yaml](./examples/openapi.yaml)
       description: Get openapi.yaml response
     userDeleted:
       description: User deleted
