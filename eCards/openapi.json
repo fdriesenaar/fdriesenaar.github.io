@@ -65,7 +65,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -100,7 +100,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -132,7 +132,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -175,7 +175,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -207,7 +207,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -239,7 +239,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -332,7 +332,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -361,18 +361,18 @@
                     "required": true
                 },
                 "responses": {
+                    "200": {
+                        "description": "200 Response"
+                    },
                     "202": {
                         "description": "202 Response",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
-                    },
-                    "200": {
-                        "description": "200 Response"
                     },
                     "default": {
                         "$ref": "#/components/responses/default"
@@ -407,7 +407,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -436,7 +436,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -485,7 +485,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -509,7 +509,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/reponses/HttpResponseBody"
+                                    "$ref": "#/components/reponses/httpResponseBody"
                                 }
                             }
                         }
@@ -977,6 +977,10 @@
                         "minItems": 1,
                         "maxItems": 1
                     }
+                },
+                "example": {
+                    "dateStart": "2018-12-19T11:11:46.849+01:00",
+                    "dateEnd": "2018-12-19T11:11:47.994+01:00"
                 }
             },
             "eCards": {
@@ -1136,13 +1140,31 @@
             "geometry": {
                 "type": "object"
             },
+            "httpResponseBody": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "title": "Http response status code",
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
+                    },
+                    "message": {
+                        "title": "Response message",
+                        "type": "string",
+                        "minItems": 1,
+                        "maxItems": 1
+                    }
+                }
+            },
             "objectId": {
                 "summary": "MongoDB object id",
+                "type": "string",
+                "example": "5c1b5a3b49362d15e90af6b4",
                 "externalDocs": {
                     "description": "MongoDB ObjectId description",
                     "url": "https://docs.mongodb.com/manual/reference/method/ObjectId/"
-                },
-                "type": "string"
+                }
             },
             "offer": {
                 "type": "object"
@@ -1251,22 +1273,14 @@
                     }
                 }
             },
-            "HttpResponseBody": {
+            "httpResponseBody": {
                 "summary": "HTTP 202 response body",
                 "description": "The request has been accepted but not processed, see body for more information.",
-                "type": "object",
-                "properties": {
-                    "code": {
-                        "title": "Http response status code",
-                        "type": "string",
-                        "minItems": 1,
-                        "maxItems": 1
-                    },
-                    "message": {
-                        "title": "Response message",
-                        "type": "string",
-                        "minItems": 1,
-                        "maxItems": 1
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/httpResponseBody"
+                        }
                     }
                 }
             },

@@ -314,22 +314,6 @@ components:
       schema:
         $ref: '#/components/schemas/userId'
   responses:
-    HttpResponseBody:
-      description: The request has been accepted but not processed, see body for more
-        information.
-      properties:
-        code:
-          maxItems: 1
-          minItems: 1
-          title: Http response status code
-          type: string
-        message:
-          maxItems: 1
-          minItems: 1
-          title: Response message
-          type: string
-      summary: HTTP 202 response body
-      type: object
     actionPosted:
       description: Action posted
     api:
@@ -384,6 +368,14 @@ components:
               '#ref': '#/components/examples/eCards'
           schema:
             $ref: '#/components/schemas/eCards'
+    httpResponseBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/httpResponseBody'
+      description: The request has been accepted but not processed, see body for more
+        information.
+      summary: HTTP 202 response body
     openapiDotJson:
       content:
         application/json:
@@ -851,6 +843,9 @@ components:
         $ref: '#/components/schemas/eCard'
       type: array
     eCardsMetaData:
+      example:
+        dateEnd: '2018-12-19T11:11:47.994+01:00'
+        dateStart: '2018-12-19T11:11:46.849+01:00'
       properties:
         dateEnd:
           description: Datetimestamp of action end
@@ -867,7 +862,21 @@ components:
       type: object
     geometry:
       type: object
+    httpResponseBody:
+      properties:
+        code:
+          maxItems: 1
+          minItems: 1
+          title: Http response status code
+          type: string
+        message:
+          maxItems: 1
+          minItems: 1
+          title: Response message
+          type: string
+      type: object
     objectId:
+      example: 5c1b5a3b49362d15e90af6b4
       externalDocs:
         description: MongoDB ObjectId description
         url: https://docs.mongodb.com/manual/reference/method/ObjectId/
@@ -922,7 +931,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         '204':
           $ref: '#/components/responses/userDeleted'
@@ -951,7 +960,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         '204':
           $ref: '#/components/responses/actionPosted'
@@ -970,7 +979,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -989,7 +998,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1006,7 +1015,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1023,7 +1032,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1050,7 +1059,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1065,7 +1074,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1084,7 +1093,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1139,7 +1148,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         '204':
           description: 204 Response
@@ -1167,7 +1176,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
@@ -1182,7 +1191,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/reponses/HttpResponseBody'
+                $ref: '#/components/reponses/httpResponseBody'
           description: 202 Response
         default:
           $ref: '#/components/responses/default'
