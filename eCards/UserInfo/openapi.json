@@ -69,7 +69,7 @@
                 "tags": [
                     "User Info"
                 ],
-                "description": "Get encrypted data using provided url, for an example: [click here](https://card.dolden.net/ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5).<p>The data is cached for 10 minutes by default, so .",
+                "description": "Get encrypted data using provided url, for an example: [click here](https://dev2-card.testonly.digital-me.nl/ecards/v1/pub/dataExchange/LHHITCC2GAKV3UDN3CIE7GAA6I5PX4VV).<p>The data is cached for 10 minutes by default, so .",
                 "operationId": "Get encrypted User Info",
                 "responses": {
                     "200": {
@@ -103,6 +103,53 @@
         "schemas": {
             "getUrlResponse": {
                 "description": "Get url response",
+                "type": "object",
+                "properties": {
+                    "metaData": {
+                        "$ref": "#/components/schemas/metaData"
+                    },
+                    "UserInfo": {
+                        "$ref": "#/components/schemas/userInfo"
+                    }
+                }
+            },
+            "metaData": {
+                "type": "object",
+                "properties": {
+                    "callsLeft": {
+                        "description": "Number of times the url can be used to get the user info",
+                        "type": "number"
+                    },
+                    "serverTime": {
+                        "description": "Server time",
+                        "type": "number",
+                        "format": "Unix time in mili seconds"
+                    },
+                    "tsExpiry": {
+                        "description": "Expiration datetime",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "example": {
+                    "tsExpiry": 1574382886469,
+                    "callsLeft": 998,
+                    "serverTime": 1572943156281
+                }
+            },
+            "secret": {
+                "description": "Secret used to encrypt the User Info.",
+                "type": "string",
+                "format": "Base64 URL encoded",
+                "example": "ORy_ZP15IEZ0kCeuBICMgVswbIBEZAt9NF2D9mdc2As"
+            },
+            "url": {
+                "description": "User Info Url.",
+                "type": "string",
+                "format": "url",
+                "example": "https://dev2-card.testonly.digital-me.nl/ecards/v1/pub/dataExchange/BKTJYLTFNOEV65KNBP6GLM6SPB63OICN"
+            },
+            "userInfo": {
                 "type": "object",
                 "format": "encrypted using AES128, AES192 or AES256 and none IV",
                 "properties": {
@@ -182,19 +229,8 @@
                         "type": "string",
                         "format": "date-time"
                     }
-                }
-            },
-            "secret": {
-                "description": "Secret used to encrypt the User Info.",
-                "type": "string",
-                "format": "Base64 URL encoded",
-                "example": "KWpreJjLJR6_Q0W8-v_oSiF95_Fyoe7O4MTo1tghELk"
-            },
-            "url": {
-                "description": "User Info Url.",
-                "type": "string",
-                "format": "url",
-                "example": "https://card.dolden.net/ecards/v1/pub/dataExchange/SCXPNE2I3D4JU5NWDDTAXRCBBEJQWJX5"
+                },
+                "example": "wUY9fLfb2wY2IWhTUEB6DQLEqA+2XrblXPMIqYFU6LAE3ZzzkVgiO2CNtpYUzZ4YK/7HZLtCoP5oyebLj3hqwiO8TVVXD4sbW3Eo3Vu7iTbS/ZWN0cc9ENba+K+2FXDjGLYBxGs4pMNkIHhauxsIh0G04yUWKYGqJ0gvEVoW4Cw="
             }
         },
         "responses": {
@@ -206,10 +242,29 @@
                             "$ref": "#/components/schemas/getUrlResponse"
                         },
                         "examples": {
-                            "example": {
-                                "summary": "AES256 encrypted example",
+                            "AES256 encrypted example": {
                                 "value": {
-                                    "userInfo": "PlPY81WkHVqy+FAtUKs8vQXqXTRcsChw1KaEDB22DlTc3eN1IG3mr0759oOX5dCl6weacHMIBD6OtXGGmvslCA=="
+                                    "metaData": {
+                                        "tsExpiry": 1574382886469,
+                                        "callsLeft": 998,
+                                        "serverTime": 1572943156281
+                                    },
+                                    "userInfo": "wUY9fLfb2wY2IWhTUEB6DQLEqA+2XrblXPMIqYFU6LAE3ZzzkVgiO2CNtpYUzZ4YK/7HZLtCoP5oyebLj3hqwiO8TVVXD4sbW3Eo3Vu7iTbS/ZWN0cc9ENba+K+2FXDjGLYBxGs4pMNkIHhauxsIh0G04yUWKYGqJ0gvEVoW4Cw="
+                                }
+                            },
+                            "decrypted example": {
+                                "value": {
+                                    "metaData": {
+                                        "tsExpiry": 1574382886469,
+                                        "callsLeft": 998,
+                                        "serverTime": 1572943156281
+                                    },
+                                    "userInfo": {
+                                        "card_secret": "455958",
+                                        "card_number": "7000001114520894388",
+                                        "card_number_verified": true,
+                                        "card_secret_verified": true
+                                    }
                                 }
                             }
                         }
@@ -219,4 +274,3 @@
         }
     }
 }
-
