@@ -135,8 +135,8 @@ info:
     the url to get the data](#/User%20Info/Get%20encrypted%20User%20Info)<li>Use the
     secret to decrypt the data</ul><p>The api contains example data for experimentation,
     but to test with the Dappre app please contact the Service Desk and provide:<ul><li>your
-    website url for test (and production)<li>your preferred encryption algorithm (AES128,
-    AES192, AES256)</ul>
+    website url and cors url for test (and production)<li>your preferred encryption
+    algorithm (AES128, AES192, AES256)</ul>
   externalDocs:
     description: Find more info here
     url: https://dappre.com
