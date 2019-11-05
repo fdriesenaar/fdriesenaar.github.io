@@ -137,9 +137,6 @@ info:
     but to test with the Dappre app please contact the Service Desk and provide:<ul><li>your
     website url and cors url for test (and production)<li>your preferred encryption
     algorithm (AES128, AES192, AES256)</ul>
-  externalDocs:
-    description: Find more info here
-    url: https://dappre.com
   license:
     name: (c) Dappre BV 2019 - All rights reserved
     url: https://dappre.com
@@ -164,6 +161,8 @@ paths:
       in: path
       name: url
       required: true
+      schema:
+        type: string
     servers:
     - description: User Info Endpoint
       url: '{url}'
@@ -185,6 +184,8 @@ paths:
       in: path
       name: websiteUrl
       required: true
+      schema:
+        type: string
     - description: secret. Contact the Service Desk to change the parameter name.
       in: query
       name: s
