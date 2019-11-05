@@ -150,8 +150,9 @@ paths:
   /{url}:
     get:
       description: 'Get encrypted data using url as included in website url, for an
-        example: [click here](https://dev2-card.testonly.digital-me.nl/ecards/v1/pub/dataExchange/LHHITCC2GAKV3UDN3CIE7GAA6I5PX4VV).<p>The
-        data is cached for 10 minutes by default, so .'
+        example: [click here](https://dev2-card.testonly.digital-me.nl/ecards/v1/pub/dataExchange/LHHITCC2GAKV3UDN3CIE7GAA6I5PX4VV).<p>Please
+        note:<br><ul><li>You have 1 minute to get the data by default, so be in time.<li>You
+        can use the url 2 times by default.</ul>'
       operationId: Get encrypted User Info
       responses:
         '200':
