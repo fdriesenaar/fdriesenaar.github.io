@@ -54,7 +54,7 @@ components:
       type: object
     secret:
       description: Secret used to encrypt the User Info.
-      example: ORy_ZP15IEZ0kCeuBICMgVswbIBEZAt9NF2D9mdc2As
+      example: W01e7jhscW_f2q9sNBXNuQBKFCTcf83ylY1Nbnz2jBk
       format: Base64 URL encoded
       type: string
     url:
@@ -147,9 +147,32 @@ info:
   version: 1.0.0
 openapi: 3.0.0
 paths:
-  /{Website}:
+  /{url}:
     get:
-      description: Website call from eCard
+      description: 'Get encrypted data using url as included in website url, for an
+        example: [click here](https://dev2-card.testonly.digital-me.nl/ecards/v1/pub/dataExchange/LHHITCC2GAKV3UDN3CIE7GAA6I5PX4VV).<p>The
+        data is cached for 10 minutes by default, so .'
+      operationId: Get encrypted User Info
+      responses:
+        '200':
+          $ref: '#/components/responses/getUrl'
+      tags:
+      - User Info
+    parameters:
+    - description: (Path part of) url as passed in website url
+      in: path
+      name: url
+      required: true
+    servers:
+    - description: User Info Endpoint
+      url: '{url}'
+      variables:
+        url:
+          default: https://card.dolden.net
+          description: (Base part of) url as included in website url
+  /{websiteUrl}:
+    get:
+      description: Website call from Dappre
       operationId: Website call
       responses:
         '200':
@@ -159,7 +182,7 @@ paths:
     parameters:
     - description: (path part of) Website url, for example 'home' for 'https://website.example.com/home'.
       in: path
-      name: Website url
+      name: websiteUrl
       required: true
     - description: secret. Contact the Service Desk to change the parameter name.
       in: query
@@ -174,31 +197,8 @@ paths:
         $ref: '#/components/schemas/url'
     servers:
     - description: Website
-      url: '{WebsiteUrl}'
+      url: '{websiteUrl}'
       variables:
-        WebsiteBaseUrl:
+        websiteUrl:
           default: https://website.example.com
-          description: (base part of) Website url
-  /{urlPath}:
-    get:
-      description: 'Get encrypted data using provided url, for an example: [click
-        here](https://dev2-card.testonly.digital-me.nl/ecards/v1/pub/dataExchange/LHHITCC2GAKV3UDN3CIE7GAA6I5PX4VV).<p>The
-        data is cached for 10 minutes by default, so .'
-      operationId: Get encrypted User Info
-      responses:
-        '200':
-          $ref: '#/components/responses/getUrl'
-      tags:
-      - User Info
-    parameters:
-    - description: Path part of url as passed in url query parameter
-      in: path
-      name: urlPath
-      required: true
-    servers:
-    - description: User Info Endpoint
-      url: '{urlBase}'
-      variables:
-        UserInfoBaseUrl:
-          default: https://card.dolden.net
-          description: Base part of url as passed in url query parameter
+          description: (Base part of) Website url

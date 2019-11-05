@@ -14,12 +14,12 @@
         }
     },
     "paths": {
-        "/{Website}": {
+        "/{websiteUrl}": {
             "get": {
                 "tags": [
                     "Website"
                 ],
-                "description": "Website call from eCard",
+                "description": "Website call from Dappre",
                 "operationId": "Website call",
                 "responses": {
                     "200": {
@@ -30,10 +30,10 @@
             "servers": [
                 {
                     "description": "Website",
-                    "url": "{WebsiteUrl}",
+                    "url": "{websiteUrl}",
                     "variables": {
-                        "WebsiteBaseUrl": {
-                            "description": "(base part of) Website url",
+                        "websiteUrl": {
+                            "description": "(Base part of) Website url",
                             "default": "https://website.example.com"
                         }
                     }
@@ -41,7 +41,7 @@
             ],
             "parameters": [
                 {
-                    "name": "Website url",
+                    "name": "websiteUrl",
                     "in": "path",
                     "description": "(path part of) Website url, for example 'home' for 'https://website.example.com/home'.",
                     "required": true
@@ -64,12 +64,12 @@
                 }
             ]
         },
-        "/{urlPath}": {
+        "/{url}": {
             "get": {
                 "tags": [
                     "User Info"
                 ],
-                "description": "Get encrypted data using provided url, for an example: [click here](https://dev2-card.testonly.digital-me.nl/ecards/v1/pub/dataExchange/LHHITCC2GAKV3UDN3CIE7GAA6I5PX4VV).<p>The data is cached for 10 minutes by default, so .",
+                "description": "Get encrypted data using url as included in website url, for an example: [click here](https://dev2-card.testonly.digital-me.nl/ecards/v1/pub/dataExchange/LHHITCC2GAKV3UDN3CIE7GAA6I5PX4VV).<p>The data is cached for 10 minutes by default, so .",
                 "operationId": "Get encrypted User Info",
                 "responses": {
                     "200": {
@@ -80,10 +80,10 @@
             "servers": [
                 {
                     "description": "User Info Endpoint",
-                    "url": "{urlBase}",
+                    "url": "{url}",
                     "variables": {
-                        "UserInfoBaseUrl": {
-                            "description": "Base part of url as passed in url query parameter",
+                        "url": {
+                            "description": "(Base part of) url as included in website url",
                             "default": "https://card.dolden.net"
                         }
                     }
@@ -91,9 +91,9 @@
             ],
             "parameters": [
                 {
-                    "name": "urlPath",
+                    "name": "url",
                     "in": "path",
-                    "description": "Path part of url as passed in url query parameter",
+                    "description": "(Path part of) url as passed in website url",
                     "required": true
                 }
             ]
@@ -141,7 +141,7 @@
                 "description": "Secret used to encrypt the User Info.",
                 "type": "string",
                 "format": "Base64 URL encoded",
-                "example": "ORy_ZP15IEZ0kCeuBICMgVswbIBEZAt9NF2D9mdc2As"
+                "example": "W01e7jhscW_f2q9sNBXNuQBKFCTcf83ylY1Nbnz2jBk"
             },
             "url": {
                 "description": "User Info Url.",
