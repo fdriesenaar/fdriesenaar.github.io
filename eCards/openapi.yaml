@@ -395,7 +395,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/places'
+            $ref: '#/components/schemas/places'
       description: Get places response
     userDeleted:
       description: User deleted

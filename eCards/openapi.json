@@ -1513,7 +1513,7 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "#/components/places"
+                            "$ref": "#/components/schemas/places"
                         }
                     }
                 }
