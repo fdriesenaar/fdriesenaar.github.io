@@ -2,11 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "eCards API",
-        "description": "Find more info here: [eCards API](https://github.com/fdriesenaar/eCards)",
-        "externalDocs": {
-            "description": "Find more info here",
-            "url": "https://github.com/fdriesenaar/eCards"
-        },
+        "description": "Find more info here: [eCards API](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc)",
         "version": "1.0.0",
         "license": {
             "name": "Copyright Dappre B.V. 2019 - all rights reserved",
