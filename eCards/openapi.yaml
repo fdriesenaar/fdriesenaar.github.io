@@ -1103,9 +1103,12 @@ components:
       type: object
     transaction:
       type: object
-    userId:
-      description: See [User Id](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#user-identification)
+    unreservedCharacters:
+      description: See [RFC3986 section 3.3](https://tools.ietf.org/html/rfc3986#section-3.3)
       type: string
+    userId:
+      $ref: '#/components/schemas/unreservedCharacters'
+      description: See [User Id](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#user-identification)
   securitySchemes:
     appAuthentication:
       description: See [App Authentication](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#authentication)

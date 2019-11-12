@@ -1373,9 +1373,13 @@
             "transaction": {
                 "type": "object"
             },
+            "unreservedCharacters": {
+                "description": "See [RFC3986 section 3.3](https://tools.ietf.org/html/rfc3986#section-3.3)",
+                "type": "string"
+            },
             "userId": {
                 "description": "See [User Id](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#user-identification)",
-                "type": "string"
+                "$ref": "#/components/schemas/unreservedCharacters"
             }
         },
         "responses": {
@@ -1455,19 +1459,19 @@
                 }
             },
             "eCards": {
-              "description": "eCards response",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/eCards"
-                  },
-                  "examples": {
-                    "example": {
-                      "$ref": "#/components/examples/eCards"
+                "description": "eCards response",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/eCards"
+                        },
+                        "examples": {
+                            "example": {
+                                "$ref": "#/components/examples/eCards"
+                            }
+                        }
                     }
-                  }
                 }
-              }
             },
             "httpResponseBody": {
                 "description": "HTTP 202: The request has been accepted but not processed, see body for more information.",
@@ -1560,79 +1564,7 @@
         },
         "examples": {
             "action": {
-              "value": {
-                "dateStart": "2018-12-18T10:17:01.760+01:00",
-                "dateEnd": "2018-12-18T10:17:08.388+01:00",
-                "eCard": {
-                    "_id": "5c1b5a3b49362d15e90af6b4",
-                    "cardIdCipher": "jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=",
-                    "cardIdCipherIV": "PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==",
-                    "cardIdCipherKey": "ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==",
-                    "cardIdSymbology": null,
-                    "dateCreated": "2018-11-19T13:38:00.001+00:00",
-                    "dateDeleted": null,
-                    "dateModified": "2018-11-19T13:38:00.001+00:00",
-                    "description": null,
-                    "eCardTemplate": {
-                        "brand": {
-                            "name": "Praxis"
-                        },
-                        "cardIdSymbology": null,
-                        "creator": {
-                            "name": "Digital Me"
-                        },
-                        "dateCreated": "2018-11-13T11:38:00.001+00:00",
-                        "dateDeleted": null,
-                        "dateModified": "2018-12-03T23:08:54.215+00:00",
-                        "_id": "5beaf11ef34f391adf32fd65",
-                        "name": "Praxis",
-                        "sortName": "Praxis",
-                        "style": {
-                            "backgroundColor": "#FFDD00",
-                            "backgroundImage": [
-                                {
-                                    "size": "small",
-                                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
-                                },
-                                {
-                                    "size": "medium",
-                                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
-                                },
-                                {
-                                    "size": "large",
-                                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
-                                }
-                            ]
-                        }
-                    },
-                    "name": "Praxis",
-                    "notes": null,
-                    "sortName": "Praxis",
-                    "style": {
-                        "backgroundColor": "#FFDD00",
-                        "backgroundImage": [
-                            {
-                                "size": "small",
-                                "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
-                            },
-                            {
-                                "size": "medium",
-                                "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
-                            },
-                            {
-                                "size": "large",
-                                "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
-                            }
-                        ]
-                    },
-                    "creator_id": "eCardsApiDocDev2User"
-                },
-                "type": "InteractAction"
-              }
-            },
-            "actionList": {
-              "value": [
-                {
+                "value": {
                     "dateStart": "2018-12-18T10:17:01.760+01:00",
                     "dateEnd": "2018-12-18T10:17:08.388+01:00",
                     "eCard": {
@@ -1700,34 +1632,127 @@
                         "creator_id": "eCardsApiDocDev2User"
                     },
                     "type": "InteractAction"
-                },
-                {
-                    "dateStart": "2018-12-18T10:17:08.988+01:00",
-                    "dateEnd": "2018-12-18T10:17:10.746+01:00",
-                    "eCard": {
-                        "_id": "5c1b5a8649362d15e90af6b6",
-                        "cardIdCipher": "jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=",
-                        "cardIdCipherIV": "PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==",
-                        "cardIdCipherKey": "ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==",
-                        "cardIdSymbology": null,
-                        "creator_id": "eCardsApiDocDev2User",
-                        "dateCreated": "2018-11-19T13:38:00.001+00:00",
-                        "dateDeleted": null,
-                        "dateModified": "2018-11-19T13:38:00.001+00:00",
-                        "description": null,
-                        "eCardTemplate": {
-                            "brand": {
-                                "name": "Praxis"
-                            },
+                }
+            },
+            "actionList": {
+                "value": [
+                    {
+                        "dateStart": "2018-12-18T10:17:01.760+01:00",
+                        "dateEnd": "2018-12-18T10:17:08.388+01:00",
+                        "eCard": {
+                            "_id": "5c1b5a3b49362d15e90af6b4",
+                            "cardIdCipher": "jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=",
+                            "cardIdCipherIV": "PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==",
+                            "cardIdCipherKey": "ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==",
                             "cardIdSymbology": null,
-                            "creator": {
-                                "name": "Digital Me"
-                            },
-                            "dateCreated": "2018-11-13T11:38:00.001+00:00",
+                            "dateCreated": "2018-11-19T13:38:00.001+00:00",
                             "dateDeleted": null,
-                            "dateModified": "2018-12-03T23:08:54.215+00:00",
-                            "_id": "5beaf11ef34f391adf32fd65",
+                            "dateModified": "2018-11-19T13:38:00.001+00:00",
+                            "description": null,
+                            "eCardTemplate": {
+                                "brand": {
+                                    "name": "Praxis"
+                                },
+                                "cardIdSymbology": null,
+                                "creator": {
+                                    "name": "Digital Me"
+                                },
+                                "dateCreated": "2018-11-13T11:38:00.001+00:00",
+                                "dateDeleted": null,
+                                "dateModified": "2018-12-03T23:08:54.215+00:00",
+                                "_id": "5beaf11ef34f391adf32fd65",
+                                "name": "Praxis",
+                                "sortName": "Praxis",
+                                "style": {
+                                    "backgroundColor": "#FFDD00",
+                                    "backgroundImage": [
+                                        {
+                                            "size": "small",
+                                            "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
+                                        },
+                                        {
+                                            "size": "medium",
+                                            "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
+                                        },
+                                        {
+                                            "size": "large",
+                                            "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
+                                        }
+                                    ]
+                                }
+                            },
                             "name": "Praxis",
+                            "notes": null,
+                            "sortName": "Praxis",
+                            "style": {
+                                "backgroundColor": "#FFDD00",
+                                "backgroundImage": [
+                                    {
+                                        "size": "small",
+                                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
+                                    },
+                                    {
+                                        "size": "medium",
+                                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
+                                    },
+                                    {
+                                        "size": "large",
+                                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
+                                    }
+                                ]
+                            },
+                            "creator_id": "eCardsApiDocDev2User"
+                        },
+                        "type": "InteractAction"
+                    },
+                    {
+                        "dateStart": "2018-12-18T10:17:08.988+01:00",
+                        "dateEnd": "2018-12-18T10:17:10.746+01:00",
+                        "eCard": {
+                            "_id": "5c1b5a8649362d15e90af6b6",
+                            "cardIdCipher": "jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=",
+                            "cardIdCipherIV": "PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==",
+                            "cardIdCipherKey": "ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==",
+                            "cardIdSymbology": null,
+                            "creator_id": "eCardsApiDocDev2User",
+                            "dateCreated": "2018-11-19T13:38:00.001+00:00",
+                            "dateDeleted": null,
+                            "dateModified": "2018-11-19T13:38:00.001+00:00",
+                            "description": null,
+                            "eCardTemplate": {
+                                "brand": {
+                                    "name": "Praxis"
+                                },
+                                "cardIdSymbology": null,
+                                "creator": {
+                                    "name": "Digital Me"
+                                },
+                                "dateCreated": "2018-11-13T11:38:00.001+00:00",
+                                "dateDeleted": null,
+                                "dateModified": "2018-12-03T23:08:54.215+00:00",
+                                "_id": "5beaf11ef34f391adf32fd65",
+                                "name": "Praxis",
+                                "sortName": "Praxis",
+                                "style": {
+                                    "backgroundColor": "#FFDD00",
+                                    "backgroundImage": [
+                                        {
+                                            "size": "small",
+                                            "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
+                                        },
+                                        {
+                                            "size": "medium",
+                                            "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
+                                        },
+                                        {
+                                            "size": "large",
+                                            "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
+                                        }
+                                    ]
+                                }
+                            },
+                            "name": "Praxis",
+                            "notes": null,
                             "sortName": "Praxis",
                             "style": {
                                 "backgroundColor": "#FFDD00",
@@ -1747,30 +1772,9 @@
                                 ]
                             }
                         },
-                        "name": "Praxis",
-                        "notes": null,
-                        "sortName": "Praxis",
-                        "style": {
-                            "backgroundColor": "#FFDD00",
-                            "backgroundImage": [
-                                {
-                                    "size": "small",
-                                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
-                                },
-                                {
-                                    "size": "medium",
-                                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
-                                },
-                                {
-                                    "size": "large",
-                                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
-                                }
-                            ]
-                        }
-                    },
-                    "type": "InteractAction"
-                }
-              ]
+                        "type": "InteractAction"
+                    }
+                ]
             },
             "apiInfo": {
                 "value": {
@@ -1802,88 +1806,23 @@
                 }
             },
             "backgroundImage": {
-              "value": [
-                {
-                    "size": "small",
-                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
-                },
-                {
-                    "size": "medium",
-                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
-                },
-                {
-                    "size": "large",
-                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
-                }
-              ]
+                "value": [
+                    {
+                        "size": "small",
+                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
+                    },
+                    {
+                        "size": "medium",
+                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
+                    },
+                    {
+                        "size": "large",
+                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
+                    }
+                ]
             },
             "eCard": {
-              "value": {
-                "cardIdCipher": "jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=",
-                "cardIdCipherIV": "PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==",
-                "cardIdCipherKey": "ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==",
-                "cardIdSymbology": null,
-                "dateCreated": "2018-11-19T13:38:00.001+00:00",
-                "dateDeleted": null,
-                "dateModified": "2018-11-19T13:38:00.001+00:00",
-                "description": null,
-                "eCardTemplate": {
-                    "brand": {
-                        "name": "Praxis"
-                    },
-                    "cardIdSymbology": null,
-                    "creator": {
-                        "name": "Digital Me"
-                    },
-                    "dateCreated": "2018-11-13T11:38:00.001+00:00",
-                    "dateDeleted": null,
-                    "dateModified": "2018-12-03T23:08:54.215+00:00",
-                    "name": "Praxis",
-                    "sortName": "Praxis",
-                    "style": {
-                        "backgroundColor": "#FFDD00",
-                        "backgroundImage": [
-                            {
-                                "size": "small",
-                                "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
-                            },
-                            {
-                                "size": "medium",
-                                "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
-                            },
-                            {
-                                "size": "large",
-                                "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
-                            }
-                        ]
-                    }
-                },
-                "name": "Praxis",
-                "notes": null,
-                "sortName": "Praxis",
-                "style": {
-                    "backgroundColor": "#FFDD00",
-                    "backgroundImage": [
-                        {
-                            "size": "small",
-                            "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
-                        },
-                        {
-                            "size": "medium",
-                            "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
-                        },
-                        {
-                            "size": "large",
-                            "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
-                        }
-                    ]
-                },
-                "creator_id": "eCardsApiDocDev2User"
-              }
-            },
-            "eCards": {
-              "value": [
-                {
+                "value": {
                     "cardIdCipher": "jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=",
                     "cardIdCipherIV": "PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==",
                     "cardIdCipherKey": "ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==",
@@ -1945,24 +1884,109 @@
                     },
                     "creator_id": "eCardsApiDocDev2User"
                 }
-              ]
+            },
+            "eCards": {
+                "value": [
+                    {
+                        "cardIdCipher": "jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=",
+                        "cardIdCipherIV": "PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==",
+                        "cardIdCipherKey": "ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==",
+                        "cardIdSymbology": null,
+                        "dateCreated": "2018-11-19T13:38:00.001+00:00",
+                        "dateDeleted": null,
+                        "dateModified": "2018-11-19T13:38:00.001+00:00",
+                        "description": null,
+                        "eCardTemplate": {
+                            "brand": {
+                                "name": "Praxis"
+                            },
+                            "cardIdSymbology": null,
+                            "creator": {
+                                "name": "Digital Me"
+                            },
+                            "dateCreated": "2018-11-13T11:38:00.001+00:00",
+                            "dateDeleted": null,
+                            "dateModified": "2018-12-03T23:08:54.215+00:00",
+                            "name": "Praxis",
+                            "sortName": "Praxis",
+                            "style": {
+                                "backgroundColor": "#FFDD00",
+                                "backgroundImage": [
+                                    {
+                                        "size": "small",
+                                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
+                                    },
+                                    {
+                                        "size": "medium",
+                                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
+                                    },
+                                    {
+                                        "size": "large",
+                                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
+                                    }
+                                ]
+                            }
+                        },
+                        "name": "Praxis",
+                        "notes": null,
+                        "sortName": "Praxis",
+                        "style": {
+                            "backgroundColor": "#FFDD00",
+                            "backgroundImage": [
+                                {
+                                    "size": "small",
+                                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
+                                },
+                                {
+                                    "size": "medium",
+                                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
+                                },
+                                {
+                                    "size": "large",
+                                    "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
+                                }
+                            ]
+                        },
+                        "creator_id": "eCardsApiDocDev2User"
+                    }
+                ]
             },
             "eCardTemplate": {
-              "value": {
-                "brand": {
-                    "name": "Praxis"
-                },
-                "cardIdSymbology": null,
-                "creator": {
-                    "name": "Digital Me"
-                },
-                "dateCreated": "2018-11-13T11:38:00.001+00:00",
-                "dateDeleted": null,
-                "dateModified": "2018-12-03T23:08:54.215+00:00",
-                "_id": "5beaf11ef34f391adf32fd65",
-                "name": "Praxis",
-                "sortName": "Praxis",
-                "style": {
+                "value": {
+                    "brand": {
+                        "name": "Praxis"
+                    },
+                    "cardIdSymbology": null,
+                    "creator": {
+                        "name": "Digital Me"
+                    },
+                    "dateCreated": "2018-11-13T11:38:00.001+00:00",
+                    "dateDeleted": null,
+                    "dateModified": "2018-12-03T23:08:54.215+00:00",
+                    "_id": "5beaf11ef34f391adf32fd65",
+                    "name": "Praxis",
+                    "sortName": "Praxis",
+                    "style": {
+                        "backgroundColor": "#FFDD00",
+                        "backgroundImage": [
+                            {
+                                "size": "small",
+                                "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
+                            },
+                            {
+                                "size": "medium",
+                                "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
+                            },
+                            {
+                                "size": "large",
+                                "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
+                            }
+                        ]
+                    }
+                }
+            },
+            "style": {
+                "value": {
                     "backgroundColor": "#FFDD00",
                     "backgroundImage": [
                         {
@@ -1979,26 +2003,6 @@
                         }
                     ]
                 }
-              }
-            },
-            "style": {
-              "value": {
-                "backgroundColor": "#FFDD00",
-                "backgroundImage": [
-                    {
-                        "size": "small",
-                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png"
-                    },
-                    {
-                        "size": "medium",
-                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png"
-                    },
-                    {
-                        "size": "large",
-                        "url": "https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png"
-                    }
-                ]
-              }
             }
         },
         "securitySchemes": {
