@@ -1,30 +1,43 @@
 components:
   examples:
     action:
-      dateEnd: '2018-12-18T10:17:08.388+01:00'
-      dateStart: '2018-12-18T10:17:01.760+01:00'
-      eCard:
-        _id: 5c1b5a3b49362d15e90af6b4
-        cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
-        cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
-        cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
-        cardIdSymbology: null
-        creator_id: eCardsApiDocDev2User
-        dateCreated: '2018-11-19T13:38:00.001+00:00'
-        dateDeleted: null
-        dateModified: '2018-11-19T13:38:00.001+00:00'
-        description: null
-        eCardTemplate:
-          _id: 5beaf11ef34f391adf32fd65
-          brand:
-            name: Praxis
+      value:
+        dateEnd: '2018-12-18T10:17:08.388+01:00'
+        dateStart: '2018-12-18T10:17:01.760+01:00'
+        eCard:
+          _id: 5c1b5a3b49362d15e90af6b4
+          cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
+          cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
+          cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
           cardIdSymbology: null
-          creator:
-            name: Digital Me
-          dateCreated: '2018-11-13T11:38:00.001+00:00'
+          creator_id: eCardsApiDocDev2User
+          dateCreated: '2018-11-19T13:38:00.001+00:00'
           dateDeleted: null
-          dateModified: '2018-12-03T23:08:54.215+00:00'
+          dateModified: '2018-11-19T13:38:00.001+00:00'
+          description: null
+          eCardTemplate:
+            _id: 5beaf11ef34f391adf32fd65
+            brand:
+              name: Praxis
+            cardIdSymbology: null
+            creator:
+              name: Digital Me
+            dateCreated: '2018-11-13T11:38:00.001+00:00'
+            dateDeleted: null
+            dateModified: '2018-12-03T23:08:54.215+00:00'
+            name: Praxis
+            sortName: Praxis
+            style:
+              backgroundColor: '#FFDD00'
+              backgroundImage:
+              - size: small
+                url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+              - size: medium
+                url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+              - size: large
+                url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
           name: Praxis
+          notes: null
           sortName: Praxis
           style:
             backgroundColor: '#FFDD00'
@@ -35,44 +48,45 @@ components:
               url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
             - size: large
               url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-        name: Praxis
-        notes: null
-        sortName: Praxis
-        style:
-          backgroundColor: '#FFDD00'
-          backgroundImage:
-          - size: small
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
-          - size: medium
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
-          - size: large
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-      type: InteractAction
+        type: InteractAction
     actionList:
-    - dateEnd: '2018-12-18T10:17:08.388+01:00'
-      dateStart: '2018-12-18T10:17:01.760+01:00'
-      eCard:
-        _id: 5c1b5a3b49362d15e90af6b4
-        cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
-        cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
-        cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
-        cardIdSymbology: null
-        creator_id: eCardsApiDocDev2User
-        dateCreated: '2018-11-19T13:38:00.001+00:00'
-        dateDeleted: null
-        dateModified: '2018-11-19T13:38:00.001+00:00'
-        description: null
-        eCardTemplate:
-          _id: 5beaf11ef34f391adf32fd65
-          brand:
-            name: Praxis
+      value:
+      - dateEnd: '2018-12-18T10:17:08.388+01:00'
+        dateStart: '2018-12-18T10:17:01.760+01:00'
+        eCard:
+          _id: 5c1b5a3b49362d15e90af6b4
+          cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
+          cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
+          cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
           cardIdSymbology: null
-          creator:
-            name: Digital Me
-          dateCreated: '2018-11-13T11:38:00.001+00:00'
+          creator_id: eCardsApiDocDev2User
+          dateCreated: '2018-11-19T13:38:00.001+00:00'
           dateDeleted: null
-          dateModified: '2018-12-03T23:08:54.215+00:00'
+          dateModified: '2018-11-19T13:38:00.001+00:00'
+          description: null
+          eCardTemplate:
+            _id: 5beaf11ef34f391adf32fd65
+            brand:
+              name: Praxis
+            cardIdSymbology: null
+            creator:
+              name: Digital Me
+            dateCreated: '2018-11-13T11:38:00.001+00:00'
+            dateDeleted: null
+            dateModified: '2018-12-03T23:08:54.215+00:00'
+            name: Praxis
+            sortName: Praxis
+            style:
+              backgroundColor: '#FFDD00'
+              backgroundImage:
+              - size: small
+                url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+              - size: medium
+                url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+              - size: large
+                url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
           name: Praxis
+          notes: null
           sortName: Praxis
           style:
             backgroundColor: '#FFDD00'
@@ -83,43 +97,43 @@ components:
               url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
             - size: large
               url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-        name: Praxis
-        notes: null
-        sortName: Praxis
-        style:
-          backgroundColor: '#FFDD00'
-          backgroundImage:
-          - size: small
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
-          - size: medium
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
-          - size: large
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-      type: InteractAction
-    - dateEnd: '2018-12-18T10:17:10.746+01:00'
-      dateStart: '2018-12-18T10:17:08.988+01:00'
-      eCard:
-        _id: 5c1b5a8649362d15e90af6b6
-        cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
-        cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
-        cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
-        cardIdSymbology: null
-        creator_id: eCardsApiDocDev2User
-        dateCreated: '2018-11-19T13:38:00.001+00:00'
-        dateDeleted: null
-        dateModified: '2018-11-19T13:38:00.001+00:00'
-        description: null
-        eCardTemplate:
-          _id: 5beaf11ef34f391adf32fd65
-          brand:
-            name: Praxis
+        type: InteractAction
+      - dateEnd: '2018-12-18T10:17:10.746+01:00'
+        dateStart: '2018-12-18T10:17:08.988+01:00'
+        eCard:
+          _id: 5c1b5a8649362d15e90af6b6
+          cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
+          cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
+          cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
           cardIdSymbology: null
-          creator:
-            name: Digital Me
-          dateCreated: '2018-11-13T11:38:00.001+00:00'
+          creator_id: eCardsApiDocDev2User
+          dateCreated: '2018-11-19T13:38:00.001+00:00'
           dateDeleted: null
-          dateModified: '2018-12-03T23:08:54.215+00:00'
+          dateModified: '2018-11-19T13:38:00.001+00:00'
+          description: null
+          eCardTemplate:
+            _id: 5beaf11ef34f391adf32fd65
+            brand:
+              name: Praxis
+            cardIdSymbology: null
+            creator:
+              name: Digital Me
+            dateCreated: '2018-11-13T11:38:00.001+00:00'
+            dateDeleted: null
+            dateModified: '2018-12-03T23:08:54.215+00:00'
+            name: Praxis
+            sortName: Praxis
+            style:
+              backgroundColor: '#FFDD00'
+              backgroundImage:
+              - size: small
+                url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+              - size: medium
+                url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+              - size: large
+                url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
           name: Praxis
+          notes: null
           sortName: Praxis
           style:
             backgroundColor: '#FFDD00'
@@ -130,19 +144,7 @@ components:
               url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
             - size: large
               url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-        name: Praxis
-        notes: null
-        sortName: Praxis
-        style:
-          backgroundColor: '#FFDD00'
-          backgroundImage:
-          - size: small
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
-          - size: medium
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
-          - size: large
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-      type: InteractAction
+        type: InteractAction
     apiInfo:
       value:
         currentVersion: 1.3.1-SNAPSHOT
@@ -164,126 +166,131 @@ components:
         - message: Authentication required!
           status: 401
     backgroundImage:
-    - size: small
-      url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
-    - size: medium
-      url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
-    - size: large
-      url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-    eCard:
-      cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
-      cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
-      cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
-      cardIdSymbology: null
-      creator_id: eCardsApiDocDev2User
-      dateCreated: '2018-11-19T13:38:00.001+00:00'
-      dateDeleted: null
-      dateModified: '2018-11-19T13:38:00.001+00:00'
-      description: null
-      eCardTemplate:
-        brand:
-          name: Praxis
-        cardIdSymbology: null
-        creator:
-          name: Digital Me
-        dateCreated: '2018-11-13T11:38:00.001+00:00'
-        dateDeleted: null
-        dateModified: '2018-12-03T23:08:54.215+00:00'
-        name: Praxis
-        sortName: Praxis
-        style:
-          backgroundColor: '#FFDD00'
-          backgroundImage:
-          - size: small
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
-          - size: medium
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
-          - size: large
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-      name: Praxis
-      notes: null
-      sortName: Praxis
-      style:
-        backgroundColor: '#FFDD00'
-        backgroundImage:
-        - size: small
-          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
-        - size: medium
-          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
-        - size: large
-          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-    eCardTemplate:
-      _id: 5beaf11ef34f391adf32fd65
-      brand:
-        name: Praxis
-      cardIdSymbology: null
-      creator:
-        name: Digital Me
-      dateCreated: '2018-11-13T11:38:00.001+00:00'
-      dateDeleted: null
-      dateModified: '2018-12-03T23:08:54.215+00:00'
-      name: Praxis
-      sortName: Praxis
-      style:
-        backgroundColor: '#FFDD00'
-        backgroundImage:
-        - size: small
-          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
-        - size: medium
-          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
-        - size: large
-          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-    eCards:
-    - cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
-      cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
-      cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
-      cardIdSymbology: null
-      creator_id: eCardsApiDocDev2User
-      dateCreated: '2018-11-19T13:38:00.001+00:00'
-      dateDeleted: null
-      dateModified: '2018-11-19T13:38:00.001+00:00'
-      description: null
-      eCardTemplate:
-        brand:
-          name: Praxis
-        cardIdSymbology: null
-        creator:
-          name: Digital Me
-        dateCreated: '2018-11-13T11:38:00.001+00:00'
-        dateDeleted: null
-        dateModified: '2018-12-03T23:08:54.215+00:00'
-        name: Praxis
-        sortName: Praxis
-        style:
-          backgroundColor: '#FFDD00'
-          backgroundImage:
-          - size: small
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
-          - size: medium
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
-          - size: large
-            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-      name: Praxis
-      notes: null
-      sortName: Praxis
-      style:
-        backgroundColor: '#FFDD00'
-        backgroundImage:
-        - size: small
-          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
-        - size: medium
-          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
-        - size: large
-          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
-    style:
-      backgroundColor: '#FFDD00'
-      backgroundImage:
+      value:
       - size: small
         url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
       - size: medium
         url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
       - size: large
         url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+    eCard:
+      value:
+        cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
+        cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
+        cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
+        cardIdSymbology: null
+        creator_id: eCardsApiDocDev2User
+        dateCreated: '2018-11-19T13:38:00.001+00:00'
+        dateDeleted: null
+        dateModified: '2018-11-19T13:38:00.001+00:00'
+        description: null
+        eCardTemplate:
+          brand:
+            name: Praxis
+          cardIdSymbology: null
+          creator:
+            name: Digital Me
+          dateCreated: '2018-11-13T11:38:00.001+00:00'
+          dateDeleted: null
+          dateModified: '2018-12-03T23:08:54.215+00:00'
+          name: Praxis
+          sortName: Praxis
+          style:
+            backgroundColor: '#FFDD00'
+            backgroundImage:
+            - size: small
+              url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+            - size: medium
+              url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+            - size: large
+              url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+        name: Praxis
+        notes: null
+        sortName: Praxis
+        style:
+          backgroundColor: '#FFDD00'
+          backgroundImage:
+          - size: small
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+          - size: medium
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+          - size: large
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+    eCardTemplate:
+      value:
+        _id: 5beaf11ef34f391adf32fd65
+        brand:
+          name: Praxis
+        cardIdSymbology: null
+        creator:
+          name: Digital Me
+        dateCreated: '2018-11-13T11:38:00.001+00:00'
+        dateDeleted: null
+        dateModified: '2018-12-03T23:08:54.215+00:00'
+        name: Praxis
+        sortName: Praxis
+        style:
+          backgroundColor: '#FFDD00'
+          backgroundImage:
+          - size: small
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+          - size: medium
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+          - size: large
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+    eCards:
+      value:
+      - cardIdCipher: jkE5EY2j+8lBHnylSz1K5uHqEAW2jCanQ1g6zw0ULZ8=
+        cardIdCipherIV: PHf2jXsvP+1cvY/wKTdJ6UvKXwTySia6u/YSXb6QRaMc26OfbemNd3EByM4DS7osz62Cb+qVuZrsCKtdKSUoFvMvdbHmBKxVuVCDMpCA1pEyCjVLqb3zm+tWTele+ICMtVe01Oknf5N4m9/KyVJfDy3Uzii3ziCqbrIskKonPPFj1O8cZt4OWcULmawJMKfifCCuQlqzfoTWuB/+k6kWN2d9dTGSNJj+ti3/KjmZj4QHuR8mW7JmdEJYlNmzhlI+1ulvHczbfGT9/3RGxBqH+yudb+EtS7xjozxtlaLPMfnh8a0YN3ElaHVopuNgCdBMC72IGNbTJylKdPgEP1wFQA==
+        cardIdCipherKey: ed3sIe7b0LcTqqG+sV1r71rVmhY5bdvH0silSaAeBgfj1gDOhw9LPN4KkX+QM1kRXtvkW84/w++xHl6ofB9E1zUG3C7iEe9PiGdBm4XwHGJBB/X5hKhZqqWEa+lQMTEX9GKtVvgZofPazTx+Cy3A1BHS1aUNQGWoY5vwML6wIcMwxEp65iRQLQ6PkHkNqPenassMaci+s3VjOj3NjKIuqpMdGUMt5YKRHIIOhmL5qnfHlkIy5RYUzDrBtSRJtYpZi3L3YJGvqTnLcLPkEiWht7zCJWJ42pvTXqobzbZEJ320hm8mlG0eQHzi2arVFhJNDHHFiIzg7i9ef4WFx623wg==
+        cardIdSymbology: null
+        creator_id: eCardsApiDocDev2User
+        dateCreated: '2018-11-19T13:38:00.001+00:00'
+        dateDeleted: null
+        dateModified: '2018-11-19T13:38:00.001+00:00'
+        description: null
+        eCardTemplate:
+          brand:
+            name: Praxis
+          cardIdSymbology: null
+          creator:
+            name: Digital Me
+          dateCreated: '2018-11-13T11:38:00.001+00:00'
+          dateDeleted: null
+          dateModified: '2018-12-03T23:08:54.215+00:00'
+          name: Praxis
+          sortName: Praxis
+          style:
+            backgroundColor: '#FFDD00'
+            backgroundImage:
+            - size: small
+              url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+            - size: medium
+              url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+            - size: large
+              url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+        name: Praxis
+        notes: null
+        sortName: Praxis
+        style:
+          backgroundColor: '#FFDD00'
+          backgroundImage:
+          - size: small
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+          - size: medium
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+          - size: large
+            url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+    style:
+      value:
+        backgroundColor: '#FFDD00'
+        backgroundImage:
+        - size: small
+          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_sm.png
+        - size: medium
+          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
+        - size: large
+          url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
   parameters:
     eCardsMetaData:
       in: header
@@ -366,17 +373,17 @@ components:
         application/json:
           examples:
             example:
-              '#ref': '#/components/examples/eCards'
+              $ref: '#/components/examples/eCards'
           schema:
             $ref: '#/components/schemas/eCards'
+      description: eCards response
     httpResponseBody:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/httpResponseBody'
-      description: The request has been accepted but not processed, see body for more
-        information.
-      summary: HTTP 202 response body
+      description: 'HTTP 202: The request has been accepted but not processed, see
+        body for more information.'
     openapiDotJson:
       content:
         application/json:
@@ -492,7 +499,7 @@ components:
           type: string
         streetNumber:
           type: string
-      summary: Address components
+      title: Address components
       type: object
     apiInfo:
       properties:
@@ -553,10 +560,6 @@ components:
           description: Server time in unix time in mili seconds.
           type: number
       type: object
-    appAuthentication:
-      description: See [App Authentication](https://github.com/fdriesenaar/eCards#app-authentication)
-      scheme: Basic
-      type: http
     balanceAndTransactions:
       description: Balance and Transactions response body
     balanceAndTransactionsGetFilterV1:
@@ -581,7 +584,7 @@ components:
           type: string
       type: object
     cardId:
-      descripion: Card identifier as displayed on a physical card as text or as scannable
+      description: Card identifier as displayed on a physical card as text or as scannable
         code
       externalDocs:
         description: 'DAP SDD #6 - cardId'
@@ -899,7 +902,7 @@ components:
           minItems: 0
           type: string
     eCardUpdate:
-      summary: eCard update request body
+      title: eCard update request body
       type: object
     eCards:
       items:
@@ -934,7 +937,7 @@ components:
           maxItems: 1
           minItems: 1
           type: number
-      summary: Geometry
+      title: Geometry
       type: object
     httpResponseBody:
       properties:
@@ -957,7 +960,7 @@ components:
       externalDocs:
         description: MongoDB ObjectId description
         url: https://docs.mongodb.com/manual/reference/method/ObjectId/
-      summary: MongoDB object id
+      title: MongoDB object id
       type: string
     offer:
       type: object
@@ -996,7 +999,7 @@ components:
           type: array
         dateCreated:
           format: date-time
-          summary: dateCreated
+          title: dateCreated
           type: string
         distance:
           allOf:
@@ -1050,7 +1053,7 @@ components:
           maxItems: 1
           minItems: 1
           type: string
-      summary: Place
+      title: Place
       type: object
     places:
       items:
@@ -1084,13 +1087,13 @@ components:
             - large
             maxItems: 1
             minItems: 1
-            summery: Size
+            title: Size
             type: string
           url:
             format: url
             maxItems: 1
             minItems: 1
-            summery: Sized image url
+            title: Sized image url
             type: string
         type: object
       title: Sized images
@@ -1104,7 +1107,9 @@ components:
       type: string
   securitySchemes:
     appAuthentication:
-      $ref: '#/components/schemas/appAuthentication'
+      description: See [App Authentication](https://github.com/fdriesenaar/eCards#app-authentication)
+      scheme: Basic
+      type: http
 info:
   description: 'Find more info here: [eCards API](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc)'
   license:
@@ -1199,7 +1204,7 @@ paths:
   /v1/users/{userId}/dataExchange:
     get:
       description: tbd
-      operationId: Get
+      operationId: Get data
       responses:
         '202':
           $ref: '#/components/responses/httpResponseBody'
@@ -1268,7 +1273,7 @@ paths:
   /v1/users/{userId}/eCardTemplatesSelections:
     get:
       description: tbd
-      operationId: Get
+      operationId: Get templates selections
       responses:
         '202':
           $ref: '#/components/responses/httpResponseBody'
