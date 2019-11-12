@@ -14,4 +14,5 @@ def j2y(filename):
 
 j2y('openapi.json')
 j2y('UserInfo/openapi.json')
+j2y('C:/cygwin64/home/Freek Driesenaar/gitbucket/ecards/apidoc/openapi.json')
 

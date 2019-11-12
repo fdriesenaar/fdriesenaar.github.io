@@ -281,6 +281,10 @@ components:
             url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
           - size: large
             url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+    offers:
+      value:
+      - name: offer1 tbd
+      - name: offer1 tbd
     style:
       value:
         backgroundColor: '#FFDD00'
@@ -384,6 +388,15 @@ components:
             $ref: '#/components/schemas/httpResponseBody'
       description: 'HTTP 202: The request has been accepted but not processed, see
         body for more information.'
+    offers:
+      content:
+        application/json:
+          examples:
+            example:
+              $ref: '#/components/examples/offers'
+          schema:
+            $ref: '#/components/schemas/offers'
+      description: Offers response
     openapiDotJson:
       content:
         application/json:
@@ -404,6 +417,8 @@ components:
           schema:
             $ref: '#/components/schemas/places'
       description: Get places response
+    preCheck:
+      description: Pre check response
     userDeleted:
       description: User deleted
   schemas:
@@ -964,7 +979,13 @@ components:
       title: MongoDB object id
       type: string
     offer:
+      description: Offer schema
       type: object
+    offers:
+      description: Offers schema
+      items:
+        $ref: '#/components/schemas/offer'
+      type: array
     paging:
       properties:
         offset:
@@ -1075,6 +1096,8 @@ components:
           $ref: '#/components/schemas/paging'
         templateEligibility:
           $ref: '#/components/schemas/objectId'
+      type: object
+    preCheckRequestBody:
       type: object
     services:
       type: object
@@ -1251,7 +1274,29 @@ paths:
         default:
           $ref: '#/components/responses/default'
       tags:
-      - Balance and Transactions
+      - Service Balance and Transactions
+  /v1/users/{userId}/eCardTemplates/{templateId}/services/offers:
+    parameters:
+    - $ref: '#/components/parameters/userId'
+    - $ref: '#/components/parameters/templateId'
+    post:
+      description: Get offers
+      operationId: Get offers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/paging'
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/offers'
+        '202':
+          $ref: '#/components/responses/httpResponseBody'
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - Service Offers
   /v1/users/{userId}/eCardTemplates/{templateId}/services/places:
     parameters:
     - $ref: '#/components/parameters/userId'
@@ -1273,7 +1318,29 @@ paths:
         default:
           $ref: '#/components/responses/default'
       tags:
-      - Places
+      - Service Places
+  /v1/users/{userId}/eCardTemplates/{templateId}/services/preCheck:
+    parameters:
+    - $ref: '#/components/parameters/userId'
+    - $ref: '#/components/parameters/templateId'
+    post:
+      description: Pre Check
+      operationId: Pre Check
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/preCheckRequestBody'
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/preCheck'
+        '202':
+          $ref: '#/components/responses/httpResponseBody'
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - Service Pre Check
   /v1/users/{userId}/eCardTemplatesSelections:
     get:
       description: tbd
@@ -1366,15 +1433,15 @@ paths:
       - eCards
   /v1/users/{userId}/services/offers:
     get:
-      description: tbd
-      operationId: Get offers
+      description: Get user offers
+      operationId: Get user offers
       responses:
         '202':
           $ref: '#/components/responses/httpResponseBody'
         default:
           $ref: '#/components/responses/default'
       tags:
-      - Offers
+      - User Offers
     parameters:
     - $ref: '#/components/parameters/userId'
 security:
