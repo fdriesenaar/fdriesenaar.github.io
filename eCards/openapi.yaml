@@ -1104,7 +1104,7 @@ components:
     transaction:
       type: object
     unreservedCharacters:
-      description: See [RFC3986 section 3.3](https://tools.ietf.org/html/rfc3986#section-3.3)
+      description: Unreserved characters, see [RFC3986 section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)
       type: string
     userId:
       $ref: '#/components/schemas/unreservedCharacters'
