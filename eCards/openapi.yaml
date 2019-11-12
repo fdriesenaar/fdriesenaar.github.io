@@ -1129,14 +1129,14 @@ paths:
         '200':
           $ref: '#/components/responses/openapiDotJson'
       tags:
-      - openapi
+      - OpenAPI
   /openapi.yaml:
     get:
       responses:
         '200':
           $ref: '#/components/responses/openapiDotYaml'
       tags:
-      - openapi
+      - OpenAPI
   /v1/users/{userId}:
     delete:
       description: See [Delete user](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#delete-user).
@@ -1187,7 +1187,7 @@ paths:
         default:
           $ref: '#/components/responses/default'
       tags:
-      - api
+      - API
     parameters:
     - $ref: '#/components/parameters/userId'
   /v1/users/{userId}/api/schema:
@@ -1202,7 +1202,7 @@ paths:
         default:
           $ref: '#/components/responses/default'
       tags:
-      - openapi
+      - OpenAPI
     parameters:
     - $ref: '#/components/parameters/userId'
   /v1/users/{userId}/dataExchange:
@@ -1251,7 +1251,7 @@ paths:
         default:
           $ref: '#/components/responses/default'
       tags:
-      - Balance and transactions
+      - Balance and Transactions
   /v1/users/{userId}/eCardTemplates/{templateId}/services/places:
     parameters:
     - $ref: '#/components/parameters/userId'
@@ -1303,7 +1303,8 @@ paths:
     parameters:
     - $ref: '#/components/parameters/userId'
     post:
-      operationId: addECard
+      description: Add eCard
+      operationId: Add eCard
       requestBody:
         content:
           application/json:
@@ -1327,6 +1328,8 @@ paths:
                     type: boolean
                 type: object
           description: default response
+      tags:
+      - eCards
   /v1/users/{userId}/eCards/{oid}:
     delete:
       operationId: Delete eCard
