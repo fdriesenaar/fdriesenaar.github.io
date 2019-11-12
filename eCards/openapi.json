@@ -53,7 +53,7 @@
                 "tags": [
                     "Users"
                 ],
-                "description": "See [Delete user](https://github.com/fdriesenaar/eCards#delete-user).",
+                "description": "See [Delete user](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#delete-user).",
                 "operationId": "Delete user",
                 "responses": {
                     "202": {
@@ -78,7 +78,7 @@
                 "tags": [
                     "api"
                 ],
-                "description": "See [GET Api](https://github.com/fdriesenaar/eCards#api-info).",
+                "description": "See [GET Api](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#get-%2fapi).",
                 "operationId": "api",
                 "responses": {
                     "200": {
@@ -128,7 +128,7 @@
                 "tags": [
                     "Actions"
                 ],
-                "description": "See [Post actions](https://github.com/fdriesenaar/eCards#post-actions).",
+                "description": "See [Post actions](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#post-actions).",
                 "operationId": "Post actions",
                 "requestBody": {
                     "content": {
@@ -455,11 +455,11 @@
     "components": {
         "schemas": {
             "action": {
-                "description": "See [Action](https://github.com/fdriesenaar/eCards#action)",
+                "description": "See [Action](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#action)",
                 "type": "object",
                 "properties": {
                     "creator_id": {
-                        "description": "Creator [user id](https://github.com/fdriesenaar/eCards#user-id)",
+                        "description": "Creator [user id](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#user-identification)",
                         "type": "string",
                         "minItems": 1,
                         "maxItems": 1
@@ -515,7 +515,7 @@
                 }
             },
             "actionList": {
-                "description": "[Action](https://github.com/fdriesenaar/eCards#action) list",
+                "description": "[Action](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#action) list",
                 "type": "array",
                 "items": {
                     "$ref": "#/components/schemas/action"
@@ -798,7 +798,7 @@
                 }
             },
             "eCard": {
-                "description": "See [eCard](https://github.com/fdriesenaar/eCards#ecard)",
+                "description": "See [eCard](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#ecard)",
                 "type": "object",
                 "properties": {
                     "ballance": {
@@ -1374,7 +1374,7 @@
                 "type": "object"
             },
             "userId": {
-                "description": "See [User Id](https://github.com/fdriesenaar/eCards#user-id)",
+                "description": "See [User Id](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#user-identification)",
                 "type": "string"
             }
         },
@@ -2003,7 +2003,7 @@
         },
         "securitySchemes": {
             "appAuthentication": {
-                "description": "See [App Authentication](https://github.com/fdriesenaar/eCards#app-authentication)",
+                "description": "See [App Authentication](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#authentication)",
                 "type": "http",
                 "scheme": "Basic"
             }

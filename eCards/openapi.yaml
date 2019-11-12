@@ -408,10 +408,10 @@ components:
       description: User deleted
   schemas:
     action:
-      description: See [Action](https://github.com/fdriesenaar/eCards#action)
+      description: See [Action](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#action)
       properties:
         creator_id:
-          description: Creator [user id](https://github.com/fdriesenaar/eCards#user-id)
+          description: Creator [user id](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#user-identification)
           maxItems: 1
           minItems: 1
           type: string
@@ -458,7 +458,8 @@ components:
           type: string
       type: object
     actionList:
-      description: '[Action](https://github.com/fdriesenaar/eCards#action) list'
+      description: '[Action](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#action)
+        list'
       items:
         $ref: '#/components/schemas/action'
       type: array
@@ -680,7 +681,7 @@ components:
           type: integer
       type: object
     eCard:
-      description: See [eCard](https://github.com/fdriesenaar/eCards#ecard)
+      description: See [eCard](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#ecard)
       properties:
         ballance:
           description: Card ballance
@@ -1103,11 +1104,11 @@ components:
     transaction:
       type: object
     userId:
-      description: See [User Id](https://github.com/fdriesenaar/eCards#user-id)
+      description: See [User Id](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#user-identification)
       type: string
   securitySchemes:
     appAuthentication:
-      description: See [App Authentication](https://github.com/fdriesenaar/eCards#app-authentication)
+      description: See [App Authentication](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#authentication)
       scheme: Basic
       type: http
 info:
@@ -1135,7 +1136,7 @@ paths:
       - openapi
   /v1/users/{userId}:
     delete:
-      description: See [Delete user](https://github.com/fdriesenaar/eCards#delete-user).
+      description: See [Delete user](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#delete-user).
       operationId: Delete user
       responses:
         '202':
@@ -1152,7 +1153,7 @@ paths:
     parameters:
     - $ref: '#/components/parameters/userId'
     post:
-      description: See [Post actions](https://github.com/fdriesenaar/eCards#post-actions).
+      description: See [Post actions](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#post-actions).
       operationId: Post actions
       requestBody:
         content:
@@ -1173,7 +1174,7 @@ paths:
       - Actions
   /v1/users/{userId}/api:
     get:
-      description: See [GET Api](https://github.com/fdriesenaar/eCards#api-info).
+      description: See [GET Api](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#get-%2fapi).
       operationId: api
       responses:
         '200':
