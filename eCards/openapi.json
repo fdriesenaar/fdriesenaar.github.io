@@ -193,8 +193,16 @@
                 "tags": [
                     "eCards"
                 ],
-                "description": "Get eCard",
-                "operationId": "Get eCard",
+                "description": "List eCards",
+                "operationId": "List eCards",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/_id"
+                    },
+                    {
+                        "$ref": "#/components/parameters/projection"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "$ref": "#/components/responses/eCards"
@@ -345,7 +353,11 @@
                 "tags": [
                     "Service Balance and Transactions"
                 ],
-                "description": "Get balance and transactions, see https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+4+-+eCards+Balance+and+Transactions",
+                "description": "Get balance and transactions",
+                "externalDocs": {
+                    "description": "SDD #4 - eCards Balance and Transactions",
+                    "url": "https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+%234+-+eCards+Balance+and+Transactions"
+                },
                 "operationId": "Get balance and transations",
                 "requestBody": {
                     "required": true,
@@ -384,6 +396,10 @@
                     "Service Offers"
                 ],
                 "description": "Get offers",
+                "externalDocs": {
+                    "description": "SDD #7 - eCards Offers",
+                    "url": "https://digital-me.atlassian.net/wiki/spaces/DAP/pages/67567629/SDD+%237+-+Offers"
+                },
                 "operationId": "Get offers",
                 "requestBody": {
                     "content": {
@@ -422,6 +438,10 @@
                     "Service Places"
                 ],
                 "description": "Get places",
+                "externalDocs": {
+                    "description": "SDD #3 - eCards Places",
+                    "url": "https://digital-me.atlassian.net/wiki/spaces/DAP/pages/360649/SDD+%233+-+eCards+Places"
+                },
                 "operationId": "Get places",
                 "requestBody": {
                     "content": {
@@ -810,8 +830,8 @@
             "cardId": {
                 "description": "Card identifier as displayed on a physical card as text or as scannable code",
                 "externalDocs": {
-                    "description": "DAP SDD #6 - cardId",
-                    "url": "https://digital-me.atlassian.net/wiki/spaces/DAP/pages/61079553/SDD+6+-+cardId"
+                    "description": "DAP SDD #9 - cardId",
+                    "url": "https://digital-me.atlassian.net/wiki/spaces/DAP/pages/88342536/SDD+%239+-+cardId"
                 },
                 "type": "object",
                 "properties": {
@@ -1294,12 +1314,20 @@
                     }
                 }
             },
+            "_ids": {
+                "description": "_id list",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/objectId"
+                }
+            },
             "name": {
                 "description": "See https://schema.org/name",
                 "type": "string"
             },
             "objectId": {
-                "title": "MongoDB object id",
+                "title": "Object id schema",
+                "description": "The Object id is a MongoDB ObjectId.",
                 "type": "string",
                 "example": "5c1b5a3b49362d15e90af6b4",
                 "externalDocs": {
@@ -1472,8 +1500,27 @@
                     }
                 }
             },
-            "services": {
+            "projection": {
+                "title": "Projection schema",
+                "description": "Projection schema",
+                "type": "string"
+            },
+            "service": {
+                "title": "Service schema",
+                "description": "Service schema",
+                "externalDocs": {
+                    "description": "SDD #5 - eCard service descriptor",
+                    "url": "https://digital-me.atlassian.net/wiki/spaces/DAP/pages/1605639/SDD+%235+eCard+service+descriptor"
+                },
                 "type": "object"
+            },
+            "services": {
+                "title": "Services schema",
+                "description": "Services schema",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/service"
+                }
             },
             "sizedImages": {
                 "title": "Sized images",
@@ -1503,6 +1550,12 @@
                 }
             },
             "style": {
+                "title": "Style schema",
+                "description": "The style defines the eCard layout.",
+                "externalDocs": {
+                    "description": "SDD #2 - eCard face and back images",
+                    "url": "https://digital-me.atlassian.net/wiki/spaces/DAP/pages/393400/SDD+2+-+eCard+face+and+back+images"
+                },
                 "type": "object"
             },
             "transaction": {
@@ -1713,17 +1766,35 @@
                     "$ref": "#/components/schemas/eCardsMetaData"
                 }
             },
-            "templateId": {
-                "name": "templateId",
-                "description": "eCard template object id",
+            "_id": {
+                "name": "_id",
+                "in": "query",
+                "description": "_id list",
+                "required": false,
+                "schema": {
+                    "$ref": "#/components/schemas/_ids"
+                },
+                "explode": true
+            },
+            "oid": {
+                "name": "oid",
                 "in": "path",
                 "required": true,
                 "schema": {
                     "$ref": "#/components/schemas/objectId"
                 }
             },
-            "oid": {
-                "name": "oid",
+            "projection": {
+                "name": "projection",
+                "in": "query",
+                "description": "Projection parameter to reduce returned data.",
+                "schema": {
+                    "$ref": "#/components/schemas/projection"
+                }
+            },
+            "templateId": {
+                "name": "templateId",
+                "description": "eCard template object id",
                 "in": "path",
                 "required": true,
                 "schema": {

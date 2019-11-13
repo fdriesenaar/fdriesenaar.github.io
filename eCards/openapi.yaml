@@ -319,6 +319,14 @@ components:
       - name: Webshop1 tbd
       - name: Webshop2 tbd
   parameters:
+    _id:
+      description: _id list
+      explode: true
+      in: query
+      name: _id
+      required: false
+      schema:
+        $ref: '#/components/schemas/_ids'
     eCardsMetaData:
       in: header
       name: ECards-MetaData
@@ -330,6 +338,12 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/objectId'
+    projection:
+      description: Projection parameter to reduce returned data.
+      in: query
+      name: projection
+      schema:
+        $ref: '#/components/schemas/projection'
     templateId:
       description: eCard template object id
       in: path
@@ -457,6 +471,11 @@ components:
             $ref: '#/components/schemas/webshops'
       description: Webshops response
   schemas:
+    _ids:
+      description: _id list
+      items:
+        $ref: '#/components/schemas/objectId'
+      type: array
     action:
       description: See [Action](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#action)
       properties:
@@ -638,8 +657,8 @@ components:
       description: Card identifier as displayed on a physical card as text or as scannable
         code
       externalDocs:
-        description: 'DAP SDD #6 - cardId'
-        url: https://digital-me.atlassian.net/wiki/spaces/DAP/pages/61079553/SDD+6+-+cardId
+        description: 'DAP SDD #9 - cardId'
+        url: https://digital-me.atlassian.net/wiki/spaces/DAP/pages/88342536/SDD+%239+-+cardId
       properties:
         mask:
           description: ''
@@ -1007,11 +1026,12 @@ components:
       description: See https://schema.org/name
       type: string
     objectId:
+      description: The Object id is a MongoDB ObjectId.
       example: 5c1b5a3b49362d15e90af6b4
       externalDocs:
         description: MongoDB ObjectId description
         url: https://docs.mongodb.com/manual/reference/method/ObjectId/
-      title: MongoDB object id
+      title: Object id schema
       type: string
     offer:
       description: Offer schema
@@ -1135,8 +1155,23 @@ components:
       type: object
     preCheckRequestBody:
       type: object
-    services:
+    projection:
+      description: Projection schema
+      title: Projection schema
+      type: string
+    service:
+      description: Service schema
+      externalDocs:
+        description: 'SDD #5 - eCard service descriptor'
+        url: https://digital-me.atlassian.net/wiki/spaces/DAP/pages/1605639/SDD+%235+eCard+service+descriptor
+      title: Service schema
       type: object
+    services:
+      description: Services schema
+      items:
+        $ref: '#/components/schemas/service'
+      title: Services schema
+      type: array
     sizedImages:
       items:
         properties:
@@ -1159,6 +1194,11 @@ components:
       title: Sized images
       type: array
     style:
+      description: The style defines the eCard layout.
+      externalDocs:
+        description: 'SDD #2 - eCard face and back images'
+        url: https://digital-me.atlassian.net/wiki/spaces/DAP/pages/393400/SDD+2+-+eCard+face+and+back+images
+      title: Style schema
       type: object
     transaction:
       type: object
@@ -1307,7 +1347,10 @@ paths:
     - $ref: '#/components/parameters/userId'
     - $ref: '#/components/parameters/templateId'
     post:
-      description: Get balance and transactions, see https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+4+-+eCards+Balance+and+Transactions
+      description: Get balance and transactions
+      externalDocs:
+        description: 'SDD #4 - eCards Balance and Transactions'
+        url: https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+%234+-+eCards+Balance+and+Transactions
       operationId: Get balance and transations
       requestBody:
         content:
@@ -1330,6 +1373,9 @@ paths:
     - $ref: '#/components/parameters/templateId'
     post:
       description: Get offers
+      externalDocs:
+        description: 'SDD #7 - eCards Offers'
+        url: https://digital-me.atlassian.net/wiki/spaces/DAP/pages/67567629/SDD+%237+-+Offers
       operationId: Get offers
       requestBody:
         content:
@@ -1352,6 +1398,9 @@ paths:
     - $ref: '#/components/parameters/templateId'
     post:
       description: Get places
+      externalDocs:
+        description: 'SDD #3 - eCards Places'
+        url: https://digital-me.atlassian.net/wiki/spaces/DAP/pages/360649/SDD+%233+-+eCards+Places
       operationId: Get places
       requestBody:
         content:
@@ -1427,8 +1476,11 @@ paths:
     - $ref: '#/components/parameters/userId'
   /v1/users/{userId}/eCards:
     get:
-      description: Get eCard
-      operationId: Get eCard
+      description: List eCards
+      operationId: List eCards
+      parameters:
+      - $ref: '#/components/parameters/_id'
+      - $ref: '#/components/parameters/projection'
       responses:
         '200':
           $ref: '#/components/responses/eCards'
