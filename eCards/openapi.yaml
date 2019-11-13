@@ -1192,6 +1192,8 @@ openapi: 3.0.0
 paths:
   /openapi.json:
     get:
+      description: Get openapi.json
+      operationId: Get openapi json
       responses:
         '200':
           $ref: '#/components/responses/openapiDotJson'
@@ -1199,6 +1201,8 @@ paths:
       - OpenAPI
   /openapi.yaml:
     get:
+      description: Get openapi.yaml
+      operationId: Get openapi yaml
       responses:
         '200':
           $ref: '#/components/responses/openapiDotYaml'
@@ -1244,8 +1248,8 @@ paths:
       - Actions
   /v1/users/{userId}/api:
     get:
-      description: See [GET Api](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#get-%2fapi).
-      operationId: api
+      description: Get api info, see [GET /api](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#get-%2fapi).
+      operationId: Get api
       responses:
         '200':
           $ref: '#/components/responses/api'
@@ -1254,13 +1258,13 @@ paths:
         default:
           $ref: '#/components/responses/default'
       tags:
-      - API
+      - Get API
     parameters:
     - $ref: '#/components/parameters/userId'
   /v1/users/{userId}/api/schema:
     get:
       description: OpenAPI Document for eCards in json-schema draft 4
-      operationId: Get
+      operationId: Get api schema
       responses:
         '200':
           $ref: '#/components/responses/apiSchema'
@@ -1299,11 +1303,12 @@ paths:
     parameters:
     - $ref: '#/components/parameters/userId'
   /v1/users/{userId}/eCardTemplates/{templateId}/services/balanceAndTransactions:
-    description: See https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+4+-+eCards+Balance+and+Transactions
     parameters:
     - $ref: '#/components/parameters/userId'
     - $ref: '#/components/parameters/templateId'
     post:
+      description: Get balance and transactions, see https://digital-me.atlassian.net/wiki/spaces/DAP/pages/33352/SDD+4+-+eCards+Balance+and+Transactions
+      operationId: Get balance and transations
       requestBody:
         content:
           application/json:
