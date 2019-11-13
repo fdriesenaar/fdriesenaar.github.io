@@ -487,6 +487,44 @@
                 }
             ]
         },
+        "/v1/users/{userId}/eCardTemplates/{templateId}/services/webshops": {
+            "post": {
+                "tags": [
+                    "Service Webshops"
+                ],
+                "description": "Get webshops",
+                "operationId": "Get webshops",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/paging"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/webshops"
+                    },
+                    "202": {
+                        "$ref": "#/components/responses/httpResponseBody"
+                    },
+                    "default": {
+                        "$ref": "#/components/responses/default"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/userId"
+                },
+                {
+                    "$ref": "#/components/parameters/templateId"
+                }
+            ]
+        },
         "/v1/users/{userId}/eCardTemplatesSelections": {
             "get": {
                 "tags": [
@@ -1401,6 +1439,7 @@
                 }
             },
             "places": {
+                "description": "Places schema",
                 "type": "array",
                 "items": {
                     "$ref": "#/components/schemas/place"
@@ -1471,6 +1510,17 @@
             "userId": {
                 "description": "See [User Id](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#user-identification)",
                 "$ref": "#/components/schemas/unreservedCharacters"
+            },
+            "webshop": {
+                "description": "Webshop schema",
+                "type": "object"
+            },
+            "webshops": {
+                "description": "Webshops schema",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/webshop"
+                }
             }
         },
         "responses": {
@@ -1614,11 +1664,16 @@
                 }
             },
             "places": {
-                "description": "Get places response",
+                "description": "Places response",
                 "content": {
                     "application/json": {
                         "schema": {
                             "$ref": "#/components/schemas/places"
+                        },
+                        "examples": {
+                            "example": {
+                                "$ref": "#/components/examples/places"
+                            }
                         }
                     }
                 }
@@ -1628,6 +1683,21 @@
             },
             "userDeleted": {
                 "description": "User deleted"
+            },
+            "webshops": {
+                "description": "Webshops response",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/webshops"
+                        },
+                        "examples": {
+                            "example": {
+                                "$ref": "#/components/examples/webshops"
+                            }
+                        }
+                    }
+                }
             }
         },
         "parameters": {
@@ -2094,13 +2164,37 @@
                     }
                 }
             },
+            "offer": {
+                "description": "Offer example",
+                "value": {
+                    "name": "offer1 tbd"
+                }
+            },
             "offers": {
+                "description": "Offers example",
                 "value": [
                     {
                         "name": "offer1 tbd"
                     },
                     {
                         "name": "offer1 tbd"
+                    }
+                ]
+            },
+            "place": {
+                "description": "Place example",
+                "value": {
+                    "name": "place1 tbd"
+                }
+            },
+            "places": {
+                "description": "Places example",
+                "value": [
+                    {
+                        "name": "place1 tbd"
+                    },
+                    {
+                        "name": "place2 tbd"
                     }
                 ]
             },
@@ -2122,6 +2216,23 @@
                         }
                     ]
                 }
+            },
+            "webshop": {
+                "description": "Webshop example",
+                "value": {
+                    "name": "webshop1 tbd"
+                }
+            },
+            "webshops": {
+                "description": "Webshops example",
+                "value": [
+                    {
+                        "name": "Webshop1 tbd"
+                    },
+                    {
+                        "name": "Webshop2 tbd"
+                    }
+                ]
             }
         },
         "securitySchemes": {

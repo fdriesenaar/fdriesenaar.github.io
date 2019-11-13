@@ -281,10 +281,24 @@ components:
             url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
           - size: large
             url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+    offer:
+      description: Offer example
+      value:
+        name: offer1 tbd
     offers:
+      description: Offers example
       value:
       - name: offer1 tbd
       - name: offer1 tbd
+    place:
+      description: Place example
+      value:
+        name: place1 tbd
+    places:
+      description: Places example
+      value:
+      - name: place1 tbd
+      - name: place2 tbd
     style:
       value:
         backgroundColor: '#FFDD00'
@@ -295,6 +309,15 @@ components:
           url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_md.png
         - size: large
           url: https://dappre.dolden.net/klanten/ecards/img-logos/praxis_lg.png
+    webshop:
+      description: Webshop example
+      value:
+        name: webshop1 tbd
+    webshops:
+      description: Webshops example
+      value:
+      - name: Webshop1 tbd
+      - name: Webshop2 tbd
   parameters:
     eCardsMetaData:
       in: header
@@ -414,13 +437,25 @@ components:
     places:
       content:
         application/json:
+          examples:
+            example:
+              $ref: '#/components/examples/places'
           schema:
             $ref: '#/components/schemas/places'
-      description: Get places response
+      description: Places response
     preCheck:
       description: Pre check response
     userDeleted:
       description: User deleted
+    webshops:
+      content:
+        application/json:
+          examples:
+            example:
+              $ref: '#/components/examples/webshops'
+          schema:
+            $ref: '#/components/schemas/webshops'
+      description: Webshops response
   schemas:
     action:
       description: See [Action](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#action)
@@ -1078,6 +1113,7 @@ components:
       title: Place
       type: object
     places:
+      description: Places schema
       items:
         $ref: '#/components/schemas/place'
       type: array
@@ -1132,6 +1168,14 @@ components:
     userId:
       $ref: '#/components/schemas/unreservedCharacters'
       description: See [User Id](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#user-identification)
+    webshop:
+      description: Webshop schema
+      type: object
+    webshops:
+      description: Webshops schema
+      items:
+        $ref: '#/components/schemas/webshop'
+      type: array
   securitySchemes:
     appAuthentication:
       description: See [App Authentication](https://code.in.digital-me.nl/DEV/ecards/tree/master/apidoc#authentication)
@@ -1341,6 +1385,28 @@ paths:
           $ref: '#/components/responses/default'
       tags:
       - Service Pre Check
+  /v1/users/{userId}/eCardTemplates/{templateId}/services/webshops:
+    parameters:
+    - $ref: '#/components/parameters/userId'
+    - $ref: '#/components/parameters/templateId'
+    post:
+      description: Get webshops
+      operationId: Get webshops
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/paging'
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/webshops'
+        '202':
+          $ref: '#/components/responses/httpResponseBody'
+        default:
+          $ref: '#/components/responses/default'
+      tags:
+      - Service Webshops
   /v1/users/{userId}/eCardTemplatesSelections:
     get:
       description: tbd
