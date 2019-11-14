@@ -299,6 +299,9 @@ components:
       value:
       - name: place1 tbd
       - name: place2 tbd
+    projection:
+      description: Projection example
+      value: '%7B%22_id%22%3A%20true%2C%20%22dateModified%22%3A%20true%7D'
     style:
       value:
         backgroundColor: '#FFDD00'
@@ -339,7 +342,11 @@ components:
       schema:
         $ref: '#/components/schemas/objectId'
     projection:
-      description: Projection parameter to reduce returned data.
+      description: Projection parameter to specify the eCard-properties/fields to
+        be included in the returned data.
+      examples:
+        example:
+          $ref: '#/components/examples/projection'
       in: query
       name: projection
       schema:
@@ -1157,6 +1164,10 @@ components:
       type: object
     projection:
       description: Projection schema
+      externalDocs:
+        description: MongoDB description about project fields to return from query
+        url: https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/
+      format: urlencoded
       title: Projection schema
       type: string
     service:
