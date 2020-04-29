@@ -6,140 +6,75 @@ components:
           examples:
             AES256 encrypted example:
               value:
-                metaData:
-                  callsLeft: 998
-                  serverTime: 1572943156281
-                  tsExpiry: 1574382886469
+                metaData: {callsLeft: 998, serverTime: 1572943156281, tsExpiry: 1574382886469}
                 userInfo: wUY9fLfb2wY2IWhTUEB6DQLEqA+2XrblXPMIqYFU6LAE3ZzzkVgiO2CNtpYUzZ4YK/7HZLtCoP5oyebLj3hqwiO8TVVXD4sbW3Eo3Vu7iTbS/ZWN0cc9ENba+K+2FXDjGLYBxGs4pMNkIHhauxsIh0G04yUWKYGqJ0gvEVoW4Cw=
             decrypted example:
               value:
-                metaData:
-                  callsLeft: 998
-                  serverTime: 1572943156281
-                  tsExpiry: 1574382886469
-                userInfo:
-                  card_number: '7000001114520894388'
-                  card_number_verified: true
-                  card_secret: '455958'
-                  card_secret_verified: true
-          schema:
-            $ref: '#/components/schemas/getUrlResponse'
+                metaData: {callsLeft: 998, serverTime: 1572943156281, tsExpiry: 1574382886469}
+                userInfo: {card_number: '7000001114520894388', card_number_verified: true,
+                  card_secret: '455958', card_secret_verified: true}
+          schema: {$ref: '#/components/schemas/getUrlResponse'}
       description: Get url response
   schemas:
     getUrlResponse:
       description: Get url response
       properties:
-        UserInfo:
-          $ref: '#/components/schemas/userInfo'
-        metaData:
-          $ref: '#/components/schemas/metaData'
+        UserInfo: {$ref: '#/components/schemas/userInfo'}
+        metaData: {$ref: '#/components/schemas/metaData'}
       type: object
     metaData:
-      example:
-        callsLeft: 998
-        serverTime: 1572943156281
-        tsExpiry: 1574382886469
+      example: {callsLeft: 998, serverTime: 1572943156281, tsExpiry: 1574382886469}
       properties:
-        callsLeft:
-          description: Number of times the url can be used to get the user info
-          type: number
-        serverTime:
-          description: Server time
-          format: Unix time in mili seconds
-          type: number
-        tsExpiry:
-          description: Expiration datetime
-          format: date-time
-          type: string
+        callsLeft: {description: Number of times the url can be used to get the user
+            info, type: number}
+        serverTime: {description: Server time, format: Unix time in mili seconds,
+          type: number}
+        tsExpiry: {description: Expiration datetime, format: date-time, type: string}
       type: object
-    secret:
-      description: Secret used to encrypt the User Info.
-      example: W01e7jhscW_f2q9sNBXNuQBKFCTcf83ylY1Nbnz2jBk
-      format: Base64 URL encoded
-      type: string
-    url:
-      description: User Info Url.
-      example: https://dev2-card.testonly.digital-me.nl/ecards/v1/pub/dataExchange/BKTJYLTFNOEV65KNBP6GLM6SPB63OICN
-      format: url
-      type: string
+    secret: {description: Secret used to encrypt the User Info., example: W01e7jhscW_f2q9sNBXNuQBKFCTcf83ylY1Nbnz2jBk,
+      format: Base64 URL encoded, type: string}
+    url: {description: User Info Url., example: 'https://dev2-card.testonly.digital-me.nl/ecards/v1/pub/dataExchange/BKTJYLTFNOEV65KNBP6GLM6SPB63OICN',
+      format: url, type: string}
     userInfo:
       example: wUY9fLfb2wY2IWhTUEB6DQLEqA+2XrblXPMIqYFU6LAE3ZzzkVgiO2CNtpYUzZ4YK/7HZLtCoP5oyebLj3hqwiO8TVVXD4sbW3Eo3Vu7iTbS/ZWN0cc9ENba+K+2FXDjGLYBxGs4pMNkIHhauxsIh0G04yUWKYGqJ0gvEVoW4Cw=
       format: encrypted using AES128, AES192 or AES256 and none IV
       properties:
-        card_balance:
-          description: Standard claim and part of the Card Balance scope
-          type: number
-        card_expire_date:
-          description: Standard claim and part of the Card Info scope
-          format: date-time
-          type: string
-        card_expire_date_verified:
-          description: Standard claim and part of the Card Info scope
-          format: date-time
-          type: string
-        card_number:
-          description: Unique identifier of an eCard, standard claim and part of the
-            Card Info scope
-          type: string
-        card_number_verified:
-          description: Standard claim and part of the Card Info scope
-          format: date-time
-          type: string
-        card_secret:
-          description: PIN or security code of the (gift)card, standard claim and
-            part of the Card Secret scope.
-          type: string
-        card_secret_verified:
-          description: Standard claim and part of the Card Secret scope.
-          format: date-time
-          type: string
-        email:
-          description: Part of the Email scope
-          type: string
-        email_verified:
-          description: Part of the Email scope
-          type: boolean
-        family_name:
-          description: Part of the Profile scope
-          type: string
-        given_name:
-          description: Part of the Profile scope
-          type: string
-        locale:
-          description: Standard claim and part of the Locale scope
-          example: en-US
+        card_balance: {description: Standard claim and part of the Card Balance scope,
+          type: number}
+        card_expire_date: {description: Standard claim and part of the Card Info scope,
+          format: date-time, type: string}
+        card_expire_date_verified: {description: Standard claim and part of the Card
+            Info scope, format: date-time, type: string}
+        card_number: {description: 'Unique identifier of an eCard, standard claim
+            and part of the Card Info scope', type: string}
+        card_number_verified: {description: Standard claim and part of the Card Info
+            scope, format: date-time, type: string}
+        card_secret: {description: 'PIN or security code of the (gift)card, standard
+            claim and part of the Card Secret scope.', type: string}
+        card_secret_verified: {description: Standard claim and part of the Card Secret
+            scope., format: date-time, type: string}
+        email: {description: Part of the Email scope, type: string}
+        email_verified: {description: Part of the Email scope, type: boolean}
+        family_name: {description: Part of the Profile scope, type: string}
+        given_name: {description: Part of the Profile scope, type: string}
+        locale: {description: Standard claim and part of the Locale scope, example: en-US,
           format: BCP47 with underscore ('_') support als alternative for the dash
-            ('-')
-          type: string
-        middle_name:
-          description: Part of the Profile scope
-          type: string
-        name:
-          description: Part of the Profile scope
-          type: string
-        nickname:
-          description: Part of the Profile scope
-          type: string
-        picture:
-          description: Part of the Profile scope
-          format: binary
-          type: string
-        updated_at:
-          description: Part of the Profile scope
-          format: date-time
-          type: string
+            ('-'), type: string}
+        middle_name: {description: Part of the Profile scope, type: string}
+        name: {description: Part of the Profile scope, type: string}
+        nickname: {description: Part of the Profile scope, type: string}
+        picture: {description: Part of the Profile scope, format: binary, type: string}
+        updated_at: {description: Part of the Profile scope, format: date-time, type: string}
       type: object
 info:
   description: User Info allows Dappre users to share data with your website in three
     steps:<ul><li>[The users opens your website with a url and a secret](#/Website/Website%20call)<li>[Use
     the url to get the data](#/User%20Info/Get%20encrypted%20User%20Info)<li>Use the
-    secret to decrypt the data</ul><p>The api contains example data for experimentation,
-    but to test with the Dappre app please contact the Service Desk and provide:<ul><li>your
-    website url and cors url for test (and production)<li>your preferred encryption
-    algorithm (AES128, AES192, AES256)</ul>
-  license:
-    name: (c) Dappre BV 2019 - All rights reserved
-    url: https://dappre.com
+    secret, a 16 byte zero iv and cbc-mode to decrypt the data</ul><p>The api contains
+    example data for experimentation, but to test with the Dappre app please contact
+    the Service Desk and provide:<ul><li>your website url and cors url for test (and
+    production)<li>your preferred encryption algorithm (AES128, AES192, AES256)</ul>
+  license: {name: (c) Dappre BV 2019 - All rights reserved, url: 'https://dappre.com'}
   title: User Info API
   version: 1.0.0
 openapi: 3.0.0
@@ -152,55 +87,45 @@ paths:
         can use the url 2 times by default.</ul>'
       operationId: Get encrypted User Info
       responses:
-        '200':
-          $ref: '#/components/responses/getUrl'
-      tags:
-      - User Info
+        '200': {$ref: '#/components/responses/getUrl'}
+      tags: [User Info]
     parameters:
     - description: (Path part of) url as passed in website url
       in: path
       name: url
       required: true
-      schema:
-        type: string
+      schema: {type: string}
     servers:
     - description: User Info Endpoint
       url: '{url}'
       variables:
-        url:
-          default: https://card.dolden.net
-          description: (Base part of) url as included in website url
+        url: {default: 'https://card.dolden.net', description: (Base part of) url
+            as included in website url}
   /{websiteUrl}:
     get:
       description: Website call from Dappre
       operationId: Website call
       responses:
-        '200':
-          description: Website page
-      tags:
-      - Website
+        '200': {description: Website page}
+      tags: [Website]
     parameters:
     - description: (path part of) Website url, for example 'home' for 'https://website.example.com/home'.
       in: path
       name: websiteUrl
       required: true
-      schema:
-        type: string
+      schema: {type: string}
     - description: secret. Contact the Service Desk to change the parameter name.
       in: query
       name: s
-      schema:
-        $ref: '#/components/schemas/secret'
+      schema: {$ref: '#/components/schemas/secret'}
     - description: User Info Url. Contact the Service Desk to change the parameter
         name.
       in: query
       name: url
-      schema:
-        $ref: '#/components/schemas/url'
+      schema: {$ref: '#/components/schemas/url'}
     servers:
     - description: Website
       url: '{websiteUrl}'
       variables:
-        websiteUrl:
-          default: https://website.example.com
-          description: (Base part of) Website url
+        websiteUrl: {default: 'https://website.example.com', description: (Base part
+            of) Website url}

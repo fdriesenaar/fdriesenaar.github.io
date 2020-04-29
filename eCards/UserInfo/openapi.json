@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "User Info API",
-        "description": "User Info allows Dappre users to share data with your website in three steps:<ul><li>[The users opens your website with a url and a secret](#/Website/Website%20call)<li>[Use the url to get the data](#/User%20Info/Get%20encrypted%20User%20Info)<li>Use the secret to decrypt the data</ul><p>The api contains example data for experimentation, but to test with the Dappre app please contact the Service Desk and provide:<ul><li>your website url and cors url for test (and production)<li>your preferred encryption algorithm (AES128, AES192, AES256)</ul>",
+        "description": "User Info allows Dappre users to share data with your website in three steps:<ul><li>[The users opens your website with a url and a secret](#/Website/Website%20call)<li>[Use the url to get the data](#/User%20Info/Get%20encrypted%20User%20Info)<li>Use the secret, a 16 byte zero iv and cbc-mode to decrypt the data</ul><p>The api contains example data for experimentation, but to test with the Dappre app please contact the Service Desk and provide:<ul><li>your website url and cors url for test (and production)<li>your preferred encryption algorithm (AES128, AES192, AES256)</ul>",
         "version": "1.0.0",
         "license": {
             "name": "(c) Dappre BV 2019 - All rights reserved",
