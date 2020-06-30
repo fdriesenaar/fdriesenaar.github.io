@@ -37,7 +37,7 @@ components:
       format: url, type: string}
     userInfo:
       example: wUY9fLfb2wY2IWhTUEB6DQLEqA+2XrblXPMIqYFU6LAE3ZzzkVgiO2CNtpYUzZ4YK/7HZLtCoP5oyebLj3hqwiO8TVVXD4sbW3Eo3Vu7iTbS/ZWN0cc9ENba+K+2FXDjGLYBxGs4pMNkIHhauxsIh0G04yUWKYGqJ0gvEVoW4Cw=
-      format: encrypted using AES128, AES192 or AES256 and none IV
+      format: encrypted using AES128, AES192 or AES256 and zero IV
       properties:
         card_balance: {description: Standard claim and part of the Card Balance scope,
           type: number}
